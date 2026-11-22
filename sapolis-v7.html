@@ -123,6 +123,79 @@ textarea::placeholder,input::placeholder{color:var(--mute)}
 .mslot{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;min-width:56px;min-height:56px;padding:0 10px;border-radius:16px;border:2px dashed var(--seg);font-size:20px;font-weight:600;font-variant-numeric:tabular-nums}
 .mslot b{font-size:12px;font-weight:600;color:var(--mute)}.mslot.ok{border-style:solid;border-color:var(--v);background:rgba(124,58,237,.1)}.mslot.no{border-color:#F43F5E;background:rgba(244,63,94,.12);animation:shake .35s}
 .key{min-height:52px;border-radius:16px;background:var(--chip);border:1px solid var(--gb);font-size:20px;font-weight:600;transition:transform .15s}.key:active{transform:scale(.95)}
+/* SApólis Vision — câmera, mapa e descoberta */
+.vcard{overflow:hidden;padding-bottom:22px}
+.vsky{position:absolute;inset:auto 0 0 0;width:100%;height:58%;opacity:.75;pointer-events:none}
+.vbadge{display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border-radius:99px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.24);font-size:12px;font-weight:700;letter-spacing:.02em}
+.vbub{position:relative;flex:1;padding:10px 14px;border-radius:18px 18px 18px 6px;background:rgba(255,255,255,.95);color:#291052;font-size:14px;font-weight:600;line-height:1.3}
+.dark .vbub{background:rgba(30,16,58,.9);color:#fff;border:1px solid rgba(196,181,253,.25)}
+.vbtn{display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:10px;min-height:88px;padding:14px;border-radius:22px;background:#fff;color:#4A1C96;font-size:14.5px;font-weight:700;line-height:1.2;text-align:left;box-shadow:0 12px 24px -14px rgba(0,0,0,.5);transition:transform .15s}
+.vbtn:active{transform:scale(.97)}.dark .vbtn{background:rgba(24,12,48,.88);color:#fff;border:1px solid rgba(196,181,253,.28);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.vbtn>span{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;color:#fff;background:linear-gradient(140deg,#7028D8,#8936F0)}
+.vhead{display:grid;grid-template-columns:44px 1fr 44px;align-items:center;gap:8px}#frame .vhead h1{text-align:center;font-size:19px!important;line-height:1.2;font-weight:700;letter-spacing:-.01em}
+.vic{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--chip);color:var(--ink)}
+.vview{position:relative;width:100%;aspect-ratio:3/4;max-height:58vh;border-radius:30px;overflow:hidden;background:#140A26;color:#fff;box-shadow:0 26px 44px -24px rgba(41,16,82,.6)}
+.vview.vshort{aspect-ratio:auto;min-height:210px}
+.vview video,.vview>img,.vview .vart-in{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vart-in{background:radial-gradient(120% 90% at 15% 5%,var(--b),transparent 60%),linear-gradient(160deg,var(--a),#1B0A3A)}.vart-in svg{width:100%;height:100%}
+.vcor{position:absolute;inset:18px;pointer-events:none;z-index:2}
+.vcor i{position:absolute;width:34px;height:34px;border:3.5px solid #A974FF;filter:drop-shadow(0 0 6px rgba(137,54,240,.8))}
+.vcor i:nth-child(1){left:0;top:0;border-right:0;border-bottom:0;border-top-left-radius:14px}.vcor i:nth-child(2){right:0;top:0;border-left:0;border-bottom:0;border-top-right-radius:14px}
+.vcor i:nth-child(3){left:0;bottom:0;border-right:0;border-top:0;border-bottom-left-radius:14px}.vcor i:nth-child(4){right:0;bottom:0;border-left:0;border-top:0;border-bottom-right-radius:14px}
+.vlab,.vtag{position:absolute;z-index:3;padding:7px 14px;border-radius:99px;background:rgba(15,9,26,.6);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-size:13px;font-weight:600;white-space:nowrap}
+.vlab{left:50%;bottom:30px;transform:translateX(-50%)}.vtag{left:30px;top:30px;font-size:12px}
+.vx{position:absolute;z-index:3;right:28px;top:26px;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:rgba(15,9,26,.6);color:#fff}
+.vstate{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:28px;text-align:center}
+.vshort .vstate{position:relative;min-height:210px}
+.vstate b{font-size:17px}.vstate p{max-width:300px;font-size:14px;line-height:1.45;color:rgba(255,255,255,.84)}.vstate .vsmall{font-size:12px;opacity:.75}
+.vsic{display:grid;place-items:center;width:56px;height:56px;margin-bottom:4px;border-radius:18px;background:rgba(137,54,240,.35)}
+.vacts{display:grid;gap:8px;width:min(270px,100%);margin-top:8px}
+.vbtn2{display:flex;align-items:center;justify-content:center;gap:8px;height:44px;border-radius:99px;font-size:14px;font-weight:700;color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2)}
+.vbtn2.on{background:#fff;color:#4A1C96;border-color:#fff}
+.vveil{position:absolute;inset:0;z-index:1;background:rgba(41,16,82,.45)}
+.vscan{position:absolute;z-index:2;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,transparent,#D9C2FF,transparent);box-shadow:0 0 18px 4px rgba(137,54,240,.7);animation:vscan 1.5s ease-in-out infinite alternate}
+@keyframes vscan{to{top:calc(100% - 3px)}}
+.vspin{width:34px;height:34px;border-radius:50%;border:3px solid rgba(255,255,255,.25);border-top-color:#C4A0FF;animation:vspin .9s linear infinite}@keyframes vspin{to{transform:rotate(360deg)}}
+.vctl{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px}
+.vside{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--mute)}
+.vside span{display:grid;place-items:center;width:50px;height:50px;border-radius:17px;background:var(--chip);color:var(--lil)}
+.vshut{width:78px;height:78px;border-radius:50%;padding:5px;background:linear-gradient(135deg,#7028D8,#8936F0);box-shadow:0 12px 26px -10px rgba(112,40,216,.85);transition:transform .15s}
+.vshut i{display:block;width:100%;height:100%;border-radius:50%;background:#fff}.vshut:active{transform:scale(.92)}.vshut:disabled{opacity:.4;cursor:default}
+.vdemo{display:flex;flex-direction:column;border-radius:22px;overflow:hidden;text-align:left;background:var(--glass);border:1px solid var(--gb);box-shadow:var(--sh);transition:transform .15s}.vdemo:active{transform:scale(.97)}
+.vth{position:relative;aspect-ratio:16/10;overflow:hidden;color:#fff;background:radial-gradient(120% 90% at 15% 5%,var(--b),transparent 60%),linear-gradient(160deg,var(--a),#1B0A3A)}
+.vth svg,.vart svg{position:absolute;inset:0;width:100%;height:100%}
+.vth em{position:absolute;left:8px;top:8px;padding:3px 8px;border-radius:99px;background:rgba(255,255,255,.92);color:#4A1C96;font-size:10.5px;font-style:normal;font-weight:700}
+.vdemo b{display:block;padding:10px 12px 0;font-size:14px;line-height:1.2}.vdemo small{display:block;padding:2px 12px 12px;font-size:12px;color:var(--mute)}
+.vart{position:relative;margin:0;aspect-ratio:16/9;border-radius:28px;overflow:hidden;background:radial-gradient(120% 90% at 15% 5%,var(--b),transparent 60%),linear-gradient(160deg,var(--a),#1B0A3A);box-shadow:0 26px 44px -26px rgba(41,16,82,.7)}
+.vart figcaption{position:absolute;right:12px;bottom:10px;padding:3px 9px;border-radius:99px;background:rgba(0,0,0,.35);color:#fff;font-size:11px;font-weight:600}
+.vsearch{position:relative;display:flex;align-items:center;gap:8px;height:48px;padding:0 16px;border-radius:99px;background:var(--glass);border:1px solid var(--gb);box-shadow:var(--sh);color:var(--mute)}
+.vsearch input{flex:1;min-width:0;border:0;background:none;outline:none;font-size:15px;color:var(--ink)}.vsearch input::-webkit-search-cancel-button{cursor:pointer}
+.vsearch:focus-within{border-color:var(--v)}
+.vsug{position:absolute;left:0;right:0;top:54px;z-index:700;padding:6px;border-radius:20px;background:var(--bg);border:1px solid var(--gb);box-shadow:0 18px 40px -16px rgba(41,16,82,.45)}
+.vsug button{display:flex;width:100%;align-items:center;gap:10px;padding:10px;border-radius:14px;text-align:left;font-size:14px;color:var(--ink)}.vsug button:hover,.vsug button:focus-visible{background:var(--chip)}
+.vsug p{padding:10px;font-size:13px;color:var(--mute)}
+.vfil{display:flex;gap:8px;overflow-x:auto;margin:0 -20px;padding:2px 20px 4px;scrollbar-width:none}.vfil::-webkit-scrollbar{display:none}.vfil .pill{flex-shrink:0;min-height:36px}
+.vmapw{position:relative;height:clamp(340px,58vh,560px);border-radius:28px;overflow:hidden;border:1px solid var(--gb);box-shadow:var(--sh);background:#ECE7F6;isolation:isolate}.dark .vmapw{background:#1A1030}
+.vmap{position:absolute;inset:0;z-index:1;font:inherit}
+.vmload{display:grid;place-items:center;height:100%;color:var(--mute);font-size:14px}
+.vloc{position:absolute;right:10px;top:10px;z-index:500;display:flex;align-items:center;gap:6px;height:40px;padding:0 14px;border-radius:99px;background:var(--bg);color:var(--lil);font-size:13px;font-weight:700;border:1px solid var(--gb);box-shadow:0 8px 20px -8px rgba(41,16,82,.45)}
+.vsel{position:absolute;left:10px;right:10px;bottom:26px;z-index:600;padding:14px;border-radius:24px;background:var(--bg);border:1px solid var(--gb);box-shadow:0 20px 40px -16px rgba(41,16,82,.55);animation:in .35s cubic-bezier(.16,1,.3,1)}
+.vmerr{position:absolute;left:10px;right:10px;top:58px;z-index:550;padding:10px 12px;border-radius:16px;background:var(--bg);border:1px solid var(--gb);font-size:13px;line-height:1.4}
+.vmerr.full{inset:0;border-radius:0;border:0;display:grid;place-items:center;align-content:center;gap:6px;padding:28px;text-align:center}
+.vpin-w{background:none;border:0}
+.vpin{position:relative;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;color:#fff;background:linear-gradient(140deg,#7028D8,#8936F0);border:3px solid #fff;box-shadow:0 6px 14px -4px rgba(41,16,82,.7);transform-origin:50% 125%;transition:transform .25s var(--sp),opacity .25s,box-shadow .25s}
+.vpin::after{content:"";position:absolute;left:50%;bottom:-10px;width:12px;height:10px;margin-left:-6px;background:#fff;clip-path:polygon(0 0,100% 0,50% 100%)}
+.vpin-w.on .vpin{transform:scale(1.28);background:linear-gradient(140deg,#4A1C96,#8936F0);box-shadow:0 0 0 7px rgba(137,54,240,.3),0 10px 20px -6px rgba(41,16,82,.8)}
+.vpin-w.dim .vpin{opacity:.32;transform:scale(.82)}
+.vpin-w:focus{outline:none}.vpin-w:focus-visible .vpin{box-shadow:0 0 0 4px #fff,0 0 0 7px #7028D8}
+.vmap .leaflet-bar{border:0;border-radius:14px;overflow:hidden;box-shadow:0 8px 20px -8px rgba(41,16,82,.45)}
+.vmap .leaflet-bar a{width:40px;height:40px;line-height:40px;font-size:20px;color:#4A1C96;border-color:rgba(91,33,185,.12)}
+.dark .vmap .leaflet-bar a{background:#1E1238;color:#fff;border-color:rgba(255,255,255,.12)}
+.dark .vmap .leaflet-tile-pane{filter:invert(1) hue-rotate(200deg) brightness(.85) contrast(.92) saturate(.55)}
+.dark .vmap .leaflet-control-attribution{background:rgba(15,9,26,.75);color:#bbb}.dark .vmap .leaflet-control-attribution a{color:#C4B5FD}
+.vdim{opacity:.42}
+</style>
+<style>
 /* apresentação — 7 telas antes do questionário */
 #tour{--tb:linear-gradient(180deg,#FFFFFF 0%,#F5F0FF 58%,#EFE5FF 100%);--tc:#291052;--tm:#5B4B7D;--tcard:#FFFFFF;--tbd:rgba(112,40,216,.14);--tdot:rgba(112,40,216,.18);position:absolute;inset:0;z-index:72;display:flex;flex-direction:column;background:var(--tb);color:var(--tc);overflow:hidden}
 #tour[hidden]{display:none}
@@ -156,6 +229,9 @@ textarea::placeholder,input::placeholder{color:var(--mute)}
 .dark .tmed{box-shadow:0 0 0 1px rgba(196,181,253,.1),0 26px 50px -20px rgba(137,54,240,.45)}
 .tmed img,.tmed video{display:block;width:100%;height:auto;max-height:50vh;object-fit:contain;margin:0 auto}
 .tvid{min-height:200px;display:grid;place-items:center}.tvid video{cursor:pointer}
+.tvid.vert{align-self:center;width:auto;height:min(58vh,540px);aspect-ratio:478/850;min-height:0;border-radius:30px}
+.tvid.vert video{width:100%;height:100%;max-height:none;object-fit:cover}
+@media(max-height:700px){.tvid.vert{height:52vh}}
 .tplay{position:absolute;left:50%;top:50%;width:68px;height:68px;margin:-34px 0 0 -34px;display:grid;place-items:center;border-radius:50%;color:#fff;background:rgba(112,40,216,.88);box-shadow:0 0 0 6px rgba(255,255,255,.2),0 12px 30px -8px rgba(0,0,0,.6);transition:all .3s var(--sp)}
 .tvid.on .tplay{left:auto;top:auto;right:12px;bottom:12px;margin:0;width:44px;height:44px;opacity:.85;box-shadow:0 6px 16px -6px rgba(0,0,0,.6)}
 .tvid.on .tplay svg{width:20px;height:20px}
@@ -278,6 +354,8 @@ textarea::placeholder,input::placeholder{color:var(--mute)}
       </div>
       <h2 class="h2 mt-10 text-[24px]">Continue de onde parou</h2>
       <div id="cont" class="mt-4 grid gap-3"></div>
+      <!-- SAPÓLIS VISION: entrada (câmera + mapa) -->
+      <section id="vis-entry" aria-labelledby="vis-h"></section>
       <h2 class="h2 mt-10 text-[24px]">São Paulo em 7 Rotas</h2>
       <div id="catrow" class="-mx-5 mt-4 flex snap-x gap-3 overflow-x-auto px-5 pb-2" style="scrollbar-width:none"></div>
       <h2 class="h2 mt-10 text-[24px]">Para você</h2><p class="sub mt-1.5">Recomendações a partir dos seus erros e do seu domínio.</p>
@@ -385,6 +463,14 @@ textarea::placeholder,input::placeholder{color:var(--mute)}
 <symbol id="i-head" viewBox="0 0 24 24"><path d="M4 15.5V12a8 8 0 0 1 16 0v3.5"/><rect x="3" y="14" width="4.6" height="6.8" rx="1.8"/><rect x="16.4" y="14" width="4.6" height="6.8" rx="1.8"/></symbol>
 <symbol id="i-crown" viewBox="0 0 24 24"><path d="M3.5 8.2l4.6 4 3.9-6.7 3.9 6.7 4.6-4-2 10.3H5.5z"/></symbol>
 <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8.5a2 2 0 0 1 2-2h2l1.5-2h5l1.5 2h2a2 2 0 0 1 2 2V18a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="3.6"/></symbol>
+<symbol id="i-map" viewBox="0 0 24 24"><path d="M9 4.5L3.5 6.5v13L9 17.5l6 2 5.5-2v-13L15 6.5zM9 4.5v13M15 6.5v13"/></symbol>
+<symbol id="i-scan" viewBox="0 0 24 24"><path d="M4 8V5.5A1.5 1.5 0 0 1 5.5 4H8M16 4h2.5A1.5 1.5 0 0 1 20 5.5V8M20 16v2.5a1.5 1.5 0 0 1-1.5 1.5H16M8 20H5.5A1.5 1.5 0 0 1 4 18.5V16"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></symbol>
+<symbol id="i-locate" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2.5"/><path d="M12 2.5V5M12 19v2.5M2.5 12H5M19 12h2.5"/></symbol>
+<symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.4a2.5 2.5 0 0 1 4.8.9c0 1.7-2.4 2.2-2.4 3.7M12 17.2v.1"/></symbol>
+<symbol id="i-image" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/><circle cx="9" cy="10" r="1.8"/><path d="M20.5 16l-5-5-8 8.5"/></symbol>
+<symbol id="i-refresh" viewBox="0 0 24 24"><path d="M19.5 12a7.5 7.5 0 1 1-2.2-5.3M19.5 4.5v4h-4"/></symbol>
 <symbol id="i-spark" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 2.5c.7 5 2.5 6.8 7.5 7.5-5 .7-6.8 2.5-7.5 7.5-.7-5-2.5-6.8-7.5-7.5 5-.7 6.8-2.5 7.5-7.5zM19 15.5c.3 2 1 2.7 3 3-2 .3-2.7 1-3 3-.3-2-1-2.7-3-3 2-.3 2.7-1 3-3z"/></symbol>
 </defs></svg>
 <div id="tour" hidden role="dialog" aria-modal="true" aria-labelledby="t-h"></div>
@@ -551,7 +637,10 @@ const ACH=[['luz','Exploradora da Luz','Conclua Física e Português','flame',()
  ['but','Cientista do Butantan','Conclua a lição de Biologia','leaf',()=>S.done['les:bio']],
  ['arq','Arquiteta dos Números','Conclua a lição de Matemática','sigma',()=>S.done['les:mat']],
  ['tie','Investigadora do Tietê','Conclua Geografia e a Investigação ENEM','globe',()=>S.done['les:geo']&&S.done['g:inv']],
- ['con','Mestre das Conexões','Complete os dois percursos interdisciplinares','link',()=>pathDone('tiete')&&pathDone('luz')]];
+ ['con','Mestre das Conexões','Complete os dois percursos interdisciplinares','link',()=>pathDone('tiete')&&pathDone('luz')],
+ ['vis1','Explorador de São Paulo','Conclua uma lição iniciada pelo SApólis Vision','pin',()=>visN()>=1],
+ ['vis3','Guia da Cidade','Conclua lições de 3 disciplinas pelo SApólis Vision','map',()=>visN()>=3],
+ ['vis7','Cartógrafo do ENEM','Conclua as 7 disciplinas pelo SApólis Vision','globe',()=>visN()>=7]];
 const PATHS={tiete:{n:'Rio Tietê',sub:'Geografia → Química → Biologia → Redação',nodes:[['geo','Geografia','A urbanização ocupou várzeas e impermeabilizou o solo.','les:geo'],['qui','Química','Mais esgoto altera pH e a presença de substâncias na água.','les:qui'],['bio','Biologia','Menos oxigênio dissolvido afeta peixes e outros seres aquáticos.','les:bio'],['red','Redação','Com os dados em mãos, é hora de argumentar e propor soluções.','les:red']]},
  luz:{n:'Estação da Luz',sub:'História → Matemática → Física → Português',nodes:[['fis','História (cápsula)','A Luz ligou o interior cafeeiro ao porto e recebeu gente de muitos lugares.','cap:fis2'],['mat','Matemática','Horários, distâncias e escalas organizam o transporte.','les:mat'],['fis','Física','Velocidade média e gráficos descrevem o movimento dos trens.','les:fis'],['por','Português','No museu da Estação, o idioma mostra as vozes de quem passou por ali.','les:por']]}};
 const PREM=['Rotas avançadas em todas as disciplinas','Simulados completos por área do conhecimento','Trilhas personalizadas a partir dos seus erros','Análises pedagógicas adicionais','Biblioteca ampliada de redações comentadas'];
@@ -675,7 +764,7 @@ const NI={bib:0,com:1,exp:2,des:3,per:4},V=['bib','com','exp','des','per','les',
 const CT={bib:()=>'Escolha uma rota para explorar',com:()=>`Comunidade · você está em ${rankPos()}º lugar`,exp:()=>'Explorar · novidades para você',des:()=>'Desafios · Missões pela Cidade',per:()=>`Ver meu progresso · Level ${lvl()}`};
 function mark(k){$('#nav').style.setProperty('--i',NI[k]);$$('.nb').forEach(b=>b.setAttribute('aria-current',b.dataset.k==k?'page':'false'))}
 function bars(){requestAnimationFrame(()=>requestAnimationFrame(()=>$$('[data-w]').forEach(e=>e.style.width=e.dataset.w+'%')))}
-function show(k){view=k;V.forEach(v=>{const e=$('#v-'+v);e.hidden=v!=k;if(v==k){e.style.animation='none';void e.offsetWidth;e.style.animation=''}});if(NI[k]!==undefined){prevV=k;mark(k)}sc.scrollTop=0;bars()}
+function show(k){visStop();view=k;V.forEach(v=>{const e=$('#v-'+v);e.hidden=v!=k;if(v==k){e.style.animation='none';void e.offsetWidth;e.style.animation=''}});if(NI[k]!==undefined){prevV=k;mark(k)}sc.scrollTop=0;bars()}
 function go(k){BK=null;RV[k]();show(k)}
 function screen(html,from,back,after){BK=back||(()=>go(from));$('#v-in').innerHTML=html;show('in');mark(from);if(after)after()}
 function ctx(k){const c=$('#ctx');c.textContent=CT[k]();c.classList.add('on');clearTimeout(tc);tc=setTimeout(()=>c.classList.remove('on'),2200)}
@@ -789,7 +878,7 @@ function lessonStep(){const {r,i}=LS;let body='',after=null;
  if(i==3)body=`<p class="sub mt-4 text-[15px]">${r.e}</p><p class="chip mt-4 rounded-2xl p-4 text-[13px] leading-relaxed">As questões desta plataforma são autorais, feitas para treino. Elas não são do ENEM nem preveem a prova. Para a lista oficial de competências e habilidades, consulte a <a class="lil underline" href="https://www.gov.br/inep/pt-br/centrais-de-conteudo/acervo-linha-editorial/publicacoes-institucionais/avaliacoes-e-exames-da-educacao-basica/matrizes-de-referencia-enem/" target="_blank" rel="noopener">Matriz de Referência do ENEM (INEP)</a>.</p>`;
  if(i==4){body='<div id="eng" class="mt-4"></div><div id="res"></div>';after=()=>mc($('#eng'),r.q,{t:r.n},x=>{LS.qd=1;LS.sc=x;addRev(r.n,r.id,x.wr);$('#res').innerHTML=`<div class="glass card glow mt-4"><h3 class="text-[22px]">Você acertou ${x.ok} de ${x.n}</h3><p class="sub mt-1.5">${x.wr.length?'Para reforçar: '+x.wr.join(', ')+'.':'Sem erros. Siga para o desafio interativo.'}</p></div>`;gate()})}
  if(i==5)body=`<p class="sub mt-4">Resolva o minijogo desta rota para seguir.</p><div id="gl" class="mt-4 grid gap-3">${r.g.map(g=>`<button data-a="lgame" data-g="${g.id}" class="glass press flex min-h-[64px] items-center justify-between gap-3 rounded-[24px] p-4 text-left"><span class="ser text-[19px] leading-tight">${g.t}</span>${S.done['g:'+g.id]?ic('check','h-5 w-5 lil'):ic('play','h-5 w-5')}</button>`).join('')}</div>`;
- if(i==6){const first=award('les:'+r.id,r.xp,'Lição: '+r.n),sc2=LS.sc;body=`<div class="glass card glow mt-4"><h3 class="text-[22px] leading-tight">Missão concluída</h3><p class="tn lil mt-2 text-[20px] font-bold">${first?'+'+r.xp+' XP':'XP desta lição já conquistado'}</p><p class="sub mt-2">${sc2?`Questões de treino: ${sc2.ok} de ${sc2.n}. ${sc2.wr.length?'Reforce: '+sc2.wr.join(', ')+'.':'Sem erros.'}`:'Você já completou esta lição antes.'}</p><div class="mt-4">${bar(prog(r))}</div><p class="mut mt-2 text-[13px]">Progresso na rota: ${prog(r)}%</p></div><div class="mt-4 grid gap-2.5"><button class="btn" data-a="nav" data-k="per">Ver meu progresso</button><button class="btn2" data-a="nav" data-k="bib">Voltar às rotas</button></div>`}
+ if(i==6){const vz=LS.vis&&!((S.vis||{}).done||{})[r.id];if(LS.vis){S.vis=S.vis||{done:{}};S.vis.done[r.id]=1;save()}const first=award('les:'+r.id,r.xp,'Lição: '+r.n),sc2=LS.sc;if(vz&&!first)ach();body=`<div class="glass card glow mt-4"><h3 class="text-[22px] leading-tight">Missão concluída</h3><p class="tn lil mt-2 text-[20px] font-bold">${first?'+'+r.xp+' XP':'XP desta lição já conquistado'}</p><p class="sub mt-2">${sc2?`Questões de treino: ${sc2.ok} de ${sc2.n}. ${sc2.wr.length?'Reforce: '+sc2.wr.join(', ')+'.':'Sem erros.'}`:'Você já completou esta lição antes.'}</p><div class="mt-4">${bar(prog(r))}</div><p class="mut mt-2 text-[13px]">Progresso na rota: ${prog(r)}%</p></div><div class="mt-4 grid gap-2.5"><button class="btn" data-a="nav" data-k="per">Ver meu progresso</button><button class="btn2" data-a="nav" data-k="bib">Voltar às rotas</button></div>`}
  screen(`<div class="mb-4 flex items-center justify-between"><button class="btn2" data-a="back">${ic('back','h-4 w-4')}Rota</button><span class="pill tn">${i+1} de 7</span></div>${stq(i,7)}<h2 class="h2 mt-5">${STEPS[i]}</h2>${body}${i<6?`<div class="mt-6 flex gap-2.5">${i?'<button class="btn2" data-a="lp">Voltar</button>':''}<button id="lnx" class="btn flex-1" data-a="ln">Continuar</button></div>`:''}`,'bib',()=>routeScreen(r.id),()=>{gate();if(after)after()})}
 
 /* ---------- MINIJOGOS DA CIDADE ---------- */
@@ -952,13 +1041,13 @@ const TF=[['run','Lumiri Running','Percorra cenários de São Paulo e resolva de
 const TCTA=['Começar descoberta','Conhecer os recursos','Continuar','Continuar','Continuar','Continuar','Personalizar meus estudos'];
 const tLumi=c=>`<span class="tlu ${c||''}"><img class="tl-c" src="lumiri-capa-recorte.png" alt="Lumiri, a guia da SApólis" width="731" height="900" decoding="async"><img class="tl-n" src="lumiri-neon-recorte.png" alt="Lumiri, a guia da SApólis, em versão neon" width="733" height="900" decoding="async"></span>`;
 const tHead=(k,n,t,d)=>`<div class="tfh"><span class="tfi">${ic(k,'h-5 w-5')}</span><span>${n}</span></div><h2 class="tti" id="t-h">${t}</h2><p class="tde">${d}</p>`;
-const tVid=(src,label,k,poster)=>`<div class="tmed tvid" data-k="${k}"><video src="${src}" ${poster?`poster="${poster}"`:''} playsinline preload="metadata" aria-label="${label}"></video><button class="tplay" aria-label="Reproduzir vídeo">${ic('play','h-7 w-7')}</button></div>`;
+const tVid=(src,label,k,poster,cls)=>`<div class="tmed tvid ${cls||''}" data-k="${k}"><video src="${src}" ${poster?`poster="${poster}"`:''} playsinline preload="metadata" aria-label="${label}"></video><button class="tplay" aria-label="Reproduzir vídeo">${ic('play','h-7 w-7')}</button></div>`;
 const tImg=(src,alt,w,h)=>`<figure class="tmed"><img src="${src}" alt="${alt}" width="${w}" height="${h}" decoding="async"></figure>`;
 const TSKY=`<svg class="tsky" viewBox="0 0 400 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><g fill="rgba(255,255,255,.08)"><rect x="168" y="78" width="26" height="122"/><rect x="198" y="50" width="20" height="150"/><rect x="224" y="86" width="30" height="114"/><rect x="260" y="36" width="22" height="164"/><rect x="288" y="66" width="28" height="134"/><rect x="322" y="22" width="18" height="178"/><rect x="346" y="72" width="30" height="128"/><rect x="380" y="48" width="20" height="152"/></g><g fill="rgba(255,255,255,.13)"><rect x="184" y="112" width="24" height="88"/><rect x="244" y="104" width="26" height="96"/><rect x="304" y="118" width="22" height="82"/><rect x="356" y="108" width="26" height="92"/></g><g fill="none" stroke-linecap="round"><g stroke="rgba(255,255,255,.38)" stroke-width="1"><path d="M96 36L12 158M96 48L34 158M96 60L56 158M96 36L178 158M96 48L156 158M96 60L134 158"/></g><path d="M74 190L104 16M118 190L88 16" stroke="#E9B64B" stroke-width="4.5" opacity=".9"/><path d="M0 160Q100 146 200 160T400 158" stroke="rgba(255,255,255,.6)" stroke-width="3"/></g><path d="M0 178Q120 162 230 176T400 170V200H0z" fill="rgba(137,54,240,.35)"/></svg>`;
 function tSlide(i){
  if(i==0)return `<div class="tcov flex flex-1 flex-col"><div class="tlogo"><span class="tlg"><img src="logo-sapolis.png.jpg" alt="" width="1000" height="1000"></span><span><b>SApólis</b><small>EdTech</small></span></div><div class="tstage">${TSKY}<span class="torb"></span>${tLumi('tfloat')}</div><h1 class="tti tbig" id="t-h">Seu conhecimento te leva mais longe.</h1><p class="tde">Aprenda para o ENEM de um jeito diferente, interativo e dinâmico.</p></div>`;
  if(i==1)return `<span class="tcrown" aria-hidden="true">${ic('crown','h-10 w-10')}</span><h1 class="tti" id="t-h">Descubra os diferenciais da SApólis <span class="tgold">Premium</span>.</h1><p class="tde">Experiências interativas que transformam sua preparação para o ENEM.</p><ul class="tgrid">${TF.map(f=>`<li class="tpc"><span class="tpi">${ic(f[0],'h-5 w-5')}</span><b>${f[1]}</b><small>${f[2]}</small></li>`).join('')}</ul>`;
- if(i==2)return tHead('run','Lumiri Running','Explore. Desafie-se. Aprenda.','Uma jornada pela cidade que transforma conhecimentos do ENEM em desafios.')+tVid('lumiri-running.mp4','Vídeo do jogo Lumiri Running: a Lumiri percorre uma versão estilizada da Avenida Paulista, coletando moedas e enfrentando desafios','run');
+ if(i==2)return tHead('run','Lumiri Running','Explore. Desafie-se. Aprenda.','Uma jornada pela cidade que transforma conhecimentos do ENEM em desafios.')+tVid('video-running.jpg.mp4','Vídeo do jogo Lumiri Running: a Lumiri percorre uma versão estilizada da Avenida Paulista, coletando moedas e enfrentando desafios','run','lumiri-running-capa.jpg','vert');
  if(i==3)return tHead('puz','Quebra-cabeça ENEM','Tudo está conectado.','Relacione conceitos, descubra conexões e desenvolva seu raciocínio.')+tImg('quebra-cabeca.png.jpeg','Tabuleiro do Quebra-cabeça ENEM: a Lumiri ao lado de peças conectadas sobre CO₂, efeito estufa, aquecimento global, emissões industriais, sustentabilidade, energia renovável, políticas públicas, sociedade e meio ambiente',1199,1312);
  if(i==4)return tHead('cards','Cartas do Conhecimento','Uma descoberta por carta.','Revele cartas ilustradas e compreenda conteúdos de forma rápida e visual.')+`<div class="tseg" role="tablist" aria-label="Visualização das cartas"><button role="tab" aria-selected="${!TOUR.cv}" data-a="tcv" data-v="0">Cartas</button><button role="tab" aria-selected="${!!TOUR.cv}" data-a="tcv" data-v="1">Demonstração</button></div>`+(TOUR.cv?tVid('cartas-demo.mp4','Demonstração em vídeo das Cartas do Conhecimento','cards','cartas-fotossintese.png.jpeg'):tImg('cartas-fotossintese.png.jpeg','Três Cartas do Conhecimento sobre fotossíntese: o conceito, como o processo acontece e o resultado, com a Lumiri explicando',1536,1024));
  if(i==5)return tHead('head','Trilhas Sonoras','Aprenda também ouvindo.','Estude no seu ritmo com explicações narradas e revisões rápidas.')+tImg('trilha-sonora.png.jpeg','Exemplo da interface de Trilhas Sonoras: a Lumiri com fones de ouvido e o módulo Fotossíntese, de Biologia, seguido de Respiração Celular, Cadeia Alimentar e Ciclos Biogeoquímicos',1199,1312);
@@ -967,14 +1056,14 @@ function tTop(){const i=TOUR.i,d=root.classList.contains('dark');$('#tour .tt').
 function tVidBind(){const w=$('#tour .tvid');if(!w)return;const v=$('video',w),b=$('.tplay',w);
  const upd=()=>{const p=!v.paused&&!v.ended;w.classList.toggle('on',p);b.setAttribute('aria-label',p?'Pausar vídeo':'Reproduzir vídeo');b.innerHTML=ic(p?'pause':'play','h-7 w-7')};
  const tog=()=>{if(v.paused||v.ended)v.play().catch(()=>{});else v.pause()};
- const fail=()=>{w.classList.remove('tvid','on');w.innerHTML=`<div class="tfb"><span>${ic(w.dataset.k||'play','h-7 w-7')}</span><b>Prévia em vídeo em breve</b><small>O vídeo desta experiência aparecerá aqui.</small></div>`;console.warn('SApólis: vídeo não encontrado → '+v.getAttribute('src'))};
+ const fail=()=>{w.classList.remove('tvid','on');w.innerHTML=`<div class="tfb"><span>${ic(w.dataset.k||'play','h-7 w-7')}</span><b>Vídeo não encontrado</b><small>Arquivo ausente: ${v.getAttribute('src')}</small></div>`;console.warn('SApólis: vídeo não encontrado → '+v.getAttribute('src'))};
  ['play','pause','ended'].forEach(ev=>v.addEventListener(ev,upd));v.addEventListener('click',tog);b.addEventListener('click',tog);
  if(v.error)fail();else v.addEventListener('error',fail,{once:true})}
-function tourRender(anim=true){const o=$('#tour'),i=TOUR.i;o.classList.toggle('hero',i<=1);
+function tourRender(anim=true){const o=$('#tour'),i=TOUR.i;$$('#tour video').forEach(v=>v.pause());o.classList.toggle('hero',i<=1);
  o.innerHTML=`<div class="tt"></div><div class="tst"><section class="ts ${anim&&TOUR.dir?(TOUR.dir>0?'in-r':'in-l'):''}" role="group" aria-roledescription="tela" aria-label="${i+1} de 7">${tSlide(i)}</section></div><div class="tf"><button class="tcta" data-a="tnext">${TCTA[i]}${ic('arrow','h-5 w-5')}</button></div>`;
  tTop();tVidBind();if(anim){const h=$('#t-h',o);if(h){h.tabIndex=-1;h.style.outline='none';h.focus({preventScroll:true})}}}
 function tourOpen(i=0,review){TOUR={i,dir:1,review:!!review,cv:0};$('#tour').hidden=false;tourRender();['quebra-cabeca.png.jpeg','cartas-fotossintese.png.jpeg','trilha-sonora.png.jpeg'].forEach(s=>{const im=new Image();im.src=s})}
-function tourClose(){const o=$('#tour');o.hidden=true;o.innerHTML=''}
+function tourClose(){const o=$('#tour');$$('video',o).forEach(v=>v.pause());o.hidden=true;o.innerHTML=''}
 function tourFinish(){try{localStorage.setItem(TOUR_KEY,'done')}catch(e){}tourClose();obOpen(!!S.ob.done)}
 Object.assign(A,{
  tnext(){if(TOUR.i<6){TOUR.i++;TOUR.dir=1;TOUR.cv=0;FX.tap();tourRender()}else tourFinish()},
@@ -989,6 +1078,254 @@ document.addEventListener('keydown',e=>{if($('#tour').hidden||e.target.closest('
  o.addEventListener('pointerdown',e=>{if(e.target.closest('video,button'))return;x0=e.clientX;y0=e.clientY},{passive:true});
  o.addEventListener('pointercancel',()=>{x0=null});
  o.addEventListener('pointerup',e=>{if(x0==null)return;const dx=e.clientX-x0,dy=e.clientY-y0;x0=null;if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5){if(dx<0&&TOUR.i<6)A.tnext();else if(dx>0&&TOUR.i>0)A.tback()}})})();
+
+/* =========================================================
+   SAPÓLIS VISION — câmera, mapa interativo e descoberta
+   Lugares: coordenadas conferidas no OpenStreetMap (Nominatim).
+   r = rota/lição existente em RM. Sem r: lição em preparação (alt = rota relacionada).
+   Para um lugar novo, basta acrescentar um item em PL e uma ilustração em visArt.
+   ========================================================= */
+const PL=[
+ {id:'copan',n:'Edifício Copan',loc:'Centro de São Paulo · Av. Ipiranga',r:'mat',k:'Geometria e escalas',ll:[-23.5465943,-46.6445331],
+  t:'A matemática por trás das curvas de São Paulo.',
+  d:'Projetado por Oscar Niemeyer, o Copan é um marco da arquitetura modernista. Suas formas podem servir como ponto de partida para estudar geometria, escalas e proporções.',
+  h:'O projeto de Oscar Niemeyer é da década de 1950, e o edifício foi concluído em 1966. Com mais de mil apartamentos, é um dos maiores edifícios residenciais do Brasil.',
+  m:'As curvas do Copan escondem ótimas oportunidades para aprender Matemática!'},
+ {id:'butantan',n:'Instituto Butantan',loc:'Butantã · Zona Oeste',r:'bio',k:'Vacinação e imunologia',ll:[-23.5666397,-46.7199949],
+  t:'A ciência que protege a cidade.',
+  d:'Centro de pesquisa e produção de vacinas e soros, o Butantan ajuda a entender como o sistema imune aprende a se defender.',
+  h:'Tem origem no Instituto Serumterápico, criado em 1901 depois que a peste bubônica chegou ao porto de Santos. Vital Brazil foi seu primeiro diretor.'},
+ {id:'luz',n:'Estação da Luz',loc:'Bairro da Luz · Centro',r:'fis',k:'Movimento e velocidade',ll:[-23.5351161,-46.6353906],dx:13,
+  t:'A física que move os trilhos.',
+  d:'Trens que chegam e partem são um laboratório para estudar velocidade média, gráficos de movimento e inércia.',
+  h:'O prédio atual foi inaugurado em 1901 pela São Paulo Railway e ligava o interior cafeeiro ao porto de Santos.'},
+ {id:'mercado',n:'Mercado Municipal',loc:'Centro · Rua da Cantareira',r:'qui',k:'Transformações químicas',ll:[-23.5417332,-46.6295244],
+  t:'A química dos sabores.',
+  d:'Frutas que amadurecem, alimentos que fermentam e o pH dos temperos: cada banca é uma aula de transformações químicas.',
+  h:'Inaugurado em 1933, o Mercado Municipal reúne produtos de várias origens e é conhecido pelos seus vitrais.'},
+ {id:'tiete',n:'Rio Tietê · Ponte das Bandeiras',loc:'Marginal Tietê · ponto educativo na Ponte das Bandeiras',r:'geo',k:'Urbanização e ambiente',ll:[-23.5193234,-46.6302405],
+  t:'Como a cidade transformou um rio.',
+  d:'Este marcador representa um trecho do rio, ao lado da Marginal. Daqui dá para discutir a ocupação das várzeas, a impermeabilização do solo e as enchentes.',
+  h:'Ao longo do século XX, o Tietê foi retificado e suas margens viraram vias expressas. O rio atravessa a cidade; este ponto é apenas um trecho dele.'},
+ {id:'lingua',n:'Museu da Língua Portuguesa',loc:'Estação da Luz · no mesmo prédio da estação',r:'por',k:'Linguagem e comunicação',ll:[-23.5349655,-46.6350987],dx:-13,
+  t:'Uma cidade, milhões de vozes.',
+  d:'No museu, a língua vira experiência: variação linguística, funções da linguagem e as vozes de quem chegou à cidade.',
+  h:'Inaugurado em 2006 no prédio da Estação da Luz, o museu foi atingido por um incêndio em 2015 e reabriu em 2021.'},
+ {id:'imigracao',n:'Museu da Imigração',loc:'Mooca · Rua Visconde de Parnaíba',r:'red',k:'Migração e repertório',ll:[-23.5495948,-46.6127541],
+  t:'Histórias que viram argumentos.',
+  d:'As trajetórias de quem chegou a São Paulo são repertório sociocultural para redações sobre migração, trabalho e diversidade.',
+  h:'O museu funciona na antiga Hospedaria de Imigrantes do Brás, que começou a receber pessoas em 1887.'},
+ {id:'memorial',n:'Memorial da Resistência',loc:'Largo General Osório · Centro',r:null,subj:'História',alt:'red',k:'Memória e cidadania',ll:[-23.5347933,-46.6391162],
+  t:'Lembrar para não repetir.',
+  d:'O memorial preserva a memória da repressão política no Brasil e convida a pensar em democracia, direitos humanos e cidadania.',
+  h:'Funciona no prédio que abrigou o DEOPS/SP, órgão de repressão política, e foi inaugurado como memorial em 2009.'}];
+const PM=Object.fromEntries(PL.map(p=>[p.id,p]));
+const DEMO=['copan','butantan','luz','mercado','lingua','imigracao','memorial'];
+const visSubj=p=>p.r?RM[p.r].n:p.subj,visIc=p=>p.r?RM[p.r].ic:HC.ic,visC=p=>p.r?RM[p.r]:HC;
+const visCol=p=>`--a:${visC(p).a};--b:${visC(p).b}`;
+const nrm=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const reduced=()=>root.classList.contains('rm')||matchMedia('(prefers-reduced-motion: reduce)').matches;
+function visN(){return Object.keys((S.vis&&S.vis.done)||{}).length}
+var VS={src:null,stream:null,photo:null,demo:null,ac:null,map:null,mk:null,tiles:null,me:null,view:null,sel:null,filter:'all',terr:0};
+
+/* Camada de reconhecimento visual — preparada para um serviço externo.
+   Para ativar: VISION.endpoint = 'https://seu-servico/reconhecer'
+   O serviço recebe POST multipart (campo "image") e responde:
+   {status:'ok'|'none', candidates:[{placeId:'copan', confidence:0.87}]}  (confidence é opcional) */
+const VISION={endpoint:null,
+ available(){return !!this.endpoint},
+ async recognize(blob,signal){
+  if(!this.endpoint)return {status:'unavailable',candidates:[]};
+  const fd=new FormData();fd.append('image',blob,'foto.jpg');
+  const r=await fetch(this.endpoint,{method:'POST',body:fd,signal});
+  if(!r.ok)throw new Error('HTTP '+r.status);
+  const j=await r.json();
+  const c=(j.candidates||[]).filter(x=>x&&PM[x.placeId]).map(x=>({id:x.placeId,conf:typeof x.confidence=='number'?x.confidence:null}));
+  return {status:c.length?'ok':'none',candidates:c}}};
+
+/* ilustrações originais dos lugares (SVG) */
+let VU=0;
+function visArt(id){const W='rgba(255,255,255,',g=(a)=>W+a+')',u='vc'+(++VU);let s='';
+ if(id=='copan'){let l='';for(let y=64;y<178;y+=6)l+=`<path d="M30 ${y}H300"/>`;s=`<defs><clipPath id="${u}"><path d="M40 180V62C92 34 128 86 176 60S262 36 286 54V180Z"/></clipPath></defs><circle cx="262" cy="34" r="15" fill="${g(.35)}"/><path d="M40 180V62C92 34 128 86 176 60S262 36 286 54V180Z" fill="${g(.14)}"/><g clip-path="url(#${u})" stroke="${g(.72)}" stroke-width="2.2">${l}</g><path d="M0 174H320" stroke="${g(.45)}" stroke-width="2"/>`}
+ else if(id=='butantan')s=`<circle cx="36" cy="140" r="24" fill="${g(.16)}"/><circle cx="288" cy="138" r="22" fill="${g(.16)}"/><path d="M62 94L160 52L258 94Z" fill="${g(.3)}"/><rect x="70" y="94" width="180" height="74" fill="${g(.16)}"/>${[88,118,148,178,208,232].map(x=>`<rect x="${x}" y="100" width="10" height="62" fill="${g(.45)}"/>`).join('')}<rect x="60" y="164" width="200" height="9" fill="${g(.55)}"/><path d="M272 34c10 0 12 10 6 16s-14 2-10-6" stroke="${g(.6)}" stroke-width="3" fill="none"/>`;
+ else if(id=='luz'||id=='lingua')s=`<rect x="40" y="104" width="240" height="68" fill="${g(.16)}"/><rect x="146" y="30" width="28" height="142" fill="${g(.28)}"/><path d="M142 32L160 10L178 32Z" fill="${g(.42)}"/><circle cx="160" cy="56" r="10" fill="${g(.9)}"/><path d="M160 50v6l4 3" stroke="#4C1D95" stroke-width="2" fill="none"/>${[56,82,108,196,222,248].map(x=>`<path d="M${x} 166v-30a8 8 0 0 1 16 0v30z" fill="${g(.36)}"/>`).join('')}<path d="M0 176H320" stroke="${g(.5)}" stroke-width="3"/>`+(id=='lingua'?`<rect x="206" y="20" width="74" height="36" rx="13" fill="${g(.92)}"/><path d="M220 55l-5 11 17-11z" fill="${g(.92)}"/><text x="243" y="44" font-size="17" font-weight="800" fill="#6D28D9" text-anchor="middle" font-family="system-ui,sans-serif">Aa</text><rect x="34" y="34" width="58" height="30" rx="12" fill="${g(.7)}"/><text x="63" y="54" font-size="13" font-weight="700" fill="#4C1D95" text-anchor="middle" font-family="system-ui,sans-serif">olá!</text>`:'');
+ else if(id=='mercado')s=`<rect x="50" y="90" width="220" height="82" fill="${g(.16)}"/><rect x="40" y="66" width="24" height="106" fill="${g(.26)}"/><rect x="256" y="66" width="24" height="106" fill="${g(.26)}"/><path d="M40 68a12 12 0 0 1 24 0zM256 68a12 12 0 0 1 24 0z" fill="${g(.45)}"/><rect x="118" y="96" width="84" height="16" rx="4" fill="rgba(255,214,120,.6)"/>${[72,112,152,192,232].map(x=>`<path d="M${x} 168v-38a8 8 0 0 1 16 0v38z" fill="${g(.38)}"/>`).join('')}<path d="M0 174H320" stroke="${g(.45)}" stroke-width="2"/>`;
+ else if(id=='tiete')s=`<g fill="${g(.12)}"><rect x="20" y="70" width="24" height="70"/><rect x="50" y="50" width="20" height="90"/><rect x="230" y="60" width="26" height="80"/><rect x="262" y="40" width="20" height="100"/><rect x="288" y="74" width="26" height="66"/></g><path d="M40 128Q160 54 280 128" stroke="${g(.55)}" stroke-width="3.5" fill="none"/><g stroke="${g(.4)}" stroke-width="1.5">${[80,120,160,200,240].map(x=>`<path d="M${x} ${x==160?91:x==120||x==200?97:112}V128"/>`).join('')}</g><path d="M0 128H320" stroke="${g(.7)}" stroke-width="4"/><path d="M0 142Q80 132 160 142T320 142V180H0Z" fill="rgba(150,205,255,.35)"/><path d="M20 158q20-6 40 0M140 164q20-6 40 0M250 156q20-6 40 0" stroke="${g(.5)}" stroke-width="2" fill="none"/>`;
+ else if(id=='imigracao')s=`<rect x="30" y="98" width="260" height="74" fill="${g(.16)}"/><rect x="130" y="72" width="60" height="100" fill="${g(.24)}"/><path d="M126 74L160 48L194 74Z" fill="${g(.4)}"/>${[44,64,84,104,212,232,252,272].map(x=>`<rect x="${x}" y="110" width="10" height="16" rx="2" fill="${g(.4)}"/><rect x="${x}" y="138" width="10" height="16" rx="2" fill="${g(.4)}"/>`).join('')}<path d="M150 172v-26a10 10 0 0 1 20 0v26z" fill="${g(.5)}"/><path d="M0 174H320" stroke="${g(.45)}" stroke-width="2"/>`;
+ else s=`<rect x="80" y="64" width="180" height="108" fill="${g(.16)}"/><rect x="74" y="58" width="192" height="10" fill="${g(.35)}"/>${[96,128,160,192,224].map(x=>[80,112,140].map(y=>`<rect x="${x}" y="${y}" width="18" height="${y==140?32:22}" rx="2" fill="${g(.34)}"/>`).join('')).join('')}<rect x="40" y="150" width="12" height="24" fill="${g(.4)}"/><path d="M46 150c-12-10-5-24 0-32 5 8 12 22 0 32z" fill="rgba(255,214,120,.75)"/><path d="M0 174H320" stroke="${g(.45)}" stroke-width="2"/>`;
+ return `<svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">${s}</svg>`}
+
+/* ---------- entrada na página inicial ---------- */
+function visEntry(){return `<h2 id="vis-h" class="h2 mt-10 text-[24px]">Descubra São Paulo</h2><p class="sub mt-1.5">A cidade também é sua sala de aula.</p>
+ <div class="vcard cov mt-4 rounded-[32px] p-5" style="--a:#4C1D95;--b:#A78BFA;box-shadow:0 30px 50px -26px rgba(76,29,149,.8)">${TSKY.replace('class="tsky"','class="vsky absolute"')}
+  <span class="vbadge">${ic('scan','h-4 w-4')}SApólis Vision</span>
+  <div class="mt-3 flex items-end gap-3">${lume('happy','h-[86px] w-[70px]',true)}<p class="vbub">Que tal descobrir o que São Paulo pode ensinar hoje?</p></div>
+  <h3 class="mt-4 text-[21px] leading-tight">Fotografe ou encontre um lugar e transforme a cidade em aula.</h3>
+  <div class="mt-4 grid grid-cols-2 gap-2.5"><button data-a="vcam" class="vbtn"><span>${ic('camera','h-5 w-5')}</span>Explorar pela câmera</button><button data-a="vmap" class="vbtn"><span>${ic('map','h-5 w-5')}</span>Explorar no mapa</button></div>
+  <button data-a="vhow" class="mt-3 text-[13px] font-semibold text-white/85 underline underline-offset-2">Como funciona e privacidade</button></div>`}
+
+/* ---------- Tela 1 · Descobrir (apresentação + privacidade) ---------- */
+function visHow(back){screen(`${bk(back?'Câmera':'Explorar')}<div class="flex items-end gap-3">${lume()}<div class="obb">Que tal descobrir o que São Paulo pode ensinar hoje?</div></div>
+ <h1 class="h2 mt-6">SApólis Vision</h1><p class="sub mt-2">Duas formas de transformar a cidade em aula. As duas levam à mesma descoberta e às lições que você já conhece.</p>
+ <div class="mt-5 grid gap-3">
+  <button data-a="vcam" class="glass press flex items-start gap-4 rounded-[24px] p-4 text-left"><span class="hex grid h-12 w-12 shrink-0 place-items-center text-white" style="background:var(--g)">${ic('camera','h-6 w-6')}</span><span><b class="block text-[17px]">Pela câmera</b><span class="sub block text-[14px]">Fotografe um lugar ou escolha uma foto da galeria. Você confirma a foto e o lugar antes de estudar.</span></span></button>
+  <button data-a="vmap" class="glass press flex items-start gap-4 rounded-[24px] p-4 text-left"><span class="hex grid h-12 w-12 shrink-0 place-items-center text-white" style="background:var(--g)">${ic('map','h-6 w-6')}</span><span><b class="block text-[17px]">No mapa</b><span class="sub block text-[14px]">Navegue por ${PL.length} lugares educativos de São Paulo e filtre por disciplina.</span></span></button></div>
+ <div class="glass card mt-6 !p-4"><h2 class="text-[17px] font-bold">Reconhecimento automático</h2><p class="sub mt-1.5 text-[14px]">${VISION.available()?'Conectado: a foto é enviada ao serviço de reconhecimento somente depois que você confirmar.':'Ainda não está conectado nesta versão. Depois de fotografar, você escolhe o lugar na lista. O <b>modo demonstrativo</b> mostra o fluxo completo com lugares pré-cadastrados.'}</p></div>
+ <div class="glass card mt-3 !p-4"><h2 class="text-[17px] font-bold">Privacidade</h2><ul class="mt-2 grid gap-2 text-[14px] leading-snug">
+  <li class="flex gap-2">${ic('check','h-5 w-5 lil shrink-0')}<span>A câmera e a localização só são ativadas quando você toca no botão correspondente.</span></li>
+  <li class="flex gap-2">${ic('check','h-5 w-5 lil shrink-0')}<span>${VISION.available()?'A foto fica no seu aparelho até você confirmar; depois da análise, é descartada.':'A foto fica só no seu aparelho, não é enviada a nenhum servidor e é descartada depois do uso.'}</span></li>
+  <li class="flex gap-2">${ic('check','h-5 w-5 lil shrink-0')}<span>Sua localização não é salva nem compartilhada com outros estudantes.</span></li></ul></div>`,'exp',back||null)}
+
+/* ---------- Tela 2 · Câmera ---------- */
+function visCam(){VS.src='cam';screen(`<div class="vhead"><button class="vic" data-a="back" aria-label="Voltar">${ic('back','h-5 w-5')}</button><h1>SApólis Vision</h1><button class="vic" data-a="vhelp" aria-label="Ajuda e privacidade">${ic('help','h-5 w-5')}</button></div>
+ <div class="mt-3 flex items-end gap-3">${lume('happy','h-[62px] w-[50px]',true)}<p id="vmsg" class="obb !py-2.5 text-[14px]" role="status">Enquadre um lugar e vamos explorar sua história!</p></div>
+ <div id="vview" class="vview mt-4"></div><div id="vctl" class="vctl mt-4"></div>
+ <input id="vgal" type="file" accept="image/*" class="sr-only" tabindex="-1" aria-hidden="true"><input id="vcapi" type="file" accept="image/*" capture="environment" class="sr-only" tabindex="-1" aria-hidden="true">
+ <h2 class="mt-9 text-[20px] font-bold">Modo demonstrativo</h2><p class="sub mt-1 text-[14px]">Veja o fluxo completo com lugares pré-cadastrados. Estes exemplos <b>não</b> usam reconhecimento automático.</p>
+ <div class="mt-3 grid grid-cols-2 gap-2.5">${DEMO.map(id=>{const p=PM[id];return `<button class="vdemo" data-a="vdemo" data-id="${id}"><span class="vth" style="${visCol(p)}">${visArt(id)}${id=='copan'?'<em>Exemplo principal</em>':''}</span><b>${p.n}</b><small>${visSubj(p)} · imagem de demonstração</small></button>`}).join('')}</div>`,'exp',null,()=>{
+  ['#vgal','#vcapi'].forEach(s=>$(s).addEventListener('change',e=>{const f=e.target.files&&e.target.files[0];e.target.value='';visFile(f)}));visCamStart()})}
+function setMsg(t){const m=$('#vmsg');if(m)m.textContent=t}
+function visStopCam(){if(VS&&VS.stream){VS.stream.getTracks().forEach(t=>t.stop());VS.stream=null}}
+function visDrop(){if(VS&&VS.photo){URL.revokeObjectURL(VS.photo.url);VS.photo=null}}
+function visStop(){if(!VS)return;visStopCam();if(VS.ac){VS.ac.abort();VS.ac=null}visDrop();VS.demo=null;if(VS.map){VS.map.remove();VS.map=null;VS.mk=null;VS.tiles=null;VS.me=null}}
+async function visCamStart(){visStopCam();
+ if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia)return visView('error',window.isSecureContext===false?'insecure':'nocam');
+ visView('starting');
+ try{const st=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'},width:{ideal:1920},height:{ideal:1080}},audio:false});
+  if(VS.src!=='cam'||view!=='in'||!$('#vview')){st.getTracks().forEach(t=>t.stop());return}
+  VS.stream=st;visView('live');const v=$('#vvid');v.srcObject=st;v.play().catch(()=>{})}
+ catch(e){const n=e&&e.name;visView('error',n=='NotAllowedError'||n=='SecurityError'?'denied':n=='NotFoundError'||n=='OverconstrainedError'?'nocam':n=='NotReadableError'||n=='AbortError'?'busy':'fail')}}
+function visView(s,a,b){const v=$('#vview'),c=$('#vctl');if(!v)return;VS.st=s;v.classList.toggle('vshort',s=='manual');
+ const cor='<span class="vcor" aria-hidden="true"><i></i><i></i><i></i><i></i></span>';
+ const side=(act,icn,l)=>`<button class="vside" data-a="${act}"><span>${ic(icn,'h-6 w-6')}</span>${l}</button>`;
+ const live=dis=>`${side('vgal','image','Abrir galeria')}<button class="vshut" data-a="vshot" aria-label="Capturar foto" ${dis?'disabled':''}><i></i></button>${side('vmap','map','Explorar no mapa')}`;
+ if(s!='analyzing'&&s!='manual')setMsg('Enquadre um lugar e vamos explorar sua história!');
+ if(s=='starting'){v.innerHTML=`${cor}<div class="vstate"><span class="vspin"></span><p>Abrindo a câmera… Se o navegador pedir, toque em “Permitir”.</p></div>`;c.innerHTML=live(1)}
+ else if(s=='live'){v.innerHTML=`<video id="vvid" playsinline muted autoplay aria-label="Visualização ao vivo da câmera"></video>${cor}<span class="vlab">Enquadre um lugar de São Paulo</span>`;c.innerHTML=live(0)}
+ else if(s=='error'||s=='off'){const M={denied:['Acesso à câmera negado','Libere a permissão nas configurações do navegador e tente de novo, ou escolha uma foto da galeria.'],nocam:['Câmera indisponível','Não encontramos uma câmera que o navegador possa usar. Você pode tirar a foto com o app de câmera, escolher uma da galeria ou usar o mapa.'],insecure:['Conexão não segura','A câmera do navegador só funciona em HTTPS ou localhost. Use a galeria, o app de câmera ou o mapa.'],busy:['Câmera ocupada','Outro aplicativo pode estar usando a câmera. Feche-o e tente novamente.'],fail:['Não foi possível abrir a câmera','Tente novamente ou escolha outra forma de explorar.'],paused:['Câmera pausada','Desligamos a câmera enquanto o app estava em segundo plano.'],off:['Câmera desligada','A foto foi descartada. Abra a câmera de novo ou escolha uma imagem da galeria.']},k=s=='off'?'off':a,m=M[k]||M.fail,noCam=k=='nocam'||k=='insecure';
+  v.innerHTML=`${cor}<div class="vstate"><span class="vsic">${ic('camera','h-7 w-7')}</span><b>${m[0]}</b><p>${m[1]}</p><div class="vacts">${noCam?`<button class="vbtn2 on" data-a="vcapf">${ic('camera','h-4 w-4')}Usar o app de câmera</button>`:`<button class="vbtn2 on" data-a="vretry">${ic('refresh','h-4 w-4')}${k=='off'||k=='paused'?'Abrir câmera':'Tentar novamente'}</button>`}<button class="vbtn2" data-a="vgal">${ic('image','h-4 w-4')}Abrir galeria</button><button class="vbtn2" data-a="vmap">${ic('map','h-4 w-4')}Explorar o mapa</button></div></div>`;c.innerHTML=''}
+ else if(s=='photo'){v.innerHTML=`<img src="${VS.photo.url}" alt="Prévia da foto capturada">${cor}<span class="vtag">Prévia da foto</span><button class="vx" data-a="vdiscard" aria-label="Descartar foto">${ic('x','h-5 w-5')}</button>`;c.innerHTML=`<div class="col-span-3 grid gap-2.5"><button class="btn w-full" data-a="vuse">${ic('check','h-5 w-5')}Usar esta foto</button><button class="btn2 w-full" data-a="vagain">${ic('camera','h-4 w-4')}Tirar outra</button></div>`}
+ else if(s=='analyzing'){const d=VS.demo&&PM[VS.demo];v.innerHTML=`${d?`<div class="vart-in" style="${visCol(d)}">${visArt(d.id)}</div>`:`<img src="${VS.photo.url}" alt="Foto em análise">`}<span class="vveil"></span><span class="vscan" aria-hidden="true"></span>${cor}<span class="vtag">${d?'Exemplo demonstrativo':'Analisando'}</span><div class="vstate"><span class="vspin"></span><b>${d?'Carregando exemplo pré-cadastrado…':'Analisando a imagem…'}</b>${d?'<p>Este exemplo não usa reconhecimento automático.</p>':''}</div>`;c.innerHTML=`<button class="btn2 col-span-3 w-full" data-a="vcancel">Cancelar análise</button>`;setMsg('Vamos descobrir que lugar é esse?')}
+ else if(s=='manual'){const T={unavailable:['Escolha o lugar da foto','O reconhecimento automático ainda não está conectado nesta versão. Selecione abaixo o lugar que você fotografou.'],none:['Nenhuma correspondência','Não encontramos uma correspondência confiável. Você pode procurar o lugar no mapa.'],ambiguous:['Confirme o lugar','Encontramos mais de uma possibilidade. Qual destes é o lugar da foto?'],error:['Análise interrompida','Não foi possível concluir a análise (falha de conexão). Escolha o lugar manualmente ou tente de novo.']}[a]||[];
+  const list=a=='ambiguous'?b.map(x=>[PM[x.id],x.conf]):PL.map(p=>[p,null]);
+  v.innerHTML=`<div class="vstate"><span class="vsic">${ic(a=='unavailable'?'scan':'map','h-7 w-7')}</span><b>${T[0]}</b><p>${T[1]}</p><p class="vsmall">A foto já foi descartada.</p></div>`;
+  c.innerHTML=`<div class="col-span-3 grid gap-2">${list.map(([p,cf])=>`<button class="glass press flex items-center gap-3 rounded-[20px] p-3 text-left" data-a="vpick" data-id="${p.id}"><span class="hex grid h-10 w-10 shrink-0 place-items-center text-white" style="background:linear-gradient(140deg,${visC(p).a},${visC(p).b})">${ic(visIc(p),'h-5 w-5')}</span><span class="min-w-0 flex-1"><b class="block text-[15px] font-semibold">${p.n}</b><small class="mut text-[12.5px]">${visSubj(p)}${cf!=null?' · confiança informada pelo serviço: '+Math.round(cf*100)+'%':''}</small></span><span class="lil text-[20px]">›</span></button>`).join('')}<button class="btn2 w-full" data-a="vmap">${ic('map','h-4 w-4')}Procurar no mapa</button><button class="btn2 w-full" data-a="vretry">${ic('camera','h-4 w-4')}Tirar outra foto</button></div>`;
+  setMsg(a=='none'?'Hmm, não reconheci. Vamos procurar juntos?':'Qual lugar é esse? Escolha e eu te mostro o que ele ensina!')}}
+function visShot(){const v=$('#vvid');if(!v||!v.videoWidth){toast('A câmera ainda está carregando. Tente de novo.');return}
+ const s=Math.min(1,1280/Math.max(v.videoWidth,v.videoHeight)),c=document.createElement('canvas');c.width=Math.round(v.videoWidth*s);c.height=Math.round(v.videoHeight*s);c.getContext('2d').drawImage(v,0,0,c.width,c.height);visStopCam();FX.tap();
+ c.toBlob(b=>b?visSetPhoto(b):visBad(),'image/jpeg',.88)}
+function visSetPhoto(b){visDrop();VS.demo=null;VS.photo={blob:b,url:URL.createObjectURL(b)};visView('photo')}
+function visBad(){toast('Não foi possível abrir esta imagem. Tente outra foto.');if(!VS.photo)visView('off')}
+function visFile(f){if(!f)return;if(!/^image\//.test(f.type||'')){toast('Esse arquivo não é uma imagem. Escolha uma foto.');return}if(f.size>25*1024*1024){toast('Imagem muito grande (máximo de 25 MB).');return}
+ visStopCam();const u=URL.createObjectURL(f),im=new Image();
+ im.onload=()=>{const s=Math.min(1,1280/Math.max(im.naturalWidth,im.naturalHeight)),c=document.createElement('canvas');c.width=Math.max(1,Math.round(im.naturalWidth*s));c.height=Math.max(1,Math.round(im.naturalHeight*s));c.getContext('2d').drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);c.toBlob(b=>b?visSetPhoto(b):visBad(),'image/jpeg',.88)};
+ im.onerror=()=>{URL.revokeObjectURL(u);visBad()};im.src=u}
+async function visAnalyze(demoId){const ac=new AbortController();VS.ac=ac;if(demoId)VS.demo=demoId;visView('analyzing');
+ const wait=ms=>new Promise((res,rej)=>{const t=setTimeout(res,reduced()?Math.min(ms,300):ms);ac.signal.addEventListener('abort',()=>{clearTimeout(t);rej(new DOMException('cancelado','AbortError'))})});
+ try{if(demoId){await wait(1400);if(ac.signal.aborted)return;VS.ac=null;return visDiscover(demoId,'demo')}
+  const [res]=await Promise.all([VISION.recognize(VS.photo.blob,ac.signal),wait(900)]);
+  VS.ac=null;visDrop();
+  if(res.status=='unavailable')return visView('manual','unavailable');
+  const c=res.candidates;if(c.length==1)return visDiscover(c[0].id,'ai',c[0].conf);if(c.length>1)return visView('manual','ambiguous',c);return visView('manual','none')}
+ catch(e){if(e&&e.name=='AbortError')return;VS.ac=null;visDrop();visView('manual','error')}}
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&VS.stream){visStopCam();visView('error','paused')}});
+
+/* ---------- Tela 3 · Mapa ---------- */
+let LP=null;
+function loadLeaflet(){if(window.L&&L.map)return Promise.resolve();if(LP)return LP;
+ const add=(tag,at)=>new Promise((res,rej)=>{const e=document.createElement(tag);Object.assign(e,at);e.onload=res;e.onerror=rej;document.head.appendChild(e)});
+ LP=Promise.all([add('link',{rel:'stylesheet',href:'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css'}),add('script',{src:'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js'})]).catch(e=>{LP=null;throw e});return LP}
+function visMap(focus){VS.src='map';if(focus){VS.sel=focus;VS.view=null}
+ const subs=[...new Set(PL.map(visSubj))];
+ screen(`<div class="vhead"><button class="vic" data-a="back" aria-label="Voltar">${ic('back','h-5 w-5')}</button><h1>Mapa do Conhecimento</h1><span></span></div>
+ <div class="vsearch mt-3">${ic('search','h-5 w-5 shrink-0')}<input id="vq" type="search" placeholder="Buscar lugar ou disciplina" aria-label="Buscar lugar ou disciplina" autocomplete="off" aria-controls="vsug"><div id="vsug" class="vsug" hidden></div></div>
+ <div class="mt-3 flex items-end gap-3">${lume('happy','h-[54px] w-[44px]',true)}<p class="obb !py-2 text-[14px]">Escolha um ponto para começar sua descoberta.</p></div>
+ <div class="vfil mt-3" role="group" aria-label="Filtrar lugares por disciplina"><button class="pill" data-a="vfil" data-f="all">Todas</button>${subs.map(s=>`<button class="pill" data-a="vfil" data-f="${s}" aria-label="Mostrar lugares de ${s}">${s}</button>`).join('')}</div>
+ <p id="vfmsg" class="sr-only" role="status"></p>
+ <div class="vmapw mt-3"><div id="vmap" class="vmap" aria-label="Mapa interativo de São Paulo com lugares educativos"></div><button class="vloc" data-a="vloc">${ic('locate','h-4 w-4')}Usar minha localização</button><div id="vmerr" class="vmerr" role="status" hidden></div><div id="vsel" class="vsel" hidden></div></div>
+ <p id="vlocmsg" class="mut mt-2 text-[12.5px]" role="status">A localização é opcional e não é salva.</p>
+ <h2 class="mt-7 text-[18px] font-bold">Lugares no mapa</h2><div id="vlist" class="mt-3 grid gap-2"></div>`,'exp',null,visMapInit)}
+function visMapErr(t,soft){const e=$('#vmerr');if(!e)return;if(!t){e.hidden=true;return}e.hidden=false;e.classList.toggle('full',!soft);e.innerHTML=soft?t:`<span class="vsic" style="background:var(--chip);color:var(--lil)">${ic('map','h-7 w-7')}</span><b class="text-[16px]">Mapa indisponível</b><p class="mut text-[14px]">${t}</p><button class="btn2 mt-2" data-a="vmapretry">${ic('refresh','h-4 w-4')}Tentar novamente</button>`}
+function visIcon(p){return L.divIcon({className:'vpin-w',html:`<span class="vpin">${ic(visIc(p),'h-4 w-4')}</span>`,iconSize:[38,48],iconAnchor:[19+(p.dx||0),47]})}
+async function visMapInit(){visList();visApplyFilter(false);
+ const q=$('#vq');q.addEventListener('input',visSug);q.addEventListener('keydown',e=>{if(e.key=='Enter'){e.preventDefault();const f=$('#vsug button');if(f)f.click()}if(e.key=='Escape'){$('#vsug').hidden=true}});
+ const el=$('#vmap');el.innerHTML='<p class="vmload">Carregando mapa…</p>';
+ try{await loadLeaflet()}catch(e){return visMapErr('Não foi possível carregar o mapa. Verifique sua conexão: você ainda pode escolher um lugar na lista abaixo.')}
+ if(!document.body.contains(el)||VS.src!='map')return;el.innerHTML='';
+ const rm=reduced(),m=L.map(el,{zoomControl:true,fadeAnimation:!rm,zoomAnimation:!rm,markerZoomAnimation:!rm,minZoom:10,maxZoom:18,maxBounds:[[-24.1,-46.98],[-23.3,-46.3]],maxBoundsViscosity:.8});VS.map=m;
+ m.attributionControl.setPrefix(false);visTiles();
+ VS.mk={};PL.forEach(p=>{const mk=L.marker(p.ll,{icon:visIcon(p),title:p.n+' · '+visSubj(p),alt:p.n,keyboard:true,riseOnHover:true}).addTo(m);mk.on('click',()=>visSelect(p.id,true));VS.mk[p.id]=mk});
+ if(VS.view)m.setView(VS.view.c,VS.view.z,{animate:false});else m.fitBounds(L.latLngBounds(PL.map(p=>p.ll)),{padding:[40,40]});
+ m.on('moveend',()=>{VS.view={c:m.getCenter(),z:m.getZoom()}});
+ visApplyFilter(false);if(VS.sel)visSelect(VS.sel,!VS.view);setTimeout(()=>m.invalidateSize(),80)}
+/* Provedor de tiles: OpenStreetMap (atribuição obrigatória; uso moderado, conforme a política de tiles da OSMF).
+   Exige que o app seja servido por http/https (o servidor de tiles pede Referer).
+   Para produção com muitos acessos, troque por um provedor contratado ou servidor próprio. */
+const MAP_TILES={url:'https://tile.openstreetmap.org/{z}/{x}/{y}.png',opt:{maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'}};
+function visTiles(){const m=VS.map;if(!m)return;VS.terr=0;
+ if(location.protocol=='file:')visMapErr('O mapa de ruas só carrega quando o app é aberto por um endereço web (https ou localhost). Os marcadores, os filtros e a lista continuam funcionando.',true);
+ VS.tiles=L.tileLayer(MAP_TILES.url,MAP_TILES.opt).addTo(m);
+ VS.tiles.on('tileerror',()=>{if(++VS.terr==4&&location.protocol!='file:')visMapErr('Parte do mapa não carregou (conexão instável). Os marcadores e a lista continuam funcionando.',true)});
+ VS.tiles.on('load',()=>{if(VS.terr<4&&location.protocol!='file:')visMapErr('')})}
+function visList(){const l=$('#vlist');if(!l)return;l.innerHTML=PL.map(p=>`<button class="glass press flex items-center gap-3 rounded-[20px] p-3 text-left" data-a="vpickmap" data-id="${p.id}" aria-pressed="${VS.sel==p.id}"><span class="hex grid h-10 w-10 shrink-0 place-items-center text-white" style="background:linear-gradient(140deg,${visC(p).a},${visC(p).b})">${ic(visIc(p),'h-5 w-5')}</span><span class="min-w-0 flex-1"><b class="block text-[15px] font-semibold">${p.n}</b><small class="mut text-[12.5px]">${visSubj(p)} · ${p.k}</small></span><span class="lil text-[20px]">›</span></button>`).join('')}
+function visSug(){const q=nrm($('#vq').value.trim()),b=$('#vsug');if(!q){b.hidden=true;return}
+ const r=PL.filter(p=>nrm(p.n+' '+visSubj(p)+' '+p.k+' '+p.loc).includes(q)).slice(0,6);b.hidden=false;
+ b.innerHTML=r.length?r.map(p=>`<button data-a="vpickmap" data-id="${p.id}">${ic('pin','h-4 w-4 lil shrink-0')}<span class="min-w-0 flex-1"><b class="block font-semibold">${p.n}</b><small class="mut">${visSubj(p)}</small></span></button>`).join(''):'<p>Nenhum lugar encontrado. Tente outro nome ou disciplina.</p>'}
+function visApplyFilter(fit){const f=VS.filter,ok=p=>f=='all'||visSubj(p)==f;
+ $$('[data-a=vfil]').forEach(b=>{b.setAttribute('aria-pressed',String(b.dataset.f==f));b.classList.toggle('on',b.dataset.f==f)});
+ PL.forEach(p=>{const mk=VS.mk&&VS.mk[p.id],e=mk&&mk.getElement();if(e)e.classList.toggle('dim',!ok(p))});
+ $$('#vlist [data-id]').forEach(b=>b.classList.toggle('vdim',!ok(PM[b.dataset.id])));
+ const n=PL.filter(ok);const fm=$('#vfmsg');if(fm)fm.textContent=f=='all'?'Mostrando todos os lugares.':`${n.length} ${n.length==1?'lugar':'lugares'} de ${f} em destaque.`;
+ if(fit&&VS.map&&n.length){if(n.length==1)VS.map.flyTo(n[0].ll,15,{animate:!reduced(),duration:.7});else VS.map.flyToBounds(n.map(p=>p.ll),{padding:[50,50],animate:!reduced()})}}
+function visSelect(id,fly){const p=PM[id];if(!p)return;VS.sel=id;
+ Object.entries(VS.mk||{}).forEach(([k,mk])=>{const e=mk.getElement();if(e)e.classList.toggle('on',k==id);mk.setZIndexOffset(k==id?1000:0)});
+ if(VS.map&&fly){const m=VS.map,z=Math.max(m.getZoom(),15),c=m.unproject(m.project(p.ll,z).add([0,85]),z);m.flyTo(c,z,{animate:!reduced(),duration:.7})}
+ const s=$('#vsel');if(!s)return;s.hidden=false;
+ s.innerHTML=`<div class="flex items-start gap-3"><span class="hex grid h-11 w-11 shrink-0 place-items-center text-white" style="background:linear-gradient(140deg,${visC(p).a},${visC(p).b})">${ic(visIc(p),'h-5 w-5')}</span><div class="min-w-0 flex-1"><p class="text-[17px] font-bold leading-tight">${p.n}</p><p class="lil text-[13px] font-semibold">${visSubj(p)} · ${p.k}</p></div><button class="vic !h-9 !w-9 shrink-0" data-a="vselx" aria-label="Fechar cartão">${ic('x','h-4 w-4')}</button></div><p class="sub mt-2 text-[13.5px] leading-snug">${p.t}</p><button class="btn mt-3 w-full" data-a="vdisc" data-id="${id}">Descobrir lugar${ic('arrow','h-4 w-4')}</button>`;
+ $$('#vlist [data-id]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.id==id)))}
+
+/* ---------- Tela 4 · Descoberta (comum à câmera e ao mapa) ---------- */
+function visDiscover(id,origin,conf){const p=PM[id];if(!p)return;const from=VS.src,r=p.r||p.alt,R=RM[r],dn=p.r&&S.done['les:'+p.r];
+ const og={demo:'Exemplo demonstrativo',manual:'Lugar escolhido por você',map:'Selecionado no mapa',ai:'Identificado pelo serviço de reconhecimento'+(conf!=null?` · confiança informada: ${Math.round(conf*100)}%`:'')}[origin];
+ const msg=p.m||`${p.n.split(' ·')[0]} guarda ótimas oportunidades para aprender ${visSubj(p)}!`;
+ screen(`${bk(from=='cam'?'Câmera':'Mapa')}<p class="lil text-[13px] font-bold uppercase tracking-wide">Você descobriu um lugar!</p><div class="mt-2 flex flex-wrap gap-2"><span class="pill">${og}</span></div>
+ <figure class="vart mt-4" style="${visCol(p)}">${visArt(id)}<figcaption>Ilustração</figcaption></figure>
+ <h1 class="h2 mt-5">${p.n}</h1><p class="mut mt-1.5 flex items-center gap-1.5 text-[14px]">${ic('pin','h-4 w-4 shrink-0')}${p.loc}</p>
+ <div class="mt-3 flex flex-wrap gap-2"><span class="pill on">${visSubj(p)}</span><span class="pill">${p.k}</span>${dn?'<span class="pill">✓ Lição concluída</span>':''}</div>
+ <div class="mt-5 flex items-end gap-3">${lume('cheer','h-[80px] w-[66px]',true)}<div class="obb" role="status">${msg}</div></div>
+ <h2 class="mt-6 text-[22px] leading-tight">${p.t}</h2><p class="sub mt-2 text-[15px]">${p.d}</p>
+ ${p.r?'':`<p class="chip mt-4 rounded-2xl p-4 text-[13.5px] leading-relaxed">A lição de ${p.subj} sobre este lugar está em preparação. Enquanto isso, a rota de ${R.n} também passa pelo ${p.n}.</p>`}
+ <button class="btn mt-6 w-full" data-a="vles" data-r="${r}">Explorar ${R.n}${ic('arrow','h-4 w-4')}</button>
+ <div class="mt-2.5 grid grid-cols-2 gap-2.5"><button class="btn2" data-a="vhist" aria-expanded="false" aria-controls="vhist">Conhecer a história</button><button class="btn2" data-a="vonmap" data-id="${id}">${ic('map','h-4 w-4')}Ver no mapa</button></div>
+ <div id="vhist" class="glass card mt-4 !p-4" hidden><h3 class="text-[17px] font-bold">História</h3><p class="sub mt-2 text-[14.5px]">${p.h}</p></div>`,'exp',()=>from=='cam'?visCam():visMap())}
+
+Object.assign(A,{
+ vcam(){visCam()},vmap(){visMap()},vhow(){visHow()},vhelp(){visHow(()=>visCam())},
+ vretry(){visDrop();visCamStart()},vgal(){const g=$('#vgal');if(g)g.click()},vcapf(){const g=$('#vcapi');if(g)g.click()},
+ vshot(){visShot()},vuse(){if(VS.photo)visAnalyze()},vagain(){visDrop();visCamStart()},vdiscard(){visDrop();visView('off')},
+ vcancel(){if(VS.ac){VS.ac.abort();VS.ac=null}const d=VS.demo;VS.demo=null;if(VS.photo)visView('photo');else visView('off');toast(d?'Exemplo cancelado':'Análise cancelada')},
+ vdemo(b){visStopCam();visDrop();sc.scrollTo({top:0,behavior:reduced()?'auto':'smooth'});visAnalyze(b.dataset.id)},
+ vpick(b){visDiscover(b.dataset.id,'manual')},
+ vpickmap(b){const s=$('#vsug');if(s)s.hidden=true;const q=$('#vq');if(q&&b.closest('#vsug'))q.value=PM[b.dataset.id].n;if(b.closest('#vlist'))$('.vmapw').scrollIntoView({behavior:reduced()?'auto':'smooth',block:'center'});visSelect(b.dataset.id,true)},
+ vfil(b){VS.filter=b.dataset.f;visApplyFilter(true)},
+ vdisc(b){visDiscover(b.dataset.id,'map')},
+ vselx(){const s=$('#vsel');if(s)s.hidden=true;VS.sel=null;Object.values(VS.mk||{}).forEach(mk=>{const e=mk.getElement();if(e)e.classList.remove('on')});$$('#vlist [data-id]').forEach(b=>b.setAttribute('aria-pressed','false'))},
+ vmapretry(){visMapErr('');visMapInit()},
+ vloc(){const msg=t=>{const e=$('#vlocmsg');if(e)e.textContent=t};
+  if(!('geolocation' in navigator))return msg('Este navegador não oferece localização. O mapa continua centralizado em São Paulo.');
+  msg('Obtendo sua localização…');
+  navigator.geolocation.getCurrentPosition(pos=>{const ll=[pos.coords.latitude,pos.coords.longitude],m=VS.map;
+   const km=(a,b)=>{const R=6371,dLa=(b[0]-a[0])*Math.PI/180,dLo=(b[1]-a[1])*Math.PI/180,x=Math.sin(dLa/2)**2+Math.cos(a[0]*Math.PI/180)*Math.cos(b[0]*Math.PI/180)*Math.sin(dLo/2)**2;return 2*R*Math.asin(Math.sqrt(x))};
+   const [near,d]=PL.map(p=>[p,km(ll,p.ll)]).sort((a,b)=>a[1]-b[1])[0],dt=d<1?Math.round(d*1000)+' m':d.toFixed(1).replace('.',',')+' km';
+   const inSP=ll[0]>-24.1&&ll[0]<-23.3&&ll[1]>-46.98&&ll[1]<-46.3;
+   if(m){if(VS.me)VS.me.forEach(l=>m.removeLayer(l));VS.me=[L.circle(ll,{radius:Math.min(pos.coords.accuracy||100,1500),color:'#8936F0',weight:1,fillOpacity:.08,interactive:false}),L.circleMarker(ll,{radius:7,color:'#fff',weight:3,fillColor:'#7028D8',fillOpacity:1,interactive:false})];VS.me.forEach(l=>l.addTo(m));if(inSP)m.flyTo(ll,14,{animate:!reduced(),duration:.8})}
+   msg(inSP?`Você está a ${dt} de ${near.n}, o lugar educativo mais próximo. Sua localização não é salva.`:`Você parece estar fora de São Paulo; o mapa continua na cidade. Lugar mais próximo: ${near.n} (${dt}).`)},
+  err=>msg(err.code==1?'Permissão de localização negada. Tudo bem: o mapa continua funcionando em São Paulo.':'Não foi possível obter sua localização agora. O mapa continua centralizado em São Paulo.'),
+  {enableHighAccuracy:false,timeout:10000,maximumAge:60000})},
+ vhist(b){const p=$('#vhist');p.hidden=!p.hidden;b.setAttribute('aria-expanded',String(!p.hidden));if(!p.hidden)p.scrollIntoView({behavior:reduced()?'auto':'smooth',block:'nearest'})},
+ vonmap(b){visMap(b.dataset.id)},
+ vles(b){const r=RM[b.dataset.r];if(!r){toast('Este conteúdo está em preparação.');return}toast('Lumiri: Vamos transformar essa descoberta em conhecimento?');LS={r,i:0,vis:true};lessonStep()}});
+$('#vis-entry').innerHTML=visEntry();
 
 /* =========================================================
    MONTE A FÓRMULA — Matemática gamificada (rota de Matemática)
