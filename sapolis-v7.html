@@ -1503,7 +1503,7 @@ const MAP_TILES={url:'https://tile.openstreetmap.org/{z}/{x}/{y}.png',opt:{maxZo
 function visTiles(){const m=VS.map;if(!m)return;VS.terr=0;
  if(location.protocol=='file:')visMapErr('O mapa de ruas só carrega quando o app é aberto por um endereço web (https ou localhost). Os marcadores, os filtros e a lista continuam funcionando.',true);
  VS.tiles=L.tileLayer(MAP_TILES.url,MAP_TILES.opt).addTo(m);
- VS.tiles.on('tileerror',()=>{if(++VS.terr==4&&location.protocol!='file:')visMapErr('Parte do mapa não carregou (conexão instável). Os marcadores e a lista continuam funcionando.',true)});
+ VS.tiles.on('tileerror',()=>{if(++VS.terr==4&&location.protocol!='file:')visMapErr('As ruas do mapa não carregaram. Os marcadores, os filtros e a lista continuam funcionando.',true)});
  VS.tiles.on('load',()=>{if(VS.terr<4&&location.protocol!='file:')visMapErr('')})}
 function visList(){const l=$('#vlist');if(!l)return;l.innerHTML=PL.map(p=>`<button class="glass press flex items-center gap-3 rounded-[20px] p-3 text-left" data-a="vpickmap" data-id="${p.id}" aria-pressed="${VS.sel==p.id}"><span class="hex grid h-10 w-10 shrink-0 place-items-center text-white" style="background:linear-gradient(140deg,${visC(p).a},${visC(p).b})">${ic(visIc(p),'h-5 w-5')}</span><span class="min-w-0 flex-1"><b class="block text-[15px] font-semibold">${p.n}</b><small class="mut text-[12.5px]">${visSubj(p)} · ${p.k}</small></span><span class="lil text-[20px]">›</span></button>`).join('')}
 function visSug(){const q=nrm($('#vq').value.trim()),b=$('#vsug');if(!q){b.hidden=true;return}
