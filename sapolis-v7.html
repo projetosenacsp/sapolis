@@ -123,6 +123,81 @@ textarea::placeholder,input::placeholder{color:var(--mute)}
 .mslot{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;min-width:56px;min-height:56px;padding:0 10px;border-radius:16px;border:2px dashed var(--seg);font-size:20px;font-weight:600;font-variant-numeric:tabular-nums}
 .mslot b{font-size:12px;font-weight:600;color:var(--mute)}.mslot.ok{border-style:solid;border-color:var(--v);background:rgba(124,58,237,.1)}.mslot.no{border-color:#F43F5E;background:rgba(244,63,94,.12);animation:shake .35s}
 .key{min-height:52px;border-radius:16px;background:var(--chip);border:1px solid var(--gb);font-size:20px;font-weight:600;transition:transform .15s}.key:active{transform:scale(.95)}
+/* apresentação — 7 telas antes do questionário */
+#tour{--tb:linear-gradient(180deg,#FFFFFF 0%,#F5F0FF 58%,#EFE5FF 100%);--tc:#291052;--tm:#5B4B7D;--tcard:#FFFFFF;--tbd:rgba(112,40,216,.14);--tdot:rgba(112,40,216,.18);position:absolute;inset:0;z-index:72;display:flex;flex-direction:column;background:var(--tb);color:var(--tc);overflow:hidden}
+#tour[hidden]{display:none}
+.dark #tour{--tb:radial-gradient(100% 55% at 50% 0%,#2B1452 0%,#0F091A 72%);--tc:#FFFFFF;--tm:rgba(226,216,250,.8);--tcard:rgba(48,26,90,.7);--tbd:rgba(196,181,253,.2);--tdot:rgba(255,255,255,.18)}
+#tour.hero{--tc:#FFFFFF;--tm:rgba(255,255,255,.82);--tdot:rgba(255,255,255,.26);--tb:radial-gradient(85% 45% at 75% 6%,rgba(137,54,240,.6),transparent 70%),linear-gradient(172deg,#4A1C96 0%,#291052 60%,#1B0A3A 100%)}
+.dark #tour.hero{--tb:radial-gradient(85% 45% at 75% 6%,rgba(137,54,240,.42),transparent 70%),linear-gradient(172deg,#23104A 0%,#150A2A 60%,#0F091A 100%)}
+.tt{display:grid;grid-template-columns:92px 1fr 92px;align-items:center;padding:calc(8px + env(safe-area-inset-top,0px)) 10px 2px}
+.tt>:last-child{display:flex;justify-content:flex-end;gap:2px}
+.tib{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;transition:background .2s,transform .15s}
+.tib:hover{background:var(--tdot)}.tib:active{transform:scale(.92)}
+.tprog{display:flex;flex-direction:column;align-items:center;gap:6px}.tprog p{font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+.tdots{display:flex;gap:5px}.tdots i{display:block;width:6px;height:6px;border-radius:9px;background:var(--tdot);transition:width .35s var(--sp),background .35s}
+.tdots i.d{background:#A77BF3}.tdots i.c{width:20px;background:linear-gradient(90deg,#7028D8,#8936F0)}
+#tour.hero .tdots i.c{background:#fff}#tour.hero .tdots i.d{background:rgba(255,255,255,.6)}.dark #tour:not(.hero) .tdots i.c{background:linear-gradient(90deg,#8936F0,#C4B5FD)}
+.tst{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;padding:6px 20px 10px;overscroll-behavior:contain;scrollbar-width:none;touch-action:pan-y}
+.tst::-webkit-scrollbar{display:none}.tcov{justify-content:center}
+.ts{display:flex;flex-direction:column;min-height:100%}
+.ts.in-r{animation:tin .34s cubic-bezier(.16,1,.3,1)}.ts.in-l{animation:tinl .34s cubic-bezier(.16,1,.3,1)}
+@keyframes tin{from{opacity:0;transform:translateX(28px)}}@keyframes tinl{from{opacity:0;transform:translateX(-28px)}}
+.tf{padding:10px 20px calc(18px + env(safe-area-inset-bottom,0px))}
+.tcta{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;height:56px;border-radius:99px;font-size:16px;font-weight:700;color:#fff;background:linear-gradient(135deg,#7028D8,#8936F0);box-shadow:0 16px 30px -14px rgba(112,40,216,.75),inset 0 1px 0 rgba(255,255,255,.25);transition:transform .15s,box-shadow .2s}
+.tcta:active{transform:scale(.97)}.tcta svg{transition:transform .25s var(--sp)}.tcta:hover svg{transform:translateX(3px)}
+#tour.hero .tcta{background:#fff;color:#4A1C96;box-shadow:0 18px 34px -16px rgba(0,0,0,.6)}
+.dark #tour:not(.hero) .tcta{box-shadow:0 0 0 1px rgba(196,181,253,.25),0 16px 34px -12px rgba(137,54,240,.8)}
+.tfh{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:4px;font-size:17px;font-weight:800;letter-spacing:-.01em;color:#7028D8}
+.dark .tfh{color:#C4B5FD}
+.tfi{display:grid;place-items:center;width:34px;height:34px;border-radius:11px;color:#fff;background:linear-gradient(140deg,#7028D8,#8936F0);box-shadow:0 8px 16px -8px rgba(112,40,216,.8)}
+.tti{margin-top:10px;text-align:center;font-size:27px;line-height:1.12;font-weight:800;letter-spacing:-.025em;text-wrap:balance}
+.tde{margin:8px auto 0;max-width:330px;text-align:center;font-size:15px;line-height:1.45;color:var(--tm);text-wrap:balance}
+.tmed{position:relative;margin:18px 0 0;border-radius:26px;overflow:hidden;background:#1C0C38;border:1px solid var(--tbd);box-shadow:0 26px 48px -24px rgba(41,16,82,.6)}
+.dark .tmed{box-shadow:0 0 0 1px rgba(196,181,253,.1),0 26px 50px -20px rgba(137,54,240,.45)}
+.tmed img,.tmed video{display:block;width:100%;height:auto;max-height:50vh;object-fit:contain;margin:0 auto}
+.tvid{min-height:200px;display:grid;place-items:center}.tvid video{cursor:pointer}
+.tplay{position:absolute;left:50%;top:50%;width:68px;height:68px;margin:-34px 0 0 -34px;display:grid;place-items:center;border-radius:50%;color:#fff;background:rgba(112,40,216,.88);box-shadow:0 0 0 6px rgba(255,255,255,.2),0 12px 30px -8px rgba(0,0,0,.6);transition:all .3s var(--sp)}
+.tvid.on .tplay{left:auto;top:auto;right:12px;bottom:12px;margin:0;width:44px;height:44px;opacity:.85;box-shadow:0 6px 16px -6px rgba(0,0,0,.6)}
+.tvid.on .tplay svg{width:20px;height:20px}
+.tfb{display:grid;justify-items:center;gap:6px;padding:52px 20px;text-align:center;color:#E9DDFF}.tfb b{font-size:16px}.tfb small{font-size:13px;opacity:.75}
+.tfb>span{display:grid;place-items:center;width:64px;height:64px;border-radius:20px;background:rgba(137,54,240,.35);margin-bottom:6px}
+.tseg{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:16px auto 0;padding:4px;width:min(270px,100%);border-radius:99px;background:var(--tdot)}
+.tseg button{height:36px;border-radius:99px;font-size:13px;font-weight:700;color:var(--tm);transition:all .25s}
+.tseg button[aria-selected=true]{background:var(--tcard);color:var(--tc);box-shadow:0 4px 12px -6px rgba(41,16,82,.4)}
+.tseg+.tmed{margin-top:12px}
+.tlogo{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:4px}
+.tlg{display:grid;place-items:center;width:46px;height:46px;border-radius:15px;background:#fff;box-shadow:0 8px 20px -8px rgba(0,0,0,.5)}
+.tlg img{width:38px;height:38px;object-fit:contain}
+.tlogo b{display:block;font-size:26px;font-weight:800;letter-spacing:-.03em;line-height:1}
+.tlogo small{display:block;margin-top:3px;font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;opacity:.75}
+.tstage{position:relative;flex:none;height:clamp(240px,44vh,400px);margin:8px -20px 0;display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
+.tsky{position:absolute;inset:auto 0 0 0;width:100%;height:62%}
+.torb{position:absolute;left:50%;top:52%;width:78%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(196,160,255,.55),rgba(137,54,240,.25) 55%,transparent);filter:blur(6px)}
+.tlu{position:relative;display:block;height:94%;aspect-ratio:731/900;filter:drop-shadow(0 18px 26px rgba(10,0,30,.45))}
+.tlu img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.tlu .tl-n{display:none}.dark .tlu .tl-c{display:none}.dark .tlu .tl-n{display:block}
+.dark .tlu{filter:drop-shadow(0 0 18px rgba(217,70,239,.55)) drop-shadow(0 0 40px rgba(137,54,240,.45))}
+.tfloat{animation:tfl 4.2s ease-in-out infinite}@keyframes tfl{50%{transform:translateY(-10px)}}
+.tbig{font-size:31px;text-align:left;margin-top:14px}.tcov .tde{text-align:left;margin-left:0;max-width:none}
+.tcrown{display:grid;place-items:center;width:84px;height:84px;margin:6px auto 0;border-radius:50%;background:radial-gradient(circle at 50% 35%,#6A2FC7,#2E0F5E);box-shadow:0 0 0 2px rgba(233,182,75,.7),0 0 34px -2px rgba(233,182,75,.55)}
+.tcrown svg{fill:#E9B64B;stroke:#FFE3A3;stroke-width:1.2}
+.tgold{display:inline-block;padding:0 12px;border-radius:12px;color:#2A1404;background:linear-gradient(135deg,#F7D27A,#E9B64B 55%,#C98F25);box-shadow:inset 0 1px 0 rgba(255,255,255,.5)}
+.tgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0 4px;padding:0;list-style:none}
+.tpc{display:flex;flex-direction:column;gap:6px;padding:14px;border-radius:20px;background:linear-gradient(160deg,rgba(255,255,255,.12),rgba(255,255,255,.04));border:1px solid rgba(233,182,75,.32);box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}
+.tpc b{font-size:14.5px;line-height:1.2}.tpc small{font-size:12.5px;line-height:1.35;color:rgba(255,255,255,.76)}
+.tpi{display:grid;place-items:center;width:40px;height:40px;border-radius:13px;color:#FFE3A3;background:linear-gradient(140deg,#7028D8,#8936F0);box-shadow:0 0 0 1px rgba(233,182,75,.45)}
+.tyou{position:relative;margin-top:16px}
+.tpanel{position:relative;height:clamp(210px,32vh,290px);border-radius:28px;overflow:hidden;display:flex;align-items:flex-end;justify-content:flex-start;padding-left:4%;background:radial-gradient(70% 80% at 30% 60%,#8936F0 0%,#4A1C96 55%,#291052 100%);box-shadow:0 26px 48px -24px rgba(41,16,82,.6)}
+.dark .tpanel{background:radial-gradient(70% 80% at 30% 60%,#5B21B6 0%,#2A1252 55%,#170A30 100%);box-shadow:0 0 0 1px rgba(196,181,253,.14),0 26px 50px -20px rgba(137,54,240,.5)}
+.tpanel .tlu{height:96%}
+.tbub{position:absolute;right:12px;top:16px;max-width:52%;padding:14px 16px;border-radius:20px 20px 20px 6px;background:var(--tcard);color:var(--tc);font-size:17px;font-weight:800;line-height:1.2;letter-spacing:-.01em;box-shadow:0 14px 30px -14px rgba(41,16,82,.55)}
+.dark .tbub{background:#2A1650;border:1px solid rgba(196,181,253,.22)}
+.tchk{display:grid;gap:8px;margin:16px 0 4px;padding:0;list-style:none}
+.tchk li{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:18px;background:var(--tcard);border:1px solid var(--tbd);font-size:15px;font-weight:600}
+.tchk li span{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;color:#fff;background:linear-gradient(135deg,#7028D8,#8936F0);flex-shrink:0}
+.tgem{position:absolute;right:19%;bottom:14%;display:grid;place-items:center;width:56px;height:56px;border-radius:50%;color:#7028D8;background:radial-gradient(circle at 42% 38%,#FFFFFF 0%,#EADCFF 30%,#B583FF 62%,#8936F0 100%);box-shadow:0 0 28px 8px rgba(196,160,255,.55);animation:tgp 2.8s ease-in-out infinite}
+@keyframes tgp{50%{box-shadow:0 0 40px 14px rgba(196,160,255,.75);transform:translateY(-5px)}}
+@media(max-height:700px){.tti{font-size:24px}.tbig{font-size:27px}.tstage{height:200px}.tmed img,.tmed video{max-height:42vh}}
 </style>
 </head>
 <body>
@@ -303,6 +378,16 @@ textarea::placeholder,input::placeholder{color:var(--mute)}
     <button class="nb" data-a="nav" data-k="per" aria-label="Perfil"><svg class="ic h-6 w-6"><use href="#i-user"/></svg></button>
   </nav>
 <div id="modal" role="dialog" aria-modal="true" aria-labelledby="m-h" aria-hidden="true"><div class="sheet glass w-full rounded-[32px] p-6"></div></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-run" viewBox="0 0 24 24"><circle cx="15" cy="4.5" r="1.9"/><path d="M7 21l3.2-5.6 3.3 2.6V22M5.5 11l3.3-3.2h4.4l2.6 3.4 3.2.6M13.2 7.8l-2.8 7.6"/></symbol>
+<symbol id="i-puz" viewBox="0 0 24 24"><path d="M4.5 8h3.4a2.4 2.4 0 1 1 4.8 0h3.4v3.4a2.4 2.4 0 1 1 0 4.8v3.3h-3.4a2.4 2.4 0 1 0-4.8 0H4.5v-3.3a2.4 2.4 0 1 0 0-4.8z"/></symbol>
+<symbol id="i-cards" viewBox="0 0 24 24"><rect x="3.2" y="6.5" width="10.5" height="14.5" rx="2" transform="rotate(-9 8.5 13.7)"/><rect x="10" y="3" width="10.5" height="14.5" rx="2"/></symbol>
+<symbol id="i-head" viewBox="0 0 24 24"><path d="M4 15.5V12a8 8 0 0 1 16 0v3.5"/><rect x="3" y="14" width="4.6" height="6.8" rx="1.8"/><rect x="16.4" y="14" width="4.6" height="6.8" rx="1.8"/></symbol>
+<symbol id="i-crown" viewBox="0 0 24 24"><path d="M3.5 8.2l4.6 4 3.9-6.7 3.9 6.7 4.6-4-2 10.3H5.5z"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="i-spark" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 2.5c.7 5 2.5 6.8 7.5 7.5-5 .7-6.8 2.5-7.5 7.5-.7-5-2.5-6.8-7.5-7.5 5-.7 6.8-2.5 7.5-7.5zM19 15.5c.3 2 1 2.7 3 3-2 .3-2.7 1-3 3-.3-2-1-2.7-3-3 2-.3 2.7-1 3-3z"/></symbol>
+</defs></svg>
+<div id="tour" hidden role="dialog" aria-modal="true" aria-labelledby="t-h"></div>
 <div id="ob" hidden role="dialog" aria-modal="true" aria-label="Boas-vindas à SApólis"></div>
 <div id="live" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
 </main>
@@ -787,7 +872,7 @@ const A={
  tl(b){tl(ti+ +b.dataset.d)},tlg(b){tl(+b.dataset.i)},cp(b){cp(+b.dataset.i)},
  pp(){playing?stopA():(startA(),island('music',3800))},next(){const k=Object.keys(TR);setCat(k[(k.indexOf(cat)+1)%k.length])},cat(b){setCat(b.dataset.k)},close(){island('idle')},
  visit(b){award('sp:'+b.dataset.i,40,'Visita registrada: '+SP[+b.dataset.i][0])},
- reset(){if(confirm('Apagar todo o progresso salvo neste navegador?')){S=fresh();save();HQST=0;applyMotion();go('per');toast('Progresso reiniciado');obOpen(false)}}};
+ reset(){if(confirm('Apagar todo o progresso salvo neste navegador?')){S=fresh();save();HQST=0;applyMotion();go('per');toast('Progresso reiniciado');try{localStorage.removeItem(TOUR_KEY)}catch(e){}tourOpen(0)}}};
 document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(b&&A[b.dataset.a])A[b.dataset.a](b,e);if(e.target===$('#modal'))closeModal()});
 document.addEventListener('keydown',e=>{if(e.key=='Escape')closeModal()});
 document.addEventListener('input',e=>{const t=e.target;if(t.id=='ed'){S.draft[LAB]=t.value;save();updCnt();const s=$('#sv');if(s)s.textContent='salvo automaticamente'}else if(t.dataset&&t.dataset.p){S.plan[LAB]=Object.assign(S.plan[LAB]||{},{[t.dataset.p]:t.value});save()}});
@@ -828,11 +913,11 @@ const OBQ=[['Uma loja oferece 20% de desconto em um produto de R$ 150.','Qual é
  ['Em um ecossistema, restos de folhas e animais mortos são transformados em nutrientes.','Quem realiza principalmente esse processo?',['Produtores','Decompositores','Consumidores primários','Predadores de topo'],1,'Decompositores, como fungos e bactérias, reciclam a matéria orgânica.',[0,'Produtores fazem fotossíntese; não reciclam restos.'],'Cadeias alimentares','bio'],
  ['Parte de uma cidade teve o solo coberto por asfalto e concreto.','Durante chuvas fortes, o que tende a ocorrer?',['Menos escoamento superficial','Mais escoamento superficial','Mais infiltração','Menos risco de enchentes'],1,'Com menos infiltração, mais água escorre pela superfície e chega depressa aos rios.',[2,'O asfalto reduz a infiltração, não a amplia.'],'Impermeabilização','geo']];
 let OB={i:0,edit:false,dq:false,last:null};
-const lume=(m='happy',c='h-[104px] w-[84px]',deco)=>{const al=deco?'':'Lumiri, a guia da SApólis';return `<span class="lume lumiri lm-${m} ${c} inline-block shrink-0"><img class="lc block h-full w-full object-contain" src="lumiri-claro.png" alt="${al}" draggable="false" decoding="async"><img class="ln block h-full w-full object-contain" src="lumiri-neon.png" alt="${al}" draggable="false" decoding="async"></span>`};
+const lume=(m='happy',c='h-[104px] w-[84px]',deco)=>{const al=deco?'':'Lumiri, a guia da SApólis';return `<span class="lume lumiri lm-${m} ${c} inline-block shrink-0"><img class="lc block h-full w-full object-contain" src="lumiri-capa-recorte.png" alt="${al}" draggable="false" decoding="async"><img class="ln block h-full w-full object-contain" src="lumiri-neon-recorte.png" alt="${al}" draggable="false" decoding="async"></span>`};
 const obLabel=(arr,id)=>(arr.find(a=>a[0]==id)||[0,id])[1];
 function obReco(){const ob=S.ob,p=ob.subj.find(k=>k=='hist'||RM[k]);if(p)return p;const w=ob.diag&&ob.diag.weak&&ob.diag.weak.find(k=>RM[k]);if(w)return w;return ob.goals.includes('red')?'red':'mat'}
 const obMission=id=>id=='hist'?'Desafio final: Revolução Francesa':RM[id].g[0].t;
-function obOpen(edit){OB={i:edit?1:0,edit:!!edit,dq:false,last:null};$('#ob').hidden=false;obRender()}
+function obOpen(edit){OB={i:1,edit:!!edit,dq:false,last:null};$('#ob').hidden=false;obRender()}
 function obClose(){$('#ob').hidden=true}
 function obRender(){const o=$('#ob'),i=OB.i,ob=S.ob;let body='',foot='';
  const bub=(t,sub)=>`<div class="flex items-end gap-3.5">${lume()}<div class="obb" role="status">${t}</div></div>${sub?`<p class="mut mt-3 text-[14px]">${sub}</p>`:''}`;
@@ -853,11 +938,57 @@ function obRender(){const o=$('#ob'),i=OB.i,ob=S.ob;let body='',foot='';
    <div class="cov rounded-[26px] p-4" style="--a:${rr.a};--b:${rr.b}"><p class="text-[13px] text-white/85">Primeira rota recomendada</p><p class="mt-1 text-[22px] font-bold leading-tight">${rr.n}</p><p class="mt-1 text-[13px] text-white/90">Primeira missão: ${obMission(id)}</p></div></div>`;
   foot=`<button class="btn w-full" data-a="obfinish">${OB.edit?'Salvar preferências':'Iniciar minha jornada'}</button>`}
  const skip=(i>=1&&i<=4)||(i==5&&OB.dq);
- o.innerHTML=`<div class="obt"><button class="obs ${i>(OB.edit?1:0)?'':'invisible'}" data-a="obback" aria-label="Voltar" style="min-width:44px">${ic('back','h-5 w-5')}</button><div class="obp" role="progressbar" aria-label="Progresso das boas-vindas" aria-valuemin="0" aria-valuemax="7" aria-valuenow="${i+1}"><i style="width:${(i+1)/7*100}%"></i></div><button class="obs ${skip?'':'invisible'}" data-a="obskip">Pular</button></div><div class="obc">${body}</div>${foot?`<div class="obf">${foot}</div>`:''}`;
+ o.innerHTML=`<div class="obt"><button class="obs ${(OB.edit?i>1:i>=1)?'':'invisible'}" data-a="obback" aria-label="Voltar" style="min-width:44px">${ic('back','h-5 w-5')}</button><div class="obp" role="progressbar" aria-label="Progresso das boas-vindas" aria-valuemin="0" aria-valuemax="7" aria-valuenow="${i+1}"><i style="width:${(i+1)/7*100}%"></i></div><button class="obs ${skip?'':'invisible'}" data-a="obskip">Pular</button></div><div class="obc">${body}</div>${foot?`<div class="obf">${foot}</div>`:''}`;
  if(i==5&&OB.dq)mc($('#obq'),OBQ,{t:'Diagnóstico'},x=>{const wk=[...new Set(x.wr.map(t=>OBQ.find(q=>q[6]==t)[7]))];S.ob.diag={ok:x.ok,n:x.n,weak:wk};save();OB.dq=false;OB.i=6;obRender()});
  const f=$('.obc button,.obf button',o);if(f&&i!=5)f.focus&&f.focus({preventScroll:true})}
 function obFinish(){S.ob.done=true;save();obClose();const edit=OB.edit,id=obReco();go(edit?'per':'exp');if(edit)toast('Preferências atualizadas');else{id=='hist'?openLes(0):routeScreen(id)}refresh()}
-function obSummary(){const ob=S.ob;return `<div class="glass card mt-4 !p-4 grid gap-3"><div><p class="mut text-[13px]">Objetivo</p><p class="text-[15px] font-semibold leading-snug">${ob.goals.length?ob.goals.map(g=>obLabel(OBG,g)).join(' · '):'Ainda não definido'}</p></div><div><p class="mut text-[13px]">Disciplinas prioritárias</p><p class="text-[15px] font-semibold">${ob.subj.length?ob.subj.map(k=>obLabel(OBS,k)).join(', '):'Todas por igual'}</p></div><div><p class="mut text-[13px]">Estudo por dia</p><p class="text-[15px] font-semibold">${ob.time?ob.time+' minutos · flexível':'Sem meta definida'}</p></div><button class="btn2 w-full" data-a="obedit">Editar preferências</button></div>`}
+function obSummary(){const ob=S.ob;return `<div class="glass card mt-4 !p-4 grid gap-3"><div><p class="mut text-[13px]">Objetivo</p><p class="text-[15px] font-semibold leading-snug">${ob.goals.length?ob.goals.map(g=>obLabel(OBG,g)).join(' · '):'Ainda não definido'}</p></div><div><p class="mut text-[13px]">Disciplinas prioritárias</p><p class="text-[15px] font-semibold">${ob.subj.length?ob.subj.map(k=>obLabel(OBS,k)).join(', '):'Todas por igual'}</p></div><div><p class="mut text-[13px]">Estudo por dia</p><p class="text-[15px] font-semibold">${ob.time?ob.time+' minutos · flexível':'Sem meta definida'}</p></div><button class="btn2 w-full" data-a="obedit">Editar preferências</button><button class="btn2 w-full" data-a="tour">Rever apresentação</button></div>`}
+
+/* ---------- Apresentação: 7 telas antes do questionário ---------- */
+const TOUR_KEY='sap-tour';
+const tourDone=()=>{try{return localStorage.getItem(TOUR_KEY)==='done'}catch(e){return false}};
+let TOUR={i:0,dir:0,review:false,cv:0};
+const TF=[['run','Lumiri Running','Percorra cenários de São Paulo e resolva desafios.'],['puz','Quebra-cabeça ENEM','Conecte conceitos de diferentes disciplinas.'],['cards','Cartas do Conhecimento','Aprenda com explicações ilustradas.'],['head','Trilhas Sonoras','Revise conteúdos ouvindo explicações.']];
+const TCTA=['Começar descoberta','Conhecer os recursos','Continuar','Continuar','Continuar','Continuar','Personalizar meus estudos'];
+const tLumi=c=>`<span class="tlu ${c||''}"><img class="tl-c" src="lumiri-capa-recorte.png" alt="Lumiri, a guia da SApólis" width="731" height="900" decoding="async"><img class="tl-n" src="lumiri-neon-recorte.png" alt="Lumiri, a guia da SApólis, em versão neon" width="733" height="900" decoding="async"></span>`;
+const tHead=(k,n,t,d)=>`<div class="tfh"><span class="tfi">${ic(k,'h-5 w-5')}</span><span>${n}</span></div><h2 class="tti" id="t-h">${t}</h2><p class="tde">${d}</p>`;
+const tVid=(src,label,k,poster)=>`<div class="tmed tvid" data-k="${k}"><video src="${src}" ${poster?`poster="${poster}"`:''} playsinline preload="metadata" aria-label="${label}"></video><button class="tplay" aria-label="Reproduzir vídeo">${ic('play','h-7 w-7')}</button></div>`;
+const tImg=(src,alt,w,h)=>`<figure class="tmed"><img src="${src}" alt="${alt}" width="${w}" height="${h}" decoding="async"></figure>`;
+const TSKY=`<svg class="tsky" viewBox="0 0 400 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><g fill="rgba(255,255,255,.08)"><rect x="168" y="78" width="26" height="122"/><rect x="198" y="50" width="20" height="150"/><rect x="224" y="86" width="30" height="114"/><rect x="260" y="36" width="22" height="164"/><rect x="288" y="66" width="28" height="134"/><rect x="322" y="22" width="18" height="178"/><rect x="346" y="72" width="30" height="128"/><rect x="380" y="48" width="20" height="152"/></g><g fill="rgba(255,255,255,.13)"><rect x="184" y="112" width="24" height="88"/><rect x="244" y="104" width="26" height="96"/><rect x="304" y="118" width="22" height="82"/><rect x="356" y="108" width="26" height="92"/></g><g fill="none" stroke-linecap="round"><g stroke="rgba(255,255,255,.38)" stroke-width="1"><path d="M96 36L12 158M96 48L34 158M96 60L56 158M96 36L178 158M96 48L156 158M96 60L134 158"/></g><path d="M74 190L104 16M118 190L88 16" stroke="#E9B64B" stroke-width="4.5" opacity=".9"/><path d="M0 160Q100 146 200 160T400 158" stroke="rgba(255,255,255,.6)" stroke-width="3"/></g><path d="M0 178Q120 162 230 176T400 170V200H0z" fill="rgba(137,54,240,.35)"/></svg>`;
+function tSlide(i){
+ if(i==0)return `<div class="tcov flex flex-1 flex-col"><div class="tlogo"><span class="tlg"><img src="logo-sapolis.png.jpg" alt="" width="1000" height="1000"></span><span><b>SApólis</b><small>EdTech</small></span></div><div class="tstage">${TSKY}<span class="torb"></span>${tLumi('tfloat')}</div><h1 class="tti tbig" id="t-h">Seu conhecimento te leva mais longe.</h1><p class="tde">Aprenda para o ENEM de um jeito diferente, interativo e dinâmico.</p></div>`;
+ if(i==1)return `<span class="tcrown" aria-hidden="true">${ic('crown','h-10 w-10')}</span><h1 class="tti" id="t-h">Descubra os diferenciais da SApólis <span class="tgold">Premium</span>.</h1><p class="tde">Experiências interativas que transformam sua preparação para o ENEM.</p><ul class="tgrid">${TF.map(f=>`<li class="tpc"><span class="tpi">${ic(f[0],'h-5 w-5')}</span><b>${f[1]}</b><small>${f[2]}</small></li>`).join('')}</ul>`;
+ if(i==2)return tHead('run','Lumiri Running','Explore. Desafie-se. Aprenda.','Uma jornada pela cidade que transforma conhecimentos do ENEM em desafios.')+tVid('lumiri-running.mp4','Vídeo do jogo Lumiri Running: a Lumiri percorre uma versão estilizada da Avenida Paulista, coletando moedas e enfrentando desafios','run');
+ if(i==3)return tHead('puz','Quebra-cabeça ENEM','Tudo está conectado.','Relacione conceitos, descubra conexões e desenvolva seu raciocínio.')+tImg('quebra-cabeca.png.jpeg','Tabuleiro do Quebra-cabeça ENEM: a Lumiri ao lado de peças conectadas sobre CO₂, efeito estufa, aquecimento global, emissões industriais, sustentabilidade, energia renovável, políticas públicas, sociedade e meio ambiente',1199,1312);
+ if(i==4)return tHead('cards','Cartas do Conhecimento','Uma descoberta por carta.','Revele cartas ilustradas e compreenda conteúdos de forma rápida e visual.')+`<div class="tseg" role="tablist" aria-label="Visualização das cartas"><button role="tab" aria-selected="${!TOUR.cv}" data-a="tcv" data-v="0">Cartas</button><button role="tab" aria-selected="${!!TOUR.cv}" data-a="tcv" data-v="1">Demonstração</button></div>`+(TOUR.cv?tVid('cartas-demo.mp4','Demonstração em vídeo das Cartas do Conhecimento','cards','cartas-fotossintese.png.jpeg'):tImg('cartas-fotossintese.png.jpeg','Três Cartas do Conhecimento sobre fotossíntese: o conceito, como o processo acontece e o resultado, com a Lumiri explicando',1536,1024));
+ if(i==5)return tHead('head','Trilhas Sonoras','Aprenda também ouvindo.','Estude no seu ritmo com explicações narradas e revisões rápidas.')+tImg('trilha-sonora.png.jpeg','Exemplo da interface de Trilhas Sonoras: a Lumiri com fones de ouvido e o módulo Fotossíntese, de Biologia, seguido de Respiração Celular, Cadeia Alimentar e Ciclos Biogeoquímicos',1199,1312);
+ return `<div class="tfh"><span class="tfi">${ic('spark','h-5 w-5')}</span><span>Personalização</span></div><h2 class="tti" id="t-h">Sua jornada começa agora.</h2><div class="tyou"><div class="tpanel">${tLumi('tfloat')}<span class="tgem" aria-hidden="true">${ic('spark','h-6 w-6')}</span></div><p class="tbub">Agora vamos conhecer você!</p></div><p class="tde">Escolha seus objetivos para criar sua jornada de estudos na SApólis.</p><ul class="tchk" aria-label="O que vamos perguntar">${['Seus interesses','Seus objetivos','Seu nível de estudo'].map(t=>`<li><span>${ic('check','h-4 w-4')}</span>${t}</li>`).join('')}</ul>`}
+function tTop(){const i=TOUR.i,d=root.classList.contains('dark');$('#tour .tt').innerHTML=`<div><button class="tib ${i?'':'invisible'}" data-a="tback" aria-label="Voltar" ${i?'':'tabindex="-1"'}>${ic('back','h-5 w-5')}</button></div><div class="tprog"><p>${i+1} de 7</p><div class="tdots" aria-hidden="true">${TCTA.map((_,k)=>`<i class="${k==i?'c':k<i?'d':''}"></i>`).join('')}</div></div><div><button class="tib" data-a="ttheme" aria-label="${d?'Ativar fundo branco':'Ativar modo escuro'}">${ic(d?'sun':'moon','h-5 w-5')}</button>${TOUR.review?`<button class="tib" data-a="tclose" aria-label="Fechar apresentação">${ic('x','h-5 w-5')}</button>`:''}</div>`}
+function tVidBind(){const w=$('#tour .tvid');if(!w)return;const v=$('video',w),b=$('.tplay',w);
+ const upd=()=>{const p=!v.paused&&!v.ended;w.classList.toggle('on',p);b.setAttribute('aria-label',p?'Pausar vídeo':'Reproduzir vídeo');b.innerHTML=ic(p?'pause':'play','h-7 w-7')};
+ const tog=()=>{if(v.paused||v.ended)v.play().catch(()=>{});else v.pause()};
+ const fail=()=>{w.classList.remove('tvid','on');w.innerHTML=`<div class="tfb"><span>${ic(w.dataset.k||'play','h-7 w-7')}</span><b>Prévia em vídeo em breve</b><small>O vídeo desta experiência aparecerá aqui.</small></div>`;console.warn('SApólis: vídeo não encontrado → '+v.getAttribute('src'))};
+ ['play','pause','ended'].forEach(ev=>v.addEventListener(ev,upd));v.addEventListener('click',tog);b.addEventListener('click',tog);
+ if(v.error)fail();else v.addEventListener('error',fail,{once:true})}
+function tourRender(anim=true){const o=$('#tour'),i=TOUR.i;o.classList.toggle('hero',i<=1);
+ o.innerHTML=`<div class="tt"></div><div class="tst"><section class="ts ${anim&&TOUR.dir?(TOUR.dir>0?'in-r':'in-l'):''}" role="group" aria-roledescription="tela" aria-label="${i+1} de 7">${tSlide(i)}</section></div><div class="tf"><button class="tcta" data-a="tnext">${TCTA[i]}${ic('arrow','h-5 w-5')}</button></div>`;
+ tTop();tVidBind();if(anim){const h=$('#t-h',o);if(h){h.tabIndex=-1;h.style.outline='none';h.focus({preventScroll:true})}}}
+function tourOpen(i=0,review){TOUR={i,dir:1,review:!!review,cv:0};$('#tour').hidden=false;tourRender();['quebra-cabeca.png.jpeg','cartas-fotossintese.png.jpeg','trilha-sonora.png.jpeg'].forEach(s=>{const im=new Image();im.src=s})}
+function tourClose(){const o=$('#tour');o.hidden=true;o.innerHTML=''}
+function tourFinish(){try{localStorage.setItem(TOUR_KEY,'done')}catch(e){}tourClose();obOpen(!!S.ob.done)}
+Object.assign(A,{
+ tnext(){if(TOUR.i<6){TOUR.i++;TOUR.dir=1;TOUR.cv=0;FX.tap();tourRender()}else tourFinish()},
+ tback(){if(TOUR.i>0){TOUR.i--;TOUR.dir=-1;TOUR.cv=0;tourRender()}},
+ tclose(){tourClose()},
+ ttheme(){$('#theme').click();tTop();const b=$('#tour [data-a=ttheme]');b&&b.focus()},
+ tcv(b){TOUR.cv=+b.dataset.v;tourRender(false);const t=$(`#tour [data-a=tcv][data-v="${TOUR.cv}"]`);t&&t.focus()},
+ tour(){tourOpen(0,true)}});
+document.addEventListener('keydown',e=>{if($('#tour').hidden||e.target.closest('input,textarea'))return;
+ if(e.key=='ArrowRight'&&TOUR.i<6){e.preventDefault();A.tnext()}else if(e.key=='ArrowLeft'&&TOUR.i>0){e.preventDefault();A.tback()}else if(e.key=='Escape'&&TOUR.review)tourClose()});
+(()=>{let x0=null,y0=0;const o=$('#tour');
+ o.addEventListener('pointerdown',e=>{if(e.target.closest('video,button'))return;x0=e.clientX;y0=e.clientY},{passive:true});
+ o.addEventListener('pointercancel',()=>{x0=null});
+ o.addEventListener('pointerup',e=>{if(x0==null)return;const dx=e.clientX-x0,dy=e.clientY-y0;x0=null;if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5){if(dx<0&&TOUR.i<6)A.tnext();else if(dx>0&&TOUR.i>0)A.tback()}})})();
 
 /* =========================================================
    MONTE A FÓRMULA — Matemática gamificada (rota de Matemática)
@@ -1011,11 +1142,11 @@ document.addEventListener('keydown',e=>{if(e.key=='Enter'&&e.target.id=='fin'){e
 
 Object.assign(A,{
  obsel(b){const v=b.dataset.v,ob=S.ob,i=OB.i;if(i==1||i==2){const k=i==1?'goals':'subj',a=ob[k];ob[k]=a.includes(v)?a.filter(x=>x!=v):[...a,v]}if(i==3)ob.level=v;if(i==4)ob.time=+v;OB.last=v;save();FX.tap();obRender()},
- obnext(){if(OB.i<6){OB.i++;obRender()}},obback(){if(OB.dq)OB.dq=false;else if(OB.i>(OB.edit?1:0))OB.i--;obRender()},
+ obnext(){if(OB.i<6){OB.i++;obRender()}},obback(){if(OB.dq)OB.dq=false;else if(OB.i>1)OB.i--;else if(!OB.edit){obClose();tourOpen(6);return}obRender()},
  obskip(){if(OB.dq){OB.dq=false;OB.i=6}else OB.i++;obRender()},obdiag(){OB.dq=true;obRender()},obnodiag(){OB.i=6;obRender()},obfinish(){obFinish()},obedit(){obOpen(true)},
  pref(b){const k=b.dataset.k;S.set[k]=!S.set[k];save();b.setAttribute('aria-checked',String(S.set[k]));if(k=='reduce')applyMotion();if(k=='sound'&&S.set.sound)FX.play('ok');if(k=='haptic'&&S.set.haptic)FX.play('tap',[30]);toast((k=='sound'?'Sons ':k=='haptic'?'Vibração ':'Animações reduzidas ')+(S.set[k]?(k=='reduce'?'ligadas':'ativados'):(k=='reduce'?'desligadas':'desativados')))},
  nextm(){const ks=GM.map(g=>g[0]);gameScreen(ks[(ks.indexOf(CURM)+1)%ks.length])}});
-ach();refresh();bars();applyMotion();['pointerdown','keydown'].forEach(ev=>document.addEventListener(ev,()=>FX.init(),{passive:true}));if(!S.ob.done)obOpen(false);
+ach();refresh();bars();applyMotion();['pointerdown','keydown'].forEach(ev=>document.addEventListener(ev,()=>FX.init(),{passive:true}));if(!S.ob.done){if(tourDone())obOpen(false);else tourOpen(0)}
 setTimeout(()=>{if(cur=='idle')notify('Bruno ganhou 40 XP e passou à sua frente no ranking semanal')},16000);
 
 </script>
