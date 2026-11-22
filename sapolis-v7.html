@@ -65,7 +65,7 @@ html:not(.dark) .blob{opacity:.17!important}html:not(.dark) body{background:radi
 #ctx{position:absolute;left:50%;bottom:90px;z-index:19;transform:translate(-50%,12px) scale(.9);opacity:0;pointer-events:none;white-space:nowrap;border-radius:99px;padding:10px 18px;font-size:13px;font-weight:600;transition:all .45s var(--sp)}#ctx.on{opacity:1;transform:translate(-50%,0)}
 #toast{transition:all .45s var(--sp)}
 /* lição / quiz */
-.stp{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;padding:4px;border-radius:99px;position:sticky;top:66px;z-index:5}
+.stp{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;padding:4px;border-radius:99px;position:static}
 .stp button{height:40px;border-radius:99px;font-size:12px;font-weight:700;color:var(--mute);transition:all .3s}.stp button[aria-current=step]{background:linear-gradient(140deg,#5B21B6,#7C3AED);color:#fff}
 .opt{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:54px;padding:12px 16px;border-radius:18px;border:1.5px solid var(--gb);background:var(--chip);text-align:left;font-size:15px;font-weight:600;line-height:1.3;width:100%;transition:transform .15s,border-color .2s,background .2s}
 .opt:not(:disabled):active{transform:scale(.98)}.opt:disabled{cursor:default}.opt.good{border-color:#10B981;background:rgba(16,185,129,.16)}.opt.bad{border-color:#F43F5E;background:rgba(244,63,94,.14)}
@@ -123,6 +123,27 @@ textarea::placeholder,input::placeholder{color:var(--mute)}
 .mslot{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;min-width:56px;min-height:56px;padding:0 10px;border-radius:16px;border:2px dashed var(--seg);font-size:20px;font-weight:600;font-variant-numeric:tabular-nums}
 .mslot b{font-size:12px;font-weight:600;color:var(--mute)}.mslot.ok{border-style:solid;border-color:var(--v);background:rgba(124,58,237,.1)}.mslot.no{border-color:#F43F5E;background:rgba(244,63,94,.12);animation:shake .35s}
 .key{min-height:52px;border-radius:16px;background:var(--chip);border:1px solid var(--gb);font-size:20px;font-weight:600;transition:transform .15s}.key:active{transform:scale(.95)}
+/* comunidade — pódio */
+.pod{display:flex;align-items:flex-end;justify-content:center;gap:10px;margin:30px 0 0;padding:0;list-style:none}
+.pcol{position:relative;display:flex;flex-direction:column;align-items:center;flex:1;max-width:118px;min-width:0}
+.pcol.p1{order:2}.pcol.p2{order:1}.pcol.p3{order:3}
+.pav{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;font-size:19px;font-weight:700;color:#fff;background:linear-gradient(145deg,#7C3AED,#A78BFA);box-shadow:0 0 0 3px var(--bg),0 0 0 5px rgba(124,58,237,.3),0 10px 20px -8px rgba(41,16,82,.5)}
+.p1 .pav{width:64px;height:64px;font-size:23px;background:linear-gradient(145deg,#6D28D9,#C084FC);box-shadow:0 0 0 3px var(--bg),0 0 0 5px #E9B64B,0 12px 26px -8px rgba(233,182,75,.6)}
+.pav.me{box-shadow:0 0 0 3px var(--bg),0 0 0 5px #EC4899,0 10px 20px -8px rgba(236,72,153,.5)}
+.pcrown{position:absolute;top:-26px;line-height:0}.pcrown svg{fill:#E9B64B;stroke:#C98F25}
+.pnm{max-width:100%;margin-top:9px;overflow:hidden;font-size:14px;font-weight:700;text-overflow:ellipsis;white-space:nowrap}
+.pxp{font-size:12px;font-weight:600;color:var(--mute)}
+.pblk{display:grid;place-items:start center;width:100%;margin-top:8px;padding-top:10px;border-radius:18px 18px 8px 8px;color:#fff;transform-origin:50% 100%;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 14px 26px -16px rgba(41,16,82,.6)}
+.p1 .pblk{height:112px;background:linear-gradient(180deg,#7C3AED,#5B21B6)}.p2 .pblk{height:84px;background:linear-gradient(180deg,#A78BFA,#7C3AED)}.p3 .pblk{height:62px;background:linear-gradient(180deg,#C4B5FD,#8B5CF6)}
+.pblk b{font-size:26px;font-weight:800;line-height:1}.p1 .pblk b{font-size:32px}
+.pod.in .pblk{animation:pgrow .65s cubic-bezier(.2,.9,.25,1.12) backwards;animation-delay:calc(var(--d)*.3s)}@keyframes pgrow{from{transform:scaleY(0)}}
+.pod.in .pav,.pod.in .pnm,.pod.in .pxp{animation:pdrop .5s var(--sp) backwards;animation-delay:calc(var(--d)*.3s + .3s)}@keyframes pdrop{from{opacity:0;transform:translateY(-14px) scale(.85)}}
+.pod.in .pcrown{animation:pcrw .6s var(--sp) backwards 1.3s}@keyframes pcrw{from{opacity:0;transform:translateY(-12px) rotate(-25deg) scale(.4)}}
+.crows{display:grid;gap:8px;margin-top:12px;padding:0;list-style:none}
+.crow{display:flex;align-items:center;gap:12px;min-height:54px;padding:8px 14px;border-radius:18px;background:var(--chip);border:1.5px solid transparent}
+.crow.me{background:var(--glass);border-color:var(--v)}
+.crows.in .crow{animation:in .45s cubic-bezier(.16,1,.3,1) backwards;animation-delay:calc(1.1s + var(--d)*90ms)}
+.cme.in{animation:in .5s cubic-bezier(.16,1,.3,1) backwards .95s}
 /* minijogos — animações e interações */
 .pzb{position:relative;width:100%;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:#1B0A3A;touch-action:none;user-select:none;-webkit-user-select:none}
 .pzp{position:absolute;left:0;top:0;width:33.3334%;height:33.3334%;padding:0;transform:translate(calc(var(--c)*100%),calc(var(--r)*100%));transition:transform .34s cubic-bezier(.2,.9,.25,1.12);cursor:grab;z-index:1}
@@ -498,41 +519,39 @@ textarea::placeholder,input::placeholder{color:var(--mute)}
         <h1 class="mt-5 text-[36px] leading-[1.05]">Revolução Francesa</h1>
         <p class="sub mt-2.5">Como a queda de uma fortaleza-prisão mudou para sempre a ideia de quem manda e de quem tem direitos.</p>
         <div class="mt-4 flex flex-wrap gap-2"><span class="pill">1789–1799</span><span class="pill">18 min</span><span class="pill lil">+120 XP</span></div>
-        <h3 class="mt-8 text-[22px]">Curiosidades</h3>
-        <div class="mt-3 grid gap-3"><div class="glass card !p-4 text-[14px] leading-relaxed">Em 14 de julho de 1789, a Bastilha guardava apenas sete prisioneiros. Seu valor era simbólico: representava o poder absoluto do rei.</div><div class="glass card !p-4 text-[14px] leading-relaxed">A guilhotina foi defendida como um método mais rápido e igual para todos, sem distinção de classe.</div></div>
-        <h3 class="mt-8 text-[22px]">Perguntas para começar</h3>
-        <div class="mt-3 grid gap-2.5">
-          <details class="glass rounded-[22px] px-4 py-3.5"><summary class="flex items-center justify-between gap-3 text-[15px] font-semibold">Por que o povo se revoltou se a França era uma potência?<svg class="ic chev h-4 w-4 shrink-0 transition-transform"><use href="#i-down"/></svg></summary><p class="sub mt-3">Pista: riqueza e poder não estavam distribuídos igualmente. Olhe quem pagava impostos e quem era isento.</p></details>
-          <details class="glass rounded-[22px] px-4 py-3.5"><summary class="flex items-center justify-between gap-3 text-[15px] font-semibold">Uma ideia pode derrubar um governo?<svg class="ic chev h-4 w-4 shrink-0 transition-transform"><use href="#i-down"/></svg></summary><p class="sub mt-3">Pista: pense no Iluminismo e em como livros e panfletos circulavam pelos cafés de Paris.</p></details>
-        </div>
+        <div class="glass card mt-6 !p-4"><p class="lil text-[12px] font-bold uppercase tracking-wide">Em resumo</p><ul class="mt-2 grid gap-2 text-[14px] leading-snug">
+          <li><b>Quando:</b> 1789 a 1799, na França.</li>
+          <li><b>O quê:</b> o povo derrubou o poder absoluto do rei.</li>
+          <li><b>Por que importa:</b> base dos direitos humanos modernos.</li></ul></div>
+        <details class="glass mt-3 rounded-[22px] px-4 py-3.5"><summary class="flex items-center justify-between gap-3 text-[15px] font-semibold">Para pensar: por que uma potência entrou em revolta?<svg class="ic chev h-4 w-4 shrink-0 transition-transform"><use href="#i-down"/></svg></summary><p class="sub mt-3">Pista: veja quem pagava impostos e quem era isento.</p></details>
         <button data-a="st" data-st="1" class="btn mt-7 w-full">Compreender o contexto</button>
       </div>
 
       <div class="stg mt-5" data-st="1" hidden>
-        <h3 class="text-[24px]">Contextualização</h3><p class="sub mt-2"><span class="f">No Antigo Regime, a sociedade francesa se dividia em três Estados. Clero e nobreza tinham privilégios e isenções; o Terceiro Estado sustentava o sistema.</span><span class="s">A França tinha três grupos. Dois tinham privilégios. O terceiro, quase todo mundo, pagava a conta.</span></p>
+        <h3 class="text-[22px]">O contexto</h3><p class="sub mt-2"><span class="f">A sociedade se dividia em três Estados: só o terceiro pagava impostos.</span><span class="s">Dois grupos tinham privilégios. O terceiro pagava a conta.</span></p>
         <div class="glass card mt-4 grid justify-items-center gap-2 !p-5" aria-label="Pirâmide dos três Estados (proporções ilustrativas)">
           <div class="cov grid h-12 place-items-center rounded-2xl text-[13px] font-bold" style="--a:#6D28D9;--b:#C4B5FD;width:36%">1º Clero</div>
           <div class="cov grid h-12 place-items-center rounded-2xl text-[13px] font-bold" style="--a:#5B21B6;--b:#A78BFA;width:58%">2º Nobreza</div>
           <div class="cov grid h-16 place-items-center rounded-2xl px-3 text-center text-[13px] font-bold" style="--a:#4338CA;--b:#38BDF8;width:100%">3º Estado: burgueses, camponeses e trabalhadores (cerca de 97%)</div>
           <p class="mut text-[13px]">Proporções ilustrativas, fora de escala.</p></div>
-        <h3 class="mt-9 text-[24px]">Causas</h3><div id="ca" class="mt-4 grid grid-cols-2 gap-3"></div>
-        <h3 class="mt-9 text-[24px]">Linha do tempo</h3>
+        <h3 class="mt-8 text-[22px]">4 causas</h3><div id="ca" class="mt-3 grid grid-cols-2 gap-2.5"></div>
+        <h3 class="mt-8 text-[22px]">Linha do tempo</h3>
         <div id="tlc" class="-mx-5 mt-4 flex gap-2 overflow-x-auto px-5 pb-1" style="scrollbar-width:none"></div>
         <div class="glass card mt-3"><div class="seg"><i id="tlp" style="width:0"></i></div><p id="tld" class="lil mt-4 text-[13px] font-bold"></p><h4 id="tlt" class="ser mt-1 text-[24px] leading-tight"></h4><p id="tlx" class="sub mt-2"></p>
           <div class="mt-4 flex gap-2"><button data-a="tl" data-d="-1" class="btn2 flex-1" aria-label="Evento anterior"><svg class="ic h-4 w-4"><use href="#i-back"/></svg>Anterior</button><button data-a="tl" data-d="1" class="btn2 flex-1" aria-label="Próximo evento">Próximo<svg class="ic h-4 w-4 rotate-180"><use href="#i-back"/></svg></button></div></div>
-        <h3 class="mt-9 text-[24px]">Conceitos importantes</h3><div id="cpc" class="mt-4 flex flex-wrap gap-2"></div>
-        <div class="glass card mt-3"><h4 id="cpt" class="ser text-[22px]"></h4><p id="cpx" class="sub mt-2"></p></div>
-        <h3 class="mt-9 text-[24px]">Impactos históricos</h3>
-        <div class="mt-4 grid gap-3">
-          <div class="glass card !p-4"><p class="text-[14px] font-bold">Políticos</p><p class="sub mt-1">Fim do absolutismo na França, república, constituições escritas e ideia de nação como fonte do poder.</p></div>
-          <div class="glass card !p-4"><p class="text-[14px] font-bold">Sociais</p><p class="sub mt-1">Fim dos privilégios feudais e da sociedade de estamentos; igualdade perante a lei como princípio.</p></div>
-          <div class="glass card !p-4"><p class="text-[14px] font-bold">Mundo contemporâneo</p><p class="sub mt-1">A Declaração de 1789 inspirou os direitos humanos e movimentos de contestação, como a Conjuração Baiana, em 1798.</p></div></div>
-        <div class="cov mt-9 rounded-[28px] p-6" style="--a:#4C1D95;--b:#A78BFA"><h3 class="text-[22px]">Revisão para o ENEM</h3><ul class="mt-3 grid gap-2.5 text-[14px] leading-snug text-white/90"><li>• Iluminismo + crise fiscal e alimentar = contexto da revolta.</li><li>• Terceiro Estado ≈ burguesia + camponeses + trabalhadores urbanos.</li><li>• 1789: Bastilha e Declaração. 1793–94: Terror. 1799: Napoleão.</li><li>• Cobrança frequente: relacionar liberdade, igualdade e soberania popular a textos e contextos.</li></ul></div>
+        <h3 class="mt-8 text-[22px]">Conceitos-chave</h3><div id="cpc" class="mt-3 flex flex-wrap gap-2"></div>
+        <div class="glass card mt-3 !p-4"><h4 id="cpt" class="text-[18px] font-bold"></h4><p id="cpx" class="sub mt-1.5"></p></div>
+        <h3 class="mt-8 text-[22px]">O que mudou</h3>
+        <ul class="glass card mt-3 grid gap-2 !p-4 text-[14px] leading-snug">
+          <li><b>Política:</b> fim do absolutismo e constituições escritas.</li>
+          <li><b>Sociedade:</b> igualdade de todos perante a lei.</li>
+          <li><b>Mundo:</b> inspirou os direitos humanos e a Conjuração Baiana (1798).</li></ul>
+        <div class="cov mt-8 rounded-[28px] p-5" style="--a:#4C1D95;--b:#A78BFA"><h3 class="text-[20px]">Para o ENEM</h3><ul class="mt-2.5 grid gap-2 text-[14px] leading-snug text-white/90"><li>• Causas: Iluminismo + crise fiscal e alimentar.</li><li>• Datas: 1789 Bastilha · 1793 Terror · 1799 Napoleão.</li><li>• Relacione liberdade, igualdade e soberania popular.</li></ul></div>
         <button data-a="st" data-st="2" class="btn mt-7 w-full">Ir para o desafio final</button>
       </div>
 
       <div class="stg mt-5" data-st="2" hidden>
-        <h3 class="text-[22px] leading-tight">Desafio final</h3><p class="sub mt-2">4 questões contextualizadas no estilo ENEM, com explicação depois de cada resposta.</p>
+        <h3 class="text-[22px] leading-tight">Desafio final</h3><p class="sub mt-2">4 questões no estilo ENEM, com explicação.</p>
         <div id="h-les" class="mt-5"></div>
       </div>
       <div class="stg mt-5" data-st="3" hidden><div id="ev"></div></div>
@@ -748,9 +767,9 @@ const PREM=['Rotas avançadas em todas as disciplinas','Simulados completos por 
 
 const FR=[['Bruno',610],['Beatriz',545],['Caio',470],['Júlia',390]];
 const SP=[['Pateo do Collegio','História','Foi aqui que jesuítas fundaram a vila de São Paulo, em 1554.'],['Mercado Municipal','Cultura','Inaugurado em 1933, reúne a gastronomia e a história do abastecimento da cidade.'],['Avenida Paulista','Urbanismo','Aberta em 1891 para os casarões da elite cafeeira, hoje é símbolo da metrópole.']];
-const TL=[['5 mai 1789','Estados Gerais','O rei convoca os três Estados em Versalhes para enfrentar a crise fiscal. A disputa pelo voto por cabeça abre o conflito.'],['14 jul 1789','Queda da Bastilha','Parisienses tomam a fortaleza-prisão, símbolo do poder real. O povo entra de vez na Revolução.'],['26 ago 1789','Declaração dos Direitos','Proclama liberdade, igualdade e soberania da nação: base dos direitos humanos modernos.'],['1791','Monarquia constitucional','A Constituição limita os poderes do rei. A tentativa de fuga da família real, em junho, abala a confiança.'],['1792','República','Em guerra contra a Áustria, a França vê a monarquia cair e proclama a República em setembro.'],['1793','Execução do rei e Terror','Luís XVI é executado em janeiro. O governo jacobino se radicaliza e inicia o Terror.'],['1794','Queda de Robespierre','No Termidor, Robespierre é deposto e executado. O Terror chega ao fim.'],['1795','Diretório','A burguesia moderada assume um governo de cinco diretores, instável e dependente do exército.'],['1799','Golpe do 18 Brumário','Napoleão Bonaparte toma o poder e encerra o ciclo revolucionário.']];
-const CA=[['Crise econômica','Dívida alta, gastos da corte e custos de guerras, como o apoio à independência dos EUA, esvaziaram o tesouro.','O governo gastava mais do que arrecadava.','#7C3AED','#A78BFA'],['Desigualdade social','Clero e nobreza tinham isenções fiscais. O Terceiro Estado pagava a maior parte dos impostos.','Quem tinha menos pagava mais.','#4338CA','#8B5CF6'],['Iluminismo','Montesquieu, Voltaire e Rousseau defendiam separação de poderes, liberdade de pensamento e soberania popular.','Novas ideias sobre poder e liberdade.','#5B21B6','#38BDF8'],['Crise alimentar','Más colheitas em 1788 e 1789 elevaram o preço do pão e aumentaram a tensão nas cidades.','Faltou comida e o pão ficou caro.','#6D28D9','#F0ABFC']];
-const CO=[['Absolutismo','Sistema em que o rei concentra todo o poder, sem limites de leis ou assembleias.','O rei manda em tudo.'],['Burguesia','Grupo urbano ligado ao comércio, às finanças e às profissões liberais: rico, mas sem privilégios políticos.','Tinha dinheiro, mas pouco poder.'],['Soberania popular','Ideia de que o poder legítimo vem do povo, e não de Deus ou do rei.','O poder pertence ao povo.'],['Cidadania','Condição de quem tem direitos e deveres em uma comunidade política, com igualdade perante a lei.','Ter direitos e deveres iguais.'],['Direitos individuais','Liberdade, propriedade e segurança que o Estado deve proteger, como na Declaração de 1789.','Proteções básicas de cada pessoa.']];
+const TL=[['14 jul 1789','Queda da Bastilha','O povo toma a fortaleza-prisão, símbolo do poder do rei.'],['26 ago 1789','Declaração dos Direitos','Liberdade, igualdade e soberania da nação viram princípios.'],['1792','República','A monarquia cai e a França se torna república.'],['1793','Terror','Luís XVI é executado e o governo jacobino persegue opositores.'],['1799','Golpe do 18 Brumário','Napoleão toma o poder e encerra a Revolução.']];
+const CA=[['Crise econômica','Gastos da corte e guerras endividaram o Estado.','O governo gastava mais do que arrecadava.','#7C3AED','#A78BFA'],['Desigualdade','Clero e nobreza não pagavam impostos.','Quem tinha menos pagava mais.','#4338CA','#8B5CF6'],['Iluminismo','Ideias de liberdade e soberania popular.','Novas ideias sobre poder e liberdade.','#5B21B6','#38BDF8'],['Fome','Más colheitas encareceram o pão.','Faltou comida e o pão ficou caro.','#6D28D9','#F0ABFC']];
+const CO=[['Absolutismo','Poder total do rei, sem limites de leis.','O rei manda em tudo.'],['Soberania popular','O poder legítimo vem do povo, não do rei.','O poder pertence ao povo.'],['Cidadania','Direitos e deveres iguais perante a lei.','Ter direitos e deveres iguais.']];
 /* questão: [contexto, enunciado, alternativas, certa, explicação, [alt. errada comum, justificativa], tópico] */
 const QZ={
  rf:{t:'Desafio final: Revolução Francesa',d:'hist',xp:120,q:[
@@ -930,8 +949,8 @@ const bar=(p,x='')=>`<div class="seg ${x}"><i style="width:0" data-w="${p}"></i>
 const cap1=s=>s.charAt(0).toUpperCase()+s.slice(1);
 
 /* lição */
-$('#ca').innerHTML=CA.map(c=>`<div class="cov rounded-[24px] p-4" style="--a:${c[3]};--b:${c[4]};min-height:190px"><h4 class="ser text-[19px] leading-tight">${c[0]}</h4><p class="mt-2 text-[13px] leading-snug text-white/90"><span class="f">${c[1]}</span><span class="s">${c[2]}</span></p></div>`).join('');
-$('#tlc').innerHTML=TL.map((t,i)=>`<button data-a="tlg" data-i="${i}" class="pill shrink-0 !py-2">${t[0].split(' ').pop()}</button>`).join('');
+$('#ca').innerHTML=CA.map(c=>`<div class="cov rounded-[22px] p-3.5" style="--a:${c[3]};--b:${c[4]};min-height:112px"><h4 class="text-[16px] font-bold leading-tight">${c[0]}</h4><p class="mt-1.5 text-[13px] leading-snug text-white/90"><span class="f">${c[1]}</span><span class="s">${c[2]}</span></p></div>`).join('');
+$('#tlc').innerHTML=TL.map((t,i)=>`<button data-a="tlg" data-i="${i}" class="pill shrink-0 !py-2">${t[0]}</button>`).join('');
 $('#cpc').innerHTML=CO.map((c,i)=>`<button data-a="cp" data-i="${i}" class="pill !py-2">${c[0]}</button>`).join('');
 let ti=1,ci=0;
 function tl(i){ti=Math.max(0,Math.min(TL.length-1,i));const t=TL[ti];$('#tld').textContent=t[0];$('#tlt').textContent=t[1];$('#tlx').textContent=t[2];$('#tlp').style.width=((ti+1)/TL.length*100)+'%';$$('#tlc .pill').forEach((p,k)=>p.classList.toggle('on',k==ti))}
@@ -1032,9 +1051,9 @@ const STEPS=['Descubra o lugar','Volte no tempo','Aprenda o conceito','Conecte c
 function gate(){const b=$('#lnx');if(!b||!LS.r)return;const {r,i}=LS;b.disabled=!(S.done['les:'+r.id]||(i==4?LS.qd:i==5?r.g.every(g=>S.done['g:'+g.id]):true))}
 function lessonStep(){const {r,i}=LS;let body='',after=null;
  if(i==0)body=`<div class="cov mt-4 rounded-[30px] p-6" style="--a:${r.a};--b:${r.b}"><span class="hex grid h-12 w-12 place-items-center bg-white/15">${ic('pin','h-6 w-6')}</span><h3 class="mt-4 text-[22px] leading-[1.08]">${r.pl}</h3><p class="mt-2 text-[14px] text-white/90">${r.nar}</p></div><p class="sub mt-4 text-[15px]">${r.d}</p>`;
- if(i==1)body=`<p class="sub mt-4 text-[15px]">${r.h}</p><p class="chip mt-4 rounded-2xl p-4 text-[13px] leading-relaxed">Contexto histórico baseado em fatos verificáveis. Para aprofundar, consulte as instituições do lugar, como museus, institutos e memoriais.</p>`;
+ if(i==1)body=`<p class="sub mt-4 text-[15px]">${r.h}</p><p class="mut mt-3 text-[12.5px]">Fatos verificáveis. Para aprofundar, visite o lugar.</p>`;
  if(i==2)body=`<ul class="mt-4 grid gap-3">${r.c.split('. ').filter(Boolean).map(t=>`<li class="glass rounded-[22px] p-4 text-[14px] leading-relaxed">${t.replace(/\.$/,'')}.</li>`).join('')}</ul>`;
- if(i==3)body=`<p class="sub mt-4 text-[15px]">${r.e}</p><p class="chip mt-4 rounded-2xl p-4 text-[13px] leading-relaxed">As questões desta plataforma são autorais, feitas para treino. Elas não são do ENEM nem preveem a prova. Para a lista oficial de competências e habilidades, consulte a <a class="lil underline" href="https://www.gov.br/inep/pt-br/centrais-de-conteudo/acervo-linha-editorial/publicacoes-institucionais/avaliacoes-e-exames-da-educacao-basica/matrizes-de-referencia-enem/" target="_blank" rel="noopener">Matriz de Referência do ENEM (INEP)</a>.</p>`;
+ if(i==3)body=`<p class="sub mt-4 text-[15px]">${r.e}</p><p class="mut mt-3 text-[12.5px] leading-relaxed">Questões autorais de treino, não oficiais. Veja a <a class="lil underline" href="https://www.gov.br/inep/pt-br/centrais-de-conteudo/acervo-linha-editorial/publicacoes-institucionais/avaliacoes-e-exames-da-educacao-basica/matrizes-de-referencia-enem/" target="_blank" rel="noopener">Matriz de Referência do ENEM (INEP)</a>.</p>`;
  if(i==4){body='<div id="eng" class="mt-4"></div><div id="res"></div>';after=()=>mc($('#eng'),r.q,{t:r.n},x=>{LS.qd=1;LS.sc=x;addRev(r.n,r.id,x.wr);$('#res').innerHTML=`<div class="glass card glow mt-4"><h3 class="text-[22px]">Você acertou ${x.ok} de ${x.n}</h3><p class="sub mt-1.5">${x.wr.length?'Para reforçar: '+x.wr.join(', ')+'.':'Sem erros. Siga para o desafio interativo.'}</p></div>`;gate()})}
  if(i==5)body=`<p class="sub mt-4">Resolva o minijogo desta rota para seguir.</p><div id="gl" class="mt-4 grid gap-3">${r.g.map(g=>`<button data-a="lgame" data-g="${g.id}" class="glass press flex min-h-[64px] items-center justify-between gap-3 rounded-[24px] p-4 text-left"><span class="ser text-[19px] leading-tight">${g.t}</span>${S.done['g:'+g.id]?ic('check','h-5 w-5 lil'):ic('play','h-5 w-5')}</button>`).join('')}</div>`;
  if(i==6){const vz=LS.vis&&!((S.vis||{}).done||{})[r.id];if(LS.vis){S.vis=S.vis||{done:{}};S.vis.done[r.id]=1;save()}const first=award('les:'+r.id,r.xp,'Lição: '+r.n),sc2=LS.sc;if(vz&&!first)ach();body=`<div class="glass card glow mt-4"><h3 class="text-[22px] leading-tight">Missão concluída</h3><p class="tn lil mt-2 text-[20px] font-bold">${first?'+'+r.xp+' XP':'XP desta lição já conquistado'}</p><p class="sub mt-2">${sc2?`Questões de treino: ${sc2.ok} de ${sc2.n}. ${sc2.wr.length?'Reforce: '+sc2.wr.join(', ')+'.':'Sem erros.'}`:'Você já completou esta lição antes.'}</p><div class="mt-4">${bar(prog(r))}</div><p class="mut mt-2 text-[13px]">Progresso na rota: ${prog(r)}%</p></div><div class="mt-4 grid gap-2.5"><button class="btn" data-a="nav" data-k="per">Ver meu progresso</button><button class="btn2" data-a="nav" data-k="bib">Voltar às rotas</button></div>`}
@@ -1097,8 +1116,15 @@ function rExp(){
  const low=[...ORDER.map(k=>RM[k])].filter(r=>prog(r)<100).sort((a,b)=>prog(a)-prog(b))[0],rc=S.rev.slice(0,2).map(r=>{const [d,...t]=r.t.split(': ');return ['Rever '+t.join(': ').replace(/^./,c=>c.toLowerCase()),d+' · revisão '+r.d,r.r||'hist']});const pr=S.ob.subj.map(k=>k=='hist'?HC:RM[k]).filter(r=>r&&prog(r)<100).slice(0,2).map(r=>['Explorar '+r.n,'Você priorizou '+r.n+' · '+place(r),r.id]);if(S.ob.goals.includes('red'))pr.push(['Treinar Redação','Seu objetivo: melhorar a redação','lab']);if(S.ob.level=='dif')pr.push(['Jogar relâmpago','Para praticar questões mais difíceis','rel']);if(low&&!pr.length)pr.push(['Explorar '+low.n,place(low)+' · '+prog(low)+'% concluído',low.id]);rc.splice(1,0,...pr);
  $('#recs').innerHTML=rc.slice(0,3).map(r=>`<button ${r[2]=='lab'?'data-a="lab"':r[2]=='rel'?'data-a="game" data-g="rel"':`data-a="route" data-r="${r[2]}"`} class="glass press flex items-center gap-3.5 rounded-[24px] p-4 text-left"><span class="hex grid h-11 w-11 shrink-0 place-items-center bg-[#6D28D9] text-white">${ic('bolt')}</span><div class="min-w-0 flex-1"><p class="text-[16px] font-semibold">${r[0]}</p><p class="mut text-[13px]">${r[1]}</p></div><span class="lil text-[20px]">›</span></button>`).join('');
  $('#sp').innerHTML=SP.map((p,i)=>{const v=S.done['sp:'+i];return `<div class="glass flex items-center gap-4 rounded-[26px] p-4"><span class="cov hex grid h-14 w-14 shrink-0 place-items-center" style="--a:#4338CA;--b:#C4B5FD">${ic('pin','h-6 w-6')}</span><div class="min-w-0 flex-1"><p class="ser text-[19px] leading-tight">${p[0]}</p><p class="lil text-[13px] font-semibold">${p[1]} · +40 XP</p><p class="mut mt-1 text-[13px] leading-snug">${p[2]}</p></div><button data-a="visit" data-i="${i}" class="pill shrink-0" aria-pressed="${!!v}">${v?'✓ Visitado':'Registrar'}</button></div>`}).join('')}
-function rCom(){const rk=[...FR,['Mariana',S.wk]].sort((a,b)=>b[1]-a[1]);
- $('#v-com').innerHTML=`<h2 class="h2">Comunidade</h2><p class="sub mt-2">Ranking semanal entre amigos. Vale pela constância, não pela pressa.</p><ol class="mt-6 grid gap-2.5">${rk.map((r,i)=>`<li class="${r[0]=='Mariana'?'glass':'chip'} flex items-center gap-3.5 rounded-[22px] p-3.5" style="${r[0]=='Mariana'?'border-color:#8B5CF6':''}"><span class="ser tn w-6 text-center text-[20px]">${i+1}</span><span class="hex grid h-10 w-10 place-items-center text-[14px] font-bold text-white" style="background:var(--g)">${r[0][0]}</span><span class="flex-1 text-[15px] font-bold">${r[0]==='Mariana'?'Você':r[0]}</span><span class="tn mut text-[13px] font-semibold">${r[1]} XP</span></li>`).join('')}</ol><p class="mut mt-4 text-[13px]">Ranking de demonstração: não há outros usuários reais neste protótipo.</p>`}
+function rCom(){const rk=[...FR,['Mariana',S.wk]].sort((a,b)=>b[1]-a[1]),me=rk.findIndex(r=>r[0]=='Mariana'),enter=view!=='com',ahead=me>0?rk[me-1]:null,an=enter?'in':'';
+ const nm=r=>r[0]=='Mariana'?'Você':r[0],isMe=r=>r[0]=='Mariana';
+ const col=(r,p)=>`<li class="pcol p${p}" style="--d:${3-p}" aria-label="${p}º lugar: ${nm(r)}, ${r[1]} XP">${p==1?`<span class="pcrown" aria-hidden="true">${ic('crown','h-6 w-6')}</span>`:''}<span class="pav ${isMe(r)?'me':''}" aria-hidden="true">${r[0][0]}</span><p class="pnm" aria-hidden="true">${nm(r)}</p><p class="pxp tn" aria-hidden="true">${r[1]} XP</p><div class="pblk" aria-hidden="true"><b>${p}</b></div></li>`;
+ $('#v-com').innerHTML=`<h2 class="h2">Comunidade</h2><p class="sub mt-1.5">Ranking semanal entre amigos.</p>
+ <ol class="pod ${an}" aria-label="Pódio da semana">${rk.slice(0,3).map((r,i)=>col(r,i+1)).join('')}</ol>
+ <div class="glass card cme ${an} mt-5 flex items-center gap-3 !p-4"><span class="hex grid h-11 w-11 shrink-0 place-items-center text-white" style="background:var(--g)">${ic('trend','h-5 w-5')}</span><div class="min-w-0 flex-1"><p class="text-[15px] font-bold">Você está em ${me+1}º lugar</p><p class="mut text-[13px]">${ahead?`Faltam <b class="tn">${ahead[1]-S.wk+1} XP</b> para passar ${ahead[0]}.`:'Você lidera a semana!'}</p></div><button class="btn2 shrink-0 !h-10 !px-4 text-[13px]" data-a="nav" data-k="des">Ganhar XP</button></div>
+ ${rk.length>3?`<ol class="crows ${an}" start="4" aria-label="Demais posições">${rk.slice(3).map((r,i)=>`<li class="crow ${isMe(r)?'me':''}" style="--d:${i}"><span class="tn w-5 text-center text-[16px] font-bold mut">${i+4}</span><span class="hex grid h-9 w-9 place-items-center text-[13px] font-bold text-white" style="background:var(--g)">${r[0][0]}</span><span class="flex-1 text-[15px] font-semibold">${nm(r)}</span><span class="tn mut text-[13px] font-semibold">${r[1]} XP</span></li>`).join('')}</ol>`:''}
+ <p class="mut mt-4 text-[12px]">Ranking de demonstração.</p>`;
+ if(enter){FX.play('podium');if(!FX.calm())setTimeout(()=>{const a=$('#v-com .p1 .pav');if(a&&view=='com')FX.burst(a,18)},1250)}}
 function openModal(){const m=$('#modal');$('.sheet',m).innerHTML=`<h3 id="m-h" class="text-[22px] leading-[1.1]">ENEM Premium — Acesso Completo</h3><ul class="mt-4 grid gap-2.5">${PREM.map(x=>`<li class="flex gap-2.5 text-[14px] leading-snug">${ic('check','h-5 w-5 lil shrink-0')}<span>${x}</span></li>`).join('')}</ul><p class="chip mt-5 rounded-2xl p-4 text-[13px] leading-relaxed"><b>Continua gratuito:</b> a primeira lição das sete disciplinas e os minijogos demonstrativos.</p><p class="lil mt-4 text-[13px] font-bold">A contratação está indisponível neste protótipo. Nenhuma compra é realizada.</p><button class="btn mt-5 w-full" data-a="mclose">Entendi</button>`;m.classList.add('on');m.setAttribute('aria-hidden','false');const b=$('[data-a=mclose]',m);if(b)b.focus()}
 function closeModal(){const m=$('#modal');m.classList.remove('on');m.setAttribute('aria-hidden','true')}
 
@@ -1134,7 +1160,7 @@ const FX=(()=>{let ctx=null,last=-1;
  const calm=()=>st().reduce||sys();
  function init(){if(ctx||!st().sound)return;try{ctx=new(window.AudioContext||window.webkitAudioContext)()}catch(e){ctx=null}if(ctx&&ctx.state==='suspended')ctx.resume()}
  function tone(f,t0,d,v,ty,f2){if(!ctx||!st().sound)return;const o=ctx.createOscillator(),g=ctx.createGain(),t=ctx.currentTime+t0;o.type=ty||'sine';o.frequency.setValueAtTime(f,t);if(f2)o.frequency.exponentialRampToValueAtTime(f2,t+d);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v,t+.015);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g);g.connect(ctx.destination);o.start(t);o.stop(t+d+.05)}
- const snd={ok(){tone(659,0,.18,.16);tone(880,.09,.26,.15);tone(1319,.2,.3,.07,'triangle')},bad(){tone(300,0,.22,.09,'triangle',240)},snap(){tone(520,0,.07,.1,'square');tone(780,.04,.1,.08)},link(){tone(988,0,.16,.12);tone(1480,.07,.24,.08)},tap(){tone(700,0,.05,.05)},done(){[523,659,784,1047].forEach((f,i)=>tone(f,i*.1,.34,.13))}};
+ const snd={ok(){tone(659,0,.18,.16);tone(880,.09,.26,.15);tone(1319,.2,.3,.07,'triangle')},bad(){tone(300,0,.22,.09,'triangle',240)},snap(){tone(520,0,.07,.1,'square');tone(780,.04,.1,.08)},link(){tone(988,0,.16,.12);tone(1480,.07,.24,.08)},tap(){tone(700,0,.05,.05)},done(){[523,659,784,1047].forEach((f,i)=>tone(f,i*.1,.34,.13))},podium(){tone(523,.12,.24,.1);tone(659,.42,.24,.1);tone(784,.72,.3,.12);tone(1047,.84,.5,.09,'triangle');tone(1568,1.3,.35,.05,'triangle')}};
  const vib=p=>{try{if(st().haptic&&navigator.vibrate)navigator.vibrate(p)}catch(e){}};
  function play(n,v){init();if(snd[n])snd[n]();if(v)vib(v)}
  function say(t){const l=$('#live');if(l){l.textContent='';setTimeout(()=>{l.textContent=t},30)}}
