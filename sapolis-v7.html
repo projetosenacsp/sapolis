@@ -44,10 +44,34 @@ html:not(.dark) .blob{opacity:.17!important}html:not(.dark) body{background:radi
 .sw[aria-checked=true]{background:#7C3AED}.sw[aria-checked=true]::after{transform:translateX(18px)}
 /* cápsula */
 #top{position:absolute;inset:0 0 auto 0;z-index:30;padding:12px 16px 0;pointer-events:none}
-#isl{--w:178px;--h:46px;--r:23px;position:relative;margin:0 auto;width:var(--w);height:var(--h);border-radius:var(--r);overflow:hidden;background:#0A0512;color:#fff;pointer-events:auto;box-shadow:0 14px 30px -12px rgba(0,0,0,.6),inset 0 0 0 1px rgba(255,255,255,.12);transition:width .6s var(--sp),height .6s var(--sp),border-radius .6s var(--sp)}
-#isl[data-s=mini]{--w:54px}#isl[data-s=music]{--w:100%;--h:112px;--r:32px}#isl[data-s=xp]{--w:100%;--h:124px;--r:32px}#isl[data-s=prev]{--w:100%;--h:108px;--r:32px}#isl[data-s=notif]{--w:100%;--h:76px;--r:30px}
+#isl{--w:42px;--h:42px;--r:34%;position:relative;top:0;margin:0 auto;width:var(--w);height:var(--h);border-radius:var(--r);overflow:hidden;background:#0A0512;color:#fff;pointer-events:auto;box-shadow:0 14px 30px -12px rgba(0,0,0,.6),inset 0 0 0 1px rgba(255,255,255,.12);transition:width .6s var(--sp),height .6s var(--sp),border-radius .6s var(--sp),transform .6s var(--sp),top .6s var(--sp),box-shadow .4s ease}
+/* inativa: a própria ilha vira o losango líquido da logo; ao abrir, gira e se estica */
+#isl::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .35s ease;background:radial-gradient(60% 50% at 30% 26%,rgba(228,210,255,.95),rgba(228,210,255,0) 58%),radial-gradient(75% 75% at 80% 82%,rgba(139,92,246,.95),rgba(139,92,246,0) 62%),radial-gradient(50% 40% at 85% 25%,rgba(196,160,255,.35),rgba(196,160,255,0) 70%),linear-gradient(135deg,#2B1456 0%,#090313 52%,#1E0C3D 100%)}
+#isl::after{content:"";position:absolute;left:24%;top:4%;width:42%;height:12%;border-radius:99px;pointer-events:none;opacity:0;transition:opacity .3s ease;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.85) 45%,rgba(255,255,255,0));transform:rotate(-45deg) translate(-2px,8px);filter:blur(.6px)}
+#isl[data-s=idle],#isl[data-s=mini]{top:2px;transform:rotate(45deg);background:#0B0418;box-shadow:inset 0 1.5px 2px rgba(255,255,255,.7),inset 0 -3px 6px rgba(167,139,250,.6),inset 3px 0 4px rgba(255,255,255,.14),0 6px 14px rgba(10,0,30,.5),0 0 18px rgba(137,54,240,.45);animation:gemb 6s ease-in-out infinite}
+#isl[data-s=idle]::before,#isl[data-s=mini]::before,#isl[data-s=idle]::after,#isl[data-s=mini]::after{opacity:1}
+@keyframes gemb{0%,100%{border-radius:34%}33%{border-radius:40% 30% 38% 32%}66%{border-radius:30% 38% 32% 40%}}
+.playing #isl[data-s=idle],.playing #isl[data-s=mini]{box-shadow:inset 0 1.5px 2px rgba(255,255,255,.7),inset 0 -3px 6px rgba(167,139,250,.6),0 6px 14px rgba(10,0,30,.5),0 0 26px rgba(167,139,250,.85)}
+#isl[data-s=idle]:hover,#isl[data-s=mini]:hover{box-shadow:inset 0 1.5px 2px rgba(255,255,255,.7),inset 0 -3px 6px rgba(167,139,250,.6),0 6px 14px rgba(10,0,30,.5),0 0 26px rgba(167,139,250,.75)}
+#isl[data-s=hist]{--w:100%;--h:var(--hh,190px);--r:30px}
+.p-idle,.p-mini{justify-content:center;padding:0}
+.igem{position:relative;display:block;width:24px;height:24px;border-radius:32%;transform:rotate(45deg);background:radial-gradient(55% 45% at 28% 22%,rgba(225,205,255,.95),rgba(225,205,255,0) 60%),radial-gradient(70% 70% at 78% 80%,rgba(139,92,246,.85),rgba(139,92,246,0) 62%),linear-gradient(135deg,#2B1456 0%,#090313 55%,#1E0C3D 100%);box-shadow:inset 0 1px 1.5px rgba(255,255,255,.7),inset 0 -2px 4px rgba(167,139,250,.55),inset 2px 0 3px rgba(255,255,255,.14),0 3px 8px rgba(0,0,0,.7),0 0 12px rgba(137,54,240,.45);animation:gemb 6s ease-in-out infinite}
+.igem::after{content:"";position:absolute;left:18%;top:14%;width:40%;height:16%;border-radius:99px;background:linear-gradient(90deg,rgba(255,255,255,.85),rgba(255,255,255,0));transform:rotate(-45deg) translate(-2px,5px);filter:blur(.4px);opacity:.8}
+@keyframes gemb{0%,100%{border-radius:32%;transform:rotate(45deg) scale(1)}33%{border-radius:38% 28% 36% 30%;transform:rotate(47deg) scale(1.04)}66%{border-radius:28% 36% 30% 38%;transform:rotate(43deg) scale(.98)}}
+.playing .igem{box-shadow:inset 0 1px 1.5px rgba(255,255,255,.7),inset 0 -2px 4px rgba(167,139,250,.55),0 3px 8px rgba(0,0,0,.7),0 0 18px rgba(167,139,250,.8)}
+.p-hist{flex-direction:column;align-items:stretch;justify-content:flex-start;gap:4px;padding:10px 10px 10px 14px}
+.hhd{display:flex;align-items:center;gap:10px;min-height:36px}.hhd b{flex:1;font-size:14px;font-weight:700;letter-spacing:-.01em}
+.hhd .igem{width:16px;height:16px;flex-shrink:0;animation:none}
+.hbtn{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.1);color:#fff;flex-shrink:0}.hbtn:active{transform:scale(.92)}
+.hrow{display:flex;align-items:center;gap:11px;width:100%;min-height:48px;padding:5px 6px 5px 0;border-radius:16px;text-align:left;color:#fff;transition:background .2s}
+.hrow:hover,.hrow:focus-visible{background:rgba(255,255,255,.07)}.hrow:active{transform:scale(.98)}
+.hrow .hic{display:grid;place-items:center;width:38px;height:38px;flex-shrink:0;border-radius:12px;color:#fff;background:linear-gradient(140deg,var(--a),var(--b))}
+.hrow b{display:block;font-size:14px;font-weight:600;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.hrow small{display:block;font-size:12px;color:rgba(226,216,250,.7);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#isl[data-s=hist] .hrow{animation:hin .4s cubic-bezier(.16,1,.3,1) backwards;animation-delay:calc(.12s + var(--d) * 60ms)}@keyframes hin{from{opacity:0;transform:translateY(6px)}}
+.hempty{padding:6px 2px 4px;font-size:13px;color:rgba(226,216,250,.75);line-height:1.4}
+#isl[data-s=music]{--w:100%;--h:112px;--r:32px}#isl[data-s=xp]{--w:100%;--h:124px;--r:32px}#isl[data-s=prev]{--w:100%;--h:108px;--r:32px}#isl[data-s=notif]{--w:100%;--h:76px;--r:30px}
 .pane{position:absolute;inset:0;display:flex;align-items:center;gap:12px;padding:0 14px;opacity:0;pointer-events:none;transform:scale(.96);transition:opacity .2s,transform .4s var(--sp);text-align:left;color:#fff}
-#isl[data-s=idle] .p-idle,#isl[data-s=mini] .p-mini,#isl[data-s=music] .p-music,#isl[data-s=xp] .p-xp,#isl[data-s=prev] .p-prev,#isl[data-s=notif] .p-notif{opacity:1;pointer-events:auto;transform:none;transition-delay:.14s}
+#isl[data-s=hist] .p-hist,#isl[data-s=idle] .p-idle,#isl[data-s=mini] .p-mini,#isl[data-s=music] .p-music,#isl[data-s=xp] .p-xp,#isl[data-s=prev] .p-prev,#isl[data-s=notif] .p-notif{opacity:1;pointer-events:auto;transform:none;transition-delay:.14s}
 .p-mini{justify-content:center;padding:0}
 .side{position:absolute;top:12px;height:46px;display:flex;align-items:center;justify-content:center;gap:6px;border-radius:99px;pointer-events:auto;transition:opacity .3s}
 #top[data-open] .side{opacity:0;pointer-events:none}
@@ -86,7 +110,7 @@ textarea::placeholder,input::placeholder{color:var(--mute)}
 #modal.on{opacity:1;pointer-events:auto}#modal .sheet{max-height:100%;overflow-y:auto;transform:translateY(30px) scale(.95);transition:transform .5s var(--sp)}#modal.on .sheet{transform:none}
 
 .nb[aria-current=page] svg{stroke-width:2.2}
-@media(max-width:359px){#isl[data-s=idle]{--w:150px}#top .side.left-4{padding:0 10px!important}.h2{font-size:26px}}
+@media(max-width:359px){#top .side.left-4{padding:0 10px!important}.h2{font-size:26px}}
 .cta{color:var(--lil);font-size:13px;font-weight:600}
 
 /* feedback visual */
@@ -430,8 +454,9 @@ textarea::placeholder,input::placeholder{color:var(--mute)}
   <div id="top">
     <div class="side glass left-4 px-3.5 tn text-[15px] font-bold"><svg class="ic h-[18px] w-[18px] text-[#FB7185]"><use href="#i-flame"/></svg><span class="snv">12</span></div>
     <div id="isl" data-s="idle" aria-live="polite">
-      <button id="b-idle" class="pane p-idle" aria-label="Abrir central da SApólis"><span class="lg h-8 w-8 shrink-0"></span><span class="text-[17px] font-bold tracking-[-0.02em]" style="font-family:Inter,system-ui,sans-serif">SApólis</span><span class="eq ml-auto"><i></i><i></i><i></i><i></i></span></button>
-      <button id="b-mini" class="pane p-mini" aria-label="Abrir central da SApólis"><span class="lg h-8 w-8"></span></button>
+      <button id="b-idle" class="pane p-idle" aria-label="SApólis: ver acessados recentemente" aria-expanded="false"></button>
+      <button id="b-mini" class="pane p-mini" aria-label="SApólis: ver acessados recentemente" aria-expanded="false"></button>
+      <div class="pane p-hist" role="dialog" aria-label="Acessados recentemente"><div class="hhd"><span class="igem" aria-hidden="true"></span><b>Acessados recentemente</b><button data-a="hmus" class="hbtn" aria-label="Trilhas de foco"><svg class="ic h-4 w-4"><use href="#i-head"/></svg></button><button data-a="hclose" class="hbtn" aria-label="Fechar histórico"><svg class="ic h-4 w-4"><use href="#i-up"/></svg></button></div><div id="hlist"></div></div>
       <div class="pane p-music">
         <span class="hex grid h-14 w-14 shrink-0 place-items-center" style="background:linear-gradient(160deg,#7C3AED,#C4B5FD)"><span class="eq !flex"><i></i><i></i><i></i><i></i></span></span>
         <div class="min-w-0 flex-1"><p id="m-t" class="truncate text-[15px] font-bold"></p><p id="m-c" class="text-[12px] font-semibold" style="color:#C4B5FD"></p></div>
@@ -924,12 +949,22 @@ $('#theme').onclick=()=>{root.classList.toggle('dark');try{localStorage.setItem(
 
 /* ---------- cápsula ---------- */
 let cur='idle',compact=false,hold;
-const apply=()=>{isl.dataset.s=cur=='idle'&&compact?'mini':cur;$('#top').toggleAttribute('data-open',cur!='idle')};
+const apply=()=>{isl.dataset.s=cur=='idle'&&compact?'mini':cur;$('#top').toggleAttribute('data-open',cur!='idle');$$('#b-idle,#b-mini').forEach(b=>b.setAttribute('aria-expanded',String(cur=='hist')))};
 function island(s,ms){clearTimeout(hold);cur=s;apply();if(s!='idle'){const p=isl.querySelector('.p-'+s);if(p){p.classList.remove('pop');p.offsetWidth;p.classList.add('pop')}}if(ms)hold=setTimeout(()=>{cur='idle';apply()},ms)}
 function reward(n,t){$('#x-n').textContent=n;$('#x-t').textContent=t;island('xp',3400)}
 function preview(d,meta){$('#pv-t').textContent=d[1];$('#pv-m').textContent=meta;$('#pv-i').style.cssText=`--a:${d[3]};--b:${d[4]}`;$('#pv-i').innerHTML=ic(d[2],'h-6 w-6');island('prev',3400)}
 function notify(m){$('#n-t').textContent=m;island('notif',4200)}
-const openIsl=()=>{if(playing)island('music');else preview(D[0],'Revolução Francesa · 18 min · +120 XP')};
+/* ---------- ilha dinâmica: histórico do que foi acessado ---------- */
+const HOPEN={route:v=>routeScreen(v),les:()=>openLes(0),game:v=>gameScreen(v),place:v=>{VS.src='map';visDiscover(v,'map')},lab:v=>labScreen(v),rg:v=>{const [r,g]=v.split(':');A.rg({dataset:{r,g}})}};
+function visit(k,v,t,sub,icn,a,b){if(!Array.isArray(S.hist))S.hist=[];const key=k+':'+v;S.hist=[{k,v,t,sub,ic:icn,a,b,ts:Date.now()},...S.hist.filter(h=>h.k+':'+h.v!==key)].slice(0,8);save();preview([v,t,icn,a,b],sub)}
+const ago=ts=>{const s=(Date.now()-ts)/1000;return s<60?'agora':s<3600?`há ${Math.floor(s/60)} min`:s<86400?`há ${Math.floor(s/3600)} h`:s<172800?'ontem':`há ${Math.floor(s/86400)} dias`};
+const histItems=()=>(S.hist||[]).filter(x=>HOPEN[x.k]).slice(0,4);
+function renderHist(){const h=histItems();
+ $('#hlist').innerHTML=h.length?h.map((x,i)=>`<button class="hrow" data-a="hgo" data-i="${i}" style="--d:${i};--a:${x.a};--b:${x.b}"><span class="hic" aria-hidden="true">${ic(x.ic,'h-[18px] w-[18px]')}</span><span class="min-w-0 flex-1"><b>${x.t}</b><small>${x.sub} · ${ago(x.ts)}</small></span><svg class="ic h-4 w-4 shrink-0 opacity-60" aria-hidden="true"><use href="#i-arrow"/></svg></button>`).join(''):'<p class="hempty">Nada por aqui ainda. Rotas, lições, missões e lugares que você abrir aparecem nesta lista.</p>';
+ isl.style.setProperty('--hh',(60+(h.length?h.length*50:48))+'px')}
+const openIsl=()=>{renderHist();island('hist');FX.tap();setTimeout(()=>{const f=$('#hlist .hrow')||$('[data-a=hclose]');if(f&&cur=='hist')f.focus({preventScroll:true})},380)};
+document.addEventListener('click',e=>{if(cur=='hist'&&!e.target.closest('#isl'))island('idle')});
+document.addEventListener('keydown',e=>{if(e.key=='Escape'&&cur=='hist'){island('idle');$(compact?'#b-mini':'#b-idle').focus()}});
 $('#b-idle').onclick=openIsl;$('#b-mini').onclick=openIsl;
 
 
@@ -960,7 +995,7 @@ tl(1);cp(0);
 /* ---------- História (experiência original) com camadas ---------- */
 let HQST=0;
 function stage(i){$$('.stg').forEach(s=>s.hidden=+s.dataset.st!=i);$$('.stp button').forEach(b=>b.setAttribute('aria-current',+b.dataset.st==i?'step':'false'));if(i==2&&!HQST){HQST=1;histQuiz()}if(i==3)evo();sc.scrollTop=0}
-function openLes(i){BK=()=>go('bib');show('les');mark('bib');stage(i);preview(D[0],'Revolução Francesa · 18 min · +120 XP')}
+function openLes(i){BK=()=>go('bib');show('les');mark('bib');stage(i);visit('les','hist','Revolução Francesa','História · 18 min · +120 XP','book','#7C3AED','#A78BFA')}
 function histQuiz(){mc($('#h-les'),QZ.rf.q,{t:'Desafio final'},x=>{const xp=Math.round(120*x.ok/x.n);S.hq={ok:x.ok,n:x.n,wr:x.wr,xp};addRev('História','hist',x.wr);const first=xp>0&&award('les:hist',xp,'Lição: Revolução Francesa');
  $('#h-les').insertAdjacentHTML('beforeend',`<div class="glass card glow mt-4"><h3 class="text-[24px] leading-tight">Você acertou ${x.ok} de ${x.n}</h3><p class="tn lil mt-2 text-[18px] font-bold">${first?'+'+xp+' XP':xp>0?'XP desta lição já conquistado':'Revise o conteúdo e tente de novo'}</p>${x.wr.length?`<p class="sub mt-1.5">Para reforçar: ${x.wr.join(', ')}.</p>`:''}<button class="btn mt-4 w-full" data-a="st" data-st="3">Ver meu feedback</button><button class="btn2 mt-2.5 w-full" data-a="hq">Tentar de novo</button></div>`)})}
 function evo(){const h=S.hq;$('#ev').innerHTML=h?`<h3 class="text-[22px] leading-tight">Seu desempenho: ${h.ok} de ${h.n}</h3><div class="glass card mt-4"><div class="flex items-baseline justify-between"><p class="text-[14px] font-bold">Domínio neste conteúdo</p><span class="tn lil text-[13px] font-bold">${Math.round(h.ok/h.n*100)}%</span></div><div class="seg mt-2.5"><i style="width:${h.ok/h.n*100}%"></i></div><p class="mut mt-3 text-[13px]">+${h.xp} XP neste desafio.</p></div>${h.wr.length?`<h3 class="mt-7 text-[20px]">Onde reforçar</h3><div class="mt-3 flex flex-wrap gap-2">${h.wr.map(w=>`<span class="pill">${w}</span>`).join('')}</div><button data-a="st" data-st="1" class="btn mt-5 w-full">Rever esses pontos</button><p class="sub mt-3">Esses assuntos entraram na sua revisão espaçada: amanhã, em 3 e em 7 dias.</p>`:'<p class="sub mt-5">Sem pontos fracos neste desafio. Que tal explorar uma rota de São Paulo?</p><button data-a="nav" data-k="bib" class="btn mt-4 w-full">Ver as 7 rotas</button>'}`:'<h3 class="text-[22px] leading-tight">Evoluir</h3><p class="sub mt-2">Conclua o desafio final para ver seu desempenho, o XP conquistado, os pontos de dificuldade e as próximas revisões.</p><button data-a="st" data-st="2" class="btn mt-5 w-full">Fazer o desafio</button>'}
@@ -1040,7 +1075,7 @@ function runGame(g,eng,res,act){if(g.k=='formula'){formulaHub(eng,res,act);retur
  if(g.k=='model')model(eng,()=>fin({msg:'Texto-modelo explorado',extra:'<p class="sub mt-1">Agora aplique no Laboratório de Redação.</p>'}))}
 
 /* ---------- ROTA (tela interna) ---------- */
-function routeScreen(id){const r=RM[id],p=prog(r),dn=S.done['les:'+id];preview([r.id,r.n,r.ic,r.a,r.b],r.pl+' · +'+r.xp+' XP na lição');
+function routeScreen(id){const r=RM[id],p=prog(r),dn=S.done['les:'+id];visit('route',id,r.n,place(r)+' · +'+r.xp+' XP',r.ic,r.a,r.b);
  screen(`${bk('Rotas')}<div class="cov rounded-[32px] p-6 pb-7" style="--a:${r.a};--b:${r.b}"><span class="hex grid h-12 w-12 place-items-center bg-white/15">${ic(r.ic,'h-6 w-6')}</span><h1 class="mt-5 text-[34px] leading-[1.04]">${r.n}</h1><p class="mt-1.5 text-[14px] font-semibold text-white/90">${r.pl}</p><p class="ser mt-4 text-[19px] italic leading-snug text-white/95">${r.nar}</p><div class="mt-4 flex flex-wrap gap-2"><span class="pill !bg-white/15 !text-white !border-transparent">+${r.xp} XP na lição</span><span class="pill !bg-white/15 !text-white !border-transparent">${p}% concluído</span></div></div>
  <button data-a="les" data-r="${id}" class="btn mt-5 w-full">${dn?'Rever lição':p?'Continuar lição':'Começar lição'}</button>
  <h3 class="mt-8 text-[22px]">Minijogos da rota</h3><div class="mt-3 grid gap-2.5">${r.g.map(g=>`<button data-a="rg" data-r="${id}" data-g="${g.id}" class="chip press flex min-h-[56px] items-center justify-between gap-3 rounded-[20px] px-4 py-3 text-left text-[15px] font-semibold"><span>${g.t}</span>${S.done['g:'+g.id]?ic('check','h-5 w-5 lil'):ic('play','h-4 w-4')}</button>`).join('')}${id=='red'?`<button data-a="lab" class="chip press flex min-h-[56px] items-center justify-between gap-3 rounded-[20px] px-4 py-3 text-left text-[15px] font-semibold"><span>Laboratório de Redação</span>${ic('pen','h-4 w-4')}</button>`:''}</div>
@@ -1060,7 +1095,7 @@ function lessonStep(){const {r,i}=LS;let body='',after=null;
  screen(`<div class="mb-4 flex items-center justify-between"><button class="btn2" data-a="back">${ic('back','h-4 w-4')}Rota</button><span class="pill tn">${i+1} de 7</span></div>${stq(i,7)}<h2 class="h2 mt-5">${STEPS[i]}</h2>${body}${i<6?`<div class="mt-6 flex gap-2.5">${i?'<button class="btn2" data-a="lp">Voltar</button>':''}<button id="lnx" class="btn flex-1" data-a="ln">Continuar</button></div>`:''}`,'bib',()=>routeScreen(r.id),()=>{gate();if(after)after()})}
 
 /* ---------- MINIJOGOS DA CIDADE ---------- */
-let CURM='puz';function gameScreen(k){CURM=k;const g=GM.find(x=>x[0]==k);
+let CURM='puz';function gameScreen(k){CURM=k;const g=GM.find(x=>x[0]==k);visit('game',k,g[1],'Missão pela cidade',GI[k],g[3],g[4]);
  let top='';if(k=='puz')top=`<div class="mt-4 flex flex-wrap gap-2">${PZ.map((p,i)=>`<button data-a="pzn" data-n="${i}" class="pill ${PZN==i?'on':''}">${p[0]}${S.done['g:puz'+i]?' ✓':''}</button>`).join('')}</div>`;
  if(k=='rel')top=`<div class="mt-4 flex flex-wrap gap-2">${REL.map((p,i)=>`<button data-a="rln" data-n="${i}" class="pill ${RLN==i?'on':''}">${p.t}${S.done['g:rel'+i]?' ✓':''}</button>`).join('')}</div><p class="mut mt-3 text-[13px]">${S.timer?'Temporizador ligado: 15 s por questão.':'Sem temporizador: responda no seu ritmo.'}</p>`;
  screen(`${bk('Missões')}<h2 class="h2">${g[1]}</h2><p class="sub mt-2">${g[2]}</p>${top}<div id="eng" class="mt-5"></div><div id="res"></div>`,'des',()=>go('des'),()=>startMission(k))}
@@ -1083,7 +1118,7 @@ function feedback(tx){const low=tx.toLowerCase(),w=(tx.trim().match(/\S+/g)||[])
   [ok(has(RAG),'Agente (quem fará)')+ok(has(RAC),'Ação (verbo de ação)')+ok(has(MEIO),'Meio ou modo')+ok(has(FIN),'Finalidade')+'<li class="text-[13px] leading-snug"><span class="lil font-bold">•</span> Detalhamento: confira manualmente.</li>','']];
  return `<div class="glass card glow mt-5"><h3 class="text-[22px] leading-tight">Feedback de prática</h3><p class="chip mt-3 rounded-2xl p-3 text-[13px] leading-relaxed">Isto <b>não é</b> a correção oficial do ENEM e não gera nota. São verificações simples e transparentes, que não avaliam a qualidade do seu argumento. Para uma análise pedagógica completa, peça a leitura de um professor.</p>
  <div class="mt-4 grid gap-3">${COMP.map((c,i)=>`<details class="chip rounded-[20px] px-4 py-3.5" ${i==0?'open':''}><summary data-a="x" class="flex min-h-[32px] items-center justify-between gap-3 text-[14px] font-bold"><span>Competência ${c[0]}: ${c[1]}</span>${ic('down','chev h-4 w-4 shrink-0 transition-transform')}</summary><ul class="mt-3 grid gap-1.5">${i==0?`<li class="text-[13px] leading-snug">${obs[0][0]}</li>`:i==1?obs[1][0]:i==2?obs[2][0]:i==3?obs[3][0]:obs[4][0]}</ul><p class="sub mt-3 text-[13px]"><b>Orientação:</b> ${c[2]}</p><p class="sub mt-2 text-[13px]"><b>Exemplo:</b> ${c[3]}</p></details>`).join('')}</div></div>`}
-function labScreen(tid){const t=TM.find(x=>x.id==tid)||TM[0];LAB=t.id;const pl=S.plan[t.id]||{},dr=S.draft[t.id]||'';
+function labScreen(tid){const t=TM.find(x=>x.id==tid)||TM[0];LAB=t.id;visit('lab',t.id,'Laboratório de Redação','Redação · '+t.lugar,'pen','#5B21B6','#8B5CF6');const pl=S.plan[t.id]||{},dr=S.draft[t.id]||'';
  screen(`${bk('Voltar')}<h2 class="h2">Laboratório de Redação</h2><p class="sub mt-2">Treine com temas ligados a lugares de São Paulo. Os temas são autorais, não previsões nem propostas oficiais do ENEM.</p>
  <div class="mt-4 flex flex-wrap gap-2">${TM.map((x,i)=>`<button data-a="lt" data-t="${x.id}" class="pill ${x.id==t.id?'on':''}">Tema ${i+1} · ${x.lugar}</button>`).join('')}</div>
  <div class="glass card mt-4"><h3 class="text-[22px] leading-tight">${t.t}</h3><h4 class="mt-4 text-[16px]">Textos motivadores</h4>${t.tx.map(x=>`<p class="chip mt-2.5 rounded-2xl p-3.5 text-[13.5px] leading-relaxed">${x}</p>`).join('')}<h4 class="mt-5 text-[16px]">Ideias de repertório</h4><ul class="mt-2 grid gap-2">${t.rep.map(x=>`<li class="text-[13.5px] leading-snug">• ${x}</li>`).join('')}</ul><p class="mut mt-3 text-[13px]">Confira cada fonte antes de citá-la na sua redação.</p></div>
@@ -1133,7 +1168,7 @@ const A={
  nav(b){go(b.dataset.k);ctx(b.dataset.k)},back(){BK?BK():go(prevV)},route(b){b.dataset.r=='hist'?openLes(0):routeScreen(b.dataset.r)},
  les(b){if(b.dataset.r){LS={r:RM[b.dataset.r],i:0};lessonStep()}else openLes(+b.dataset.st||0)},ln(){LS.i++;lessonStep()},lp(){LS.i--;lessonStep()},lg(){lessonStep()},
  lgame(b){const g=LS.r.g.find(x=>x.id==b.dataset.g);$('#gl').innerHTML='<div id="eng"></div><div id="res"></div>';runGame(g,$('#eng'),$('#res'),'lg')},
- rg(b){const r=RM[b.dataset.r],g=r.g.find(x=>x.id==b.dataset.g);screen(`${bk('Rota')}<h2 class="h2">${g.t}</h2><div id="eng" class="mt-5"></div><div id="res"></div>`,'enem',()=>routeScreen(r.id),()=>runGame(g,$('#eng'),$('#res'),'back'))},
+ rg(b){const r=RM[b.dataset.r],g=r.g.find(x=>x.id==b.dataset.g);visit('rg',r.id+':'+g.id,g.t,'Minijogo · '+r.n,'pad',r.a,r.b);screen(`${bk('Rota')}<h2 class="h2">${g.t}</h2><div id="eng" class="mt-5"></div><div id="res"></div>`,'enem',()=>routeScreen(r.id),()=>runGame(g,$('#eng'),$('#res'),'back'))},
  cap(b){S.caps[b.dataset.c]=1;save();ach()},x(){},
  game(b){gameScreen(b.dataset.g)},pzn(b){PZN=+b.dataset.n;gameScreen('puz')},rln(b){RLN=+b.dataset.n;gameScreen('rel')},
  timer(b){S.timer=!S.timer;save();b.setAttribute('aria-checked',String(S.timer))},
@@ -1269,6 +1304,8 @@ Object.assign(A,{
  ttheme(){$('#theme').click();tTop();const b=$('#tour [data-a=ttheme]');b&&b.focus()},
  tcv(b){TOUR.cv=+b.dataset.v;tourRender(false);const t=$(`#tour [data-a=tcv][data-v="${TOUR.cv}"]`);t&&t.focus()},
  tour(){tourOpen(0,true)},
+ hgo(b){const x=histItems()[+b.dataset.i];island('idle');if(x)HOPEN[x.k](x.v)},
+ hmus(){island('music')},hclose(){island('idle');$(compact?'#b-mini':'#b-idle').focus()},
  tprev(b){const n=+b.dataset.k,p=$('#tpv');if(!p)return;const same=!p.hidden&&p.dataset.k==n;clearTimeout(TOUR.pt);
   $$('#tour .ttile').forEach(t=>t.setAttribute('aria-pressed',String(!same&&t===b)));
   if(same){p.hidden=true;return}p.dataset.k=n;p.innerHTML=`<b>${TF[n][1]}</b>${TF[n][2]}`;p.hidden=false;
@@ -1486,7 +1523,7 @@ function visSelect(id,fly){const p=PM[id];if(!p)return;VS.sel=id;
  $$('#vlist [data-id]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.id==id)))}
 
 /* ---------- Tela 4 · Descoberta (comum à câmera e ao mapa) ---------- */
-function visDiscover(id,origin,conf){const p=PM[id];if(!p)return;const from=VS.src,r=p.r||p.alt,R=RM[r],dn=p.r&&S.done['les:'+p.r];
+function visDiscover(id,origin,conf){const p=PM[id];if(!p)return;visit('place',id,p.n,'SApólis Vision · '+visSubj(p),visIc(p),visC(p).a,visC(p).b);const from=VS.src,r=p.r||p.alt,R=RM[r],dn=p.r&&S.done['les:'+p.r];
  const og={demo:'Exemplo demonstrativo',manual:'Lugar escolhido por você',map:'Selecionado no mapa',ai:'Identificado pelo serviço de reconhecimento'+(conf!=null?` · confiança informada: ${Math.round(conf*100)}%`:'')}[origin];
  const msg=p.m||`${p.n.split(' ·')[0]} guarda ótimas oportunidades para aprender ${visSubj(p)}!`;
  screen(`${bk(from=='cam'?'Câmera':'Mapa')}<p class="lil text-[13px] font-bold uppercase tracking-wide">Você descobriu um lugar!</p><div class="mt-2 flex flex-wrap gap-2"><span class="pill">${og}</span></div>
