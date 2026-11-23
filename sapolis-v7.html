@@ -147,6 +147,17 @@ textarea::placeholder,input::placeholder{color:var(--mute)}
 .mslot{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;min-width:56px;min-height:56px;padding:0 10px;border-radius:16px;border:2px dashed var(--seg);font-size:20px;font-weight:600;font-variant-numeric:tabular-nums}
 .mslot b{font-size:12px;font-weight:600;color:var(--mute)}.mslot.ok{border-style:solid;border-color:var(--v);background:rgba(124,58,237,.1)}.mslot.no{border-color:#F43F5E;background:rgba(244,63,94,.12);animation:shake .35s}
 .key{min-height:52px;border-radius:16px;background:var(--chip);border:1px solid var(--gb);font-size:20px;font-weight:600;transition:transform .15s}.key:active{transform:scale(.95)}
+/* biblioteca — capas ilustradas */
+.bcard{display:flex;flex-direction:column;min-width:0}
+.bcov{position:relative;aspect-ratio:4/5;max-width:100%;border-radius:24px;overflow:hidden;color:#fff;background:#1B0A3A;border:1px solid var(--gb);box-shadow:0 18px 30px -20px rgba(41,16,82,.55)}
+.bcov.bgrad{background:radial-gradient(120% 90% at 15% 5%,var(--b),transparent 62%),linear-gradient(160deg,var(--a),#150a24 88%)}
+.bcov img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s var(--sp)}
+.bcard:hover .bcov img{transform:scale(1.04)}
+.bshade{position:absolute;left:0;right:0;bottom:0;height:52%;background:linear-gradient(to top,rgba(15,6,30,.9),rgba(15,6,30,.45) 45%,rgba(15,6,30,0))}
+.bico{position:absolute;left:10px;top:10px;display:grid;place-items:center;width:36px;height:36px;border-radius:12px;color:#fff;background:rgba(92,32,190,.72);border:1px solid rgba(255,255,255,.25);box-shadow:0 4px 12px -4px rgba(0,0,0,.4)}
+.btit{position:absolute;left:13px;right:13px;bottom:12px;font-size:18px;font-weight:650;line-height:1.1;letter-spacing:-.01em;text-shadow:0 1px 8px rgba(0,0,0,.45)}
+.bpl{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dark .bcov{border-color:rgba(196,181,253,.16)}
 /* comunidade — pódio */
 .pod{display:flex;align-items:flex-end;justify-content:center;gap:10px;margin:30px 0 0;padding:0;list-style:none}
 .pcol{position:relative;display:flex;flex-direction:column;align-items:center;flex:1;max-width:118px;min-width:0}
@@ -436,6 +447,7 @@ textarea::placeholder,input::placeholder{color:var(--mute)}
 <symbol id="i-down" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
 <symbol id="i-book" viewBox="0 0 24 24"><path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5zM5 19.5A1.5 1.5 0 0 0 6.5 21H19"/></symbol>
 <symbol id="i-sigma" viewBox="0 0 24 24"><path d="M17 5H7l6 7-6 7h10"/></symbol>
+<symbol id="i-m" viewBox="0 0 24 24"><text x="12" y="18.2" text-anchor="middle" font-size="18" font-weight="600" fill="currentColor" stroke="none" font-family="-apple-system,BlinkMacSystemFont,Inter,'Segoe UI',Roboto,system-ui,sans-serif">M</text></symbol>
 <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20l1-4L16.5 4.5a2.1 2.1 0 0 1 3 3L8 19zM14 7l3 3"/></symbol>
 <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-14 14-14 0 9-6 14-14 14zM5 19l7-7"/></symbol>
 <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 3L5 13.5h6L10 21l8-10.5h-6z"/></symbol>
@@ -654,7 +666,7 @@ function addRev(nome,id,wr){wr.forEach(w=>{const t=nome+': '+w;if(!S.rev.some(x=
    ========================================================= */
 // questão: [contexto, enunciado, alternativas, índice certo, explicação, [alt. errada comum, justificativa], tópico]
 const R=[
-{id:'mat',n:'Matemática',pl:'Edifício Copan',ic:'sigma',a:'#4338CA',b:'#8B5CF6',xp:80,
+{id:'mat',n:'Matemática',pl:'Edifício Copan',ic:'m',a:'#4338CA',b:'#8B5CF6',xp:80,
  nar:'A matemática escondida nas curvas de São Paulo.',
  d:'O Edifício Copan, no centro de São Paulo, impressiona pela fachada ondulada. Cada curva é também um problema de geometria esperando para ser resolvido.',
  h:'Projetado por Oscar Niemeyer na década de 1950, o Copan nasceu no auge do modernismo e da verticalização da cidade, quando São Paulo crescia e buscava novas formas de morar no centro.',
@@ -1042,11 +1054,13 @@ function rPer(){const L=lvl(),b0=L*500,n=streak(),d=new Date(),dow=(d.getDay()+6
 const CTAV={mat:'Explorar Matemática',red:'Treinar Redação',bio:'Iniciar descoberta',fis:'Resolver desafio',qui:'Explorar Química',geo:'Explorar território',por:'Explorar linguagem',hist:'Continuar lição'};
 const cta=r=>{const p=prog(r);return r.id=='hist'?(p>=100?'Rever lição':'Continuar lição'):p>=100?'Rever rota':p>0?'Continuar lição':CTAV[r.id]};
 const place=r=>r.pl.split(' e ')[0].split(',')[0].replace(' · experiência original','');
-const card=r=>`<button data-a="route" data-r="${r.id}" class="press text-left"><div class="cov relative h-[118px] rounded-[24px] p-3.5" style="--a:${r.a};--b:${r.b}"><span class="grid h-8 w-8 place-items-center rounded-xl bg-white/15">${ic(r.ic,'h-4 w-4')}</span><p class="absolute bottom-3.5 left-3.5 right-3.5 text-[18px] font-semibold leading-[1.1]">${r.n}</p></div><p class="mut mt-2 text-[13px] leading-snug">${place(r)}</p><div class="mt-1.5 flex items-center gap-2">${bar(prog(r),'flex-1')}<span class="tn mut text-[13px] font-bold">${prog(r)}%</span></div><p class="cta mt-1.5">${cta(r)} ›</p></button>`;
+/* capas ilustradas da Biblioteca: [arquivo, object-position]. Disciplina sem arte própria mantém o degradê. */
+const COVER={hist:['capas/historia.jpg','42% 50%'],mat:['capas/matematica.jpg','56% 50%'],red:['capas/redacao.jpg','44% 50%'],bio:['capas/biologia.jpg','20% 50%'],fis:['capas/fisica.jpg','60% 50%'],qui:['capas/quimica.jpg','46% 50%'],geo:['capas/geografia.jpg','52% 50%'],por:['capas/portugues.jpg','50% 50%']};
+const card=r=>{const c=COVER[r.id];return `<button data-a="route" data-r="${r.id}" class="bcard press text-left" aria-label="${r.n}: ${prog(r)}% concluído"><div class="bcov ${c?'':'bgrad'}" style="--a:${r.a};--b:${r.b}">${c?`<img src="${c[0]}" alt="" loading="lazy" decoding="async" style="object-position:${c[1]}">`:''}<span class="bshade" aria-hidden="true"></span><p class="btit">${r.n}</p></div><p class="bpl mut mt-2 text-[13px]">${place(r)}</p><div class="mt-1.5 flex items-center gap-2">${bar(prog(r),'flex-1')}<span class="tn mut w-9 text-right text-[12px] font-bold">${prog(r)}%</span></div><p class="bpl cta mt-1.5">${cta(r)} ›</p></button>`};
 function rBib(){const H=HC;
  $('#v-bib').innerHTML=`<div class="cov rounded-[32px] p-6" style="--a:#4C1D95;--b:#C4B5FD;box-shadow:0 30px 50px -26px rgba(91,33,245,.7)"><h2 class="text-[24px] font-semibold leading-[1.15]">São Paulo é sua sala de aula. O ENEM é sua próxima conquista.</h2></div>
  <h2 class="h2 mt-9">São Paulo em 7 Rotas</h2><p class="sub mt-2">Cada lugar guarda uma história. Cada história revela um conteúdo do ENEM.</p>
- <div class="mt-5 grid grid-cols-2 gap-x-3.5 gap-y-6">${ORDER.map((k,i)=>`<div class="${i%2?'mt-6':''}">${card(RM[k])}</div>`).join('')}<div>${card(H)}</div></div>
+ <div class="mt-5 grid grid-cols-2 gap-x-3 gap-y-5">${[...ORDER.map(k=>RM[k]),H].map(card).join('')}</div>
  <button data-a="lab" class="glass press mt-8 flex w-full items-center gap-4 rounded-[26px] p-4 text-left"><span class="hex grid h-14 w-14 shrink-0 place-items-center text-white" style="background:linear-gradient(160deg,#5B21B6,#8B5CF6)">${ic('pen','h-6 w-6')}</span><div><p class="text-[17px] font-semibold leading-tight">Laboratório de Redação</p><p class="mut mt-0.5 text-[13px]">Planeje, escreva e receba feedback de prática.</p><p class="cta mt-1.5">Treinar Redação ›</p></div></button>
  <h2 class="h2 mt-9 text-[24px]">Conexões Invisíveis</h2><p class="sub mt-1.5">Os assuntos do ENEM não existem isolados. Siga um percurso entre disciplinas.</p>
  <div class="mt-4 grid gap-3">${Object.entries(PATHS).map(([k,p])=>`<button data-a="path" data-p="${k}" class="glass press flex items-center gap-4 rounded-[26px] p-4 text-left"><span class="hex grid h-14 w-14 shrink-0 place-items-center text-white" style="background:linear-gradient(160deg,#4338CA,#38BDF8)">${ic('link','h-6 w-6')}</span><div class="min-w-0 flex-1"><p class="text-[17px] font-semibold leading-tight">${p.n}</p><p class="mut text-[13px]">${p.sub}</p>${bar(p.nodes.filter(nodeOk).length/4*100,'mt-2')}<p class="cta mt-1.5">Seguir percurso ›</p></div></button>`).join('')}</div>
@@ -1213,7 +1227,7 @@ const applyMotion=()=>root.classList.toggle('rm',!!S.set.reduce);
    BOAS-VINDAS — conhecendo o estudante (guia original: Lume)
    ========================================================= */
 const OBG=[['uni','Entrar na universidade','cap'],['nota','Melhorar minha nota no ENEM','trend'],['dif','Aprender conteúdos que tenho dificuldade','book'],['red','Melhorar minha redação','pen'],['alta','Me preparar para uma nota alta','trophy'],['sp','Aprender explorando São Paulo','pin']];
-const OBS=[['mat','Matemática','sigma'],['red','Redação','pen'],['bio','Biologia','leaf'],['fis','Física','bolt'],['qui','Química','flask'],['geo','Geografia','globe'],['por','Português','type'],['hist','História','book']];
+const OBS=[['mat','Matemática','m'],['red','Redação','pen'],['bio','Biologia','leaf'],['fis','Física','bolt'],['qui','Química','flask'],['geo','Geografia','globe'],['por','Português','type'],['hist','História','book']];
 const OBL=[['fund','Quero começar pelos fundamentos','leaf'],['alg','Conheço alguns conteúdos','book'],['rev','Já estudo e preciso revisar','cap'],['dif','Quero praticar questões mais difíceis','bolt']];
 const OBT=[['5','5 minutos','clock','Começar aos poucos'],['10','10 minutos','clock','Aprendizado leve'],['15','15 minutos','clock','Criar regularidade'],['30','30 minutos','clock','Aprofundar conteúdos']];
 /* diagnóstico: [contexto, enunciado, alternativas, certa, explicação, [alt. errada, justificativa], tópico, área] */
