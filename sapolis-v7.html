@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>SApólis</title>
-<script>try{if(localStorage.getItem('sap-theme')==='dark')document.documentElement.classList.add('dark')}catch(e){}</script>
+<script>try{const t=localStorage.getItem('sap-theme');if(t==='dark'||t==='mono')document.documentElement.classList.add('dark');if(t==='mono')document.documentElement.classList.add('mono')}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com/3.4.17"></script>
@@ -522,14 +522,53 @@ html:not(.dark) body{background:radial-gradient(60% 50% at 50% 28%,#F1EDF9,#E3E1
 #frame .hex:not([style*="--chip"]):not(#isl *),#frame .vbtn>span,#frame .tfi,#frame .tpi,#frame .obo.sel .obi,#frame .gico{background:linear-gradient(160deg,#F2EDFD,#E3D8FA)!important;color:#6A48C2!important;box-shadow:inset 0 0 0 1px rgba(106,72,194,.12)}
 .dark #frame .hex:not([style*="--chip"]):not(#isl *),.dark #frame .vbtn>span,.dark #frame .tfi,.dark #frame .tpi,.dark #frame .obo.sel .obi,.dark #frame .gico{background:linear-gradient(160deg,rgba(205,190,255,.34),rgba(205,190,255,.16))!important;color:#EDE6FF!important;box-shadow:inset 0 0 0 1px rgba(221,210,255,.14)}
 
+/* modo escuro: todo o app no mesmo roxo e contraste do onboarding */
+.dark{--bg:#170A30;--mute:rgba(226,216,250,.72);--lil:#C9B6FF;--glass:linear-gradient(155deg,rgba(255,255,255,.09),rgba(255,255,255,.05));--gb:rgba(196,181,253,.16);--sh:0 18px 36px -20px rgba(8,2,20,.85),inset 0 1px 0 rgba(255,255,255,.08);--chip:rgba(255,255,255,.08);--seg:rgba(255,255,255,.12);--out:#0C0518}
+.dark #frame{background:radial-gradient(95% 40% at 50% 8%,#4A2486 0%,rgba(74,36,134,0) 75%),radial-gradient(90% 40% at 50% 70%,#2A1252 0%,rgba(42,18,82,0) 80%),#170A30 fixed;background-attachment:local}
+.dark body{background:radial-gradient(60% 50% at 50% 40%,#2A1252,#07030F 75%)}
+.dark #nav,.dark .side{background:rgba(42,20,80,.72);border-color:rgba(196,181,253,.18)}
+.dark #frame .hex:not([style*="--chip"]):not(#isl *),.dark #frame .vbtn>span,.dark #frame .tfi,.dark #frame .tpi,.dark #frame .obo.sel .obi,.dark #frame .gico{background:rgba(255,255,255,.12)!important;color:#EDE6FF!important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)}
+.dark .crow.me,.dark .lcont{border-color:rgba(167,123,255,.55)}
+.dark #frame .vbtn>span{background:#2A1252!important;color:#EDE6FF!important}
+
+/* seletor de aparência (Perfil › Preferências) */
+.thsel{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.thsel button{display:flex;flex-direction:column;align-items:center;gap:7px;min-height:44px;padding:10px 4px;border-radius:16px;font-size:12px;font-weight:600;text-align:center;line-height:1.2;border:1.5px solid var(--gb);background:var(--chip);color:var(--ink);transition:border-color .2s,background .2s}
+.thsel button[aria-checked=true]{border-color:var(--v);background:rgba(124,58,237,.1)}
+.dark .thsel button[aria-checked=true]{border-color:#F5F4F8;background:rgba(255,255,255,.12)}
+.thsw{display:block;width:44px;height:30px;border-radius:9px;box-shadow:inset 0 0 0 1px rgba(128,128,140,.35)}
+.thsw-dark{background:radial-gradient(80% 90% at 50% 10%,#6B3BC2,#2A1252 60%,#170A30)}
+.thsw-mono{background:linear-gradient(135deg,#0E0E10 50%,#F5F5F5 50%)}
+.thsw-light{background:linear-gradient(160deg,#FFFFFF,#ECE4FB)}
+
+/* modo preto e branco: escuro neutro, sem roxo */
+.dark.mono{--bg:#0E0E10;--ink:#FFFFFF;--mute:rgba(235,235,240,.66);--lil:#E4E4E7;--v:#FFFFFF;--g:linear-gradient(90deg,#FFFFFF,#BDBDC4);--glass:linear-gradient(155deg,rgba(255,255,255,.07),rgba(255,255,255,.04));--gb:rgba(255,255,255,.12);--sh:0 18px 36px -20px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.06);--chip:rgba(255,255,255,.07);--seg:rgba(255,255,255,.12);--out:#000}
+.dark.mono #frame{background:radial-gradient(90% 40% at 50% 0%,#232327 0%,rgba(35,35,39,0) 75%),#0E0E10}
+.dark.mono body{background:radial-gradient(60% 50% at 50% 40%,#1B1B1E,#000 75%)}
+.dark.mono #nav,.dark.mono .side{background:rgba(28,28,32,.8);border-color:rgba(255,255,255,.12)}
+.dark.mono #tour,.dark.mono #tour.intro,.dark.mono #tour.pers{--tb:radial-gradient(95% 55% at 50% 30%,#26262B 0%,#141416 55%,#0E0E10 85%) #0E0E10;--tcard:rgba(255,255,255,.07);--tbd:rgba(255,255,255,.12)}
+.dark.mono #ob{background:radial-gradient(95% 55% at 50% 30%,#26262B 0%,#141416 55%,#0E0E10 85%) #0E0E10}.dark.mono #ob .obb::before{background:#141416}
+.dark.mono #frame .hex:not([style*="--chip"]):not(#isl *),.dark.mono #frame .vbtn>span,.dark.mono #frame .tfi,.dark.mono #frame .tpi,.dark.mono #frame .gico{background:rgba(255,255,255,.1)!important;color:#FFFFFF!important}
+.dark.mono #frame .vbtn>span{background:#1C1C20!important}
+.dark.mono .cov:not(.vcard),.dark.mono .rhero{filter:grayscale(.85)}
+.dark.mono .crow.me,.dark.mono .lcont{border-color:rgba(255,255,255,.45)}
+.dark.mono .opt.sel,.dark.mono .obo.sel{border-color:#FFFFFF;background:rgba(255,255,255,.1)}
+.dark.mono .tdots i.c,.dark.mono .tdots i.d{background:#FFFFFF}.dark.mono .tfh{color:#FFFFFF}
+
 /* transição de tema (alternativa sem View Transitions) */
 .theming,.theming *,.theming *::before,.theming *::after{transition:background-color .5s ease,color .5s ease,border-color .5s ease,box-shadow .5s ease,fill .5s ease!important}
 ::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
 ::view-transition-new(root){z-index:2}
 
 /* introdução (telas 1, 2) e personalização (tela 7): fundo mais roxo */
-#tour.intro,#tour.pers{--tb:radial-gradient(95% 55% at 50% 28%,#E6D7FF 0%,#F1E8FF 45%,#FAF6FF 80%) #FAF6FF}
-.dark #tour.intro,.dark #tour.pers{--tb:radial-gradient(95% 55% at 50% 30%,#4A2486 0%,#2A1252 45%,#170A30 80%) #170A30}
+#tour,#tour.intro,#tour.pers{--tb:radial-gradient(95% 55% at 50% 28%,#E6D7FF 0%,#F1E8FF 45%,#FAF6FF 80%) #FAF6FF}
+.dark #tour,.dark #tour.intro,.dark #tour.pers{--tb:radial-gradient(95% 55% at 50% 30%,#4A2486 0%,#2A1252 45%,#170A30 80%) #170A30}
+/* questionário de preferências (#ob) com o mesmo fundo roxo da apresentação */
+#ob{background:radial-gradient(95% 55% at 50% 28%,#E6D7FF 0%,#F1E8FF 45%,#FAF6FF 80%) #FAF6FF}
+.dark #ob{background:radial-gradient(95% 55% at 50% 30%,#4A2486 0%,#2A1252 45%,#170A30 80%) #170A30}
+#ob .obf{background:transparent;border-top-color:rgba(106,72,194,.12)}
+#ob .obb::before{background:#F1E8FF}.dark #ob .obb::before{background:#2A1252}
+.dark #ob .obo,.dark #ob .obb{background:rgba(255,255,255,.07)}
 .dark #tour.intro .tcity{color:rgba(206,184,255,.1)}
 
 /* ícones flutuantes da introdução: artes da Lumiri */
@@ -1088,7 +1127,15 @@ function model(host,done){const seen=new Set();let cur=null,fired=false;
 /* ---------- tema ---------- */
 function paint(){const d=root.classList.contains('dark');$('#theme').setAttribute('aria-label',d?'Ativar fundo branco':'Ativar modo escuro');$('#theme').setAttribute('aria-pressed',!d)}
 /* troca de tema com transição: círculo que se expande a partir do botão (View Transitions); senão, esmaecimento das cores */
-function setTheme(){root.classList.toggle('dark');try{localStorage.setItem('sap-theme',root.classList.contains('dark')?'dark':'light')}catch(e){}paint()}
+/* modos: 'light' (branco), 'dark' (roxo original), 'mono' (preto e branco). O botão do topo alterna entre o branco e o último modo escuro escolhido. */
+const THEMES=[['dark','Roxo original'],['mono','Preto e branco'],['light','Branco']];
+const curTheme=()=>root.classList.contains('dark')?(root.classList.contains('mono')?'mono':'dark'):'light';
+function applyTheme(t){root.classList.toggle('dark',t!='light');root.classList.toggle('mono',t=='mono');try{localStorage.setItem('sap-theme',t);if(t!='light')localStorage.setItem('sap-dark',t)}catch(e){}paint();$$('[data-a=thm]').forEach(b=>b.setAttribute('aria-checked',String(b.dataset.t==t)))}
+function setTheme(){let d='dark';try{d=localStorage.getItem('sap-dark')||'dark'}catch(e){}applyTheme(curTheme()=='light'?d:'light')}
+function themeTo(t,src){if(t==curTheme())return;const calm=root.classList.contains('rm')||matchMedia('(prefers-reduced-motion: reduce)').matches;if(calm||!document.startViewTransition){applyTheme(t);return}
+ const b=src.getBoundingClientRect(),x=b.left+b.width/2,y=b.top+b.height/2,r=Math.hypot(Math.max(x,innerWidth-x),Math.max(y,innerHeight-y)),tr=document.startViewTransition(()=>applyTheme(t));
+ tr.ready.then(()=>root.animate({clipPath:[`circle(0px at ${x}px ${y}px)`,`circle(${r}px at ${x}px ${y}px)`]},{duration:650,easing:'cubic-bezier(.4,0,.2,1)',pseudoElement:'::view-transition-new(root)'})).catch(()=>{})}
+const themeRow=()=>`<div><p class="text-[15px] font-semibold">Aparência</p><p class="mut text-[13px] leading-snug">Escolha as cores do aplicativo.</p><div class="thsel mt-3" role="radiogroup" aria-label="Aparência">${THEMES.map(([k,l])=>`<button data-a="thm" data-t="${k}" role="radio" aria-checked="${curTheme()==k}"><span class="thsw thsw-${k}" aria-hidden="true"></span>${l}</button>`).join('')}</div></div>`;
 $('#theme').onclick=()=>{const calm=root.classList.contains('rm')||matchMedia('(prefers-reduced-motion: reduce)').matches;
  const src=(!$('#tour').hidden&&$('#tour [data-a=ttheme]'))||$('#theme'),b=src.getBoundingClientRect(),x=b.left+b.width/2,y=b.top+b.height/2;
  if(calm){setTheme();return}
@@ -1195,7 +1242,7 @@ function rPer(){const L=lvl(),b0=L*500,n=streak(),d=new Date(),dow=(d.getDay()+6
  <h3 class="mt-9 text-[22px]">Conquistas</h3><div class="mt-4 grid grid-cols-3 gap-2.5">${ACH.map(a=>{const u=S.ach[a[0]];return `<div class="flex flex-col items-center gap-2 text-center"><span class="hex grid h-[64px] w-[64px] place-items-center" style="${u?'background:linear-gradient(160deg,#7C3AED,#C4B5FD);color:#fff':'background:var(--chip);color:var(--mute)'}">${ic(u?a[3]:'lock','h-6 w-6')}</span><span class="text-[12px] font-bold leading-tight ${u?'':'mut'}">${a[1]}</span><span class="mut text-[12px] leading-tight">${u?'Conquistada':a[2]}</span></div>`}).join('')}</div>
  <h3 class="mt-9 text-[22px]">Progresso por disciplina</h3><p class="sub mt-1.5">${nd} de ${R.length} lições concluídas.</p><div class="mt-4 grid gap-3.5">${R.map(r=>`<button data-a="route" data-r="${r.id}" class="press flex items-center gap-3 text-left"><span class="w-24 shrink-0 text-[13px] font-semibold">${r.n}</span>${bar(prog(r),'flex-1')}<span class="tn w-10 text-right text-[12px] font-bold">${prog(r)}%</span></button>`).join('')}</div>
  <h3 class="mt-9 text-[22px]">Revisão espaçada</h3><p class="sub mt-1.5">Os assuntos que você errou voltam em 1, 3 e 7 dias.</p><div class="mt-4 grid gap-2.5">${S.rev.length?S.rev.map(r=>`<button data-a="route" data-r="${r.r||'hist'}" class="chip press flex min-h-[52px] items-center justify-between gap-3 rounded-[20px] px-4 py-3 text-left text-[14px] font-semibold"><span>${r.t}</span><span class="pill ${r.d=='hoje'?'on':''}">${r.d}</span></button>`).join(''):'<p class="sub">Nada para revisar agora.</p>'}</div><h3 class="mt-9 text-[22px]">Histórico de missões</h3><div class="mt-4 grid gap-2.5">${S.log.length?S.log.map(l=>`<div class="chip flex items-center justify-between gap-3 rounded-[20px] px-4 py-3.5 text-[14px]"><span class="font-semibold">${l.t}</span><span class="tn lil shrink-0 font-bold">+${l.xp} XP</span></div>`).join(''):'<p class="sub">Suas missões concluídas aparecem aqui. Cada atividade rende XP uma única vez.</p>'}</div>
- <h3 class="mt-9 text-[22px]">Minha jornada</h3>${obSummary()}<h3 class="mt-9 text-[22px]">Preferências</h3><div class="glass card mt-4 grid gap-4 !p-4">${prefRow('sound','Sons','Efeitos curtos ao acertar e concluir.')}${prefRow('reduce','Reduzir animações','Também respeita a configuração do aparelho.')}${prefRow('haptic','Vibração',vibOk()?'Toque leve ao responder.':'Indisponível neste dispositivo.',!vibOk())}</div><button data-a="reset" class="mut mt-8 min-h-[44px] text-[13px] font-semibold underline">Reiniciar progresso salvo neste navegador</button>`;bars()}
+ <h3 class="mt-9 text-[22px]">Minha jornada</h3>${obSummary()}<h3 class="mt-9 text-[22px]">Preferências</h3><div class="glass card mt-4 grid gap-4 !p-4">${themeRow()}${prefRow('sound','Sons','Efeitos curtos ao acertar e concluir.')}${prefRow('reduce','Reduzir animações','Também respeita a configuração do aparelho.')}${prefRow('haptic','Vibração',vibOk()?'Toque leve ao responder.':'Indisponível neste dispositivo.',!vibOk())}</div><button data-a="reset" class="mut mt-8 min-h-[44px] text-[13px] font-semibold underline">Reiniciar progresso salvo neste navegador</button>`;bars()}
 
 /* ---------- ABA ENEM ---------- */
 const CTAV={mat:'Explorar Matemática',red:'Treinar Redação',bio:'Iniciar descoberta',fis:'Resolver desafio',qui:'Explorar Química',geo:'Explorar território',por:'Explorar linguagem',hist:'Continuar lição'};
@@ -1479,6 +1526,7 @@ Object.assign(A,{
  ttheme(){$('#theme').click();tTop();const b=$('#tour [data-a=ttheme]');b&&b.focus()},
  tcv(b){TOUR.cv=+b.dataset.v;tourRender(false);const t=$(`#tour [data-a=tcv][data-v="${TOUR.cv}"]`);t&&t.focus()},
  tour(){tourOpen(0,true)},
+ thm(b){themeTo(b.dataset.t,b);FX.tap()},
  bf(b){BF=b.dataset.f;rBib();const t=$(`[data-a=bf][data-f="${BF}"]`);t&&t.focus({preventScroll:true})},
  hgo(b){const x=histItems()[+b.dataset.i];island('idle');if(x)HOPEN[x.k](x.v)},
  hmus(){island('music')},hclose(){island('idle');$(compact?'#b-mini':'#b-idle').focus()},
