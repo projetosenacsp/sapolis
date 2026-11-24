@@ -6,7 +6,7 @@
 <title>SApólis</title>
 <script>try{if(localStorage.getItem('sap-theme')==='dark')document.documentElement.classList.add('dark')}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com/3.4.17"></script>
 <script>tailwind.config={darkMode:'class',theme:{extend:{fontFamily:{sans:['-apple-system','BlinkMacSystemFont','SF Pro Display','SF Pro Text','Inter','Segoe UI','Roboto','system-ui','sans-serif'],serif:['-apple-system','BlinkMacSystemFont','SF Pro Display','SF Pro Text','Inter','system-ui','sans-serif']}}}}</script>
 <style>
@@ -167,6 +167,50 @@ textarea::placeholder,input::placeholder{color:var(--mute)}
 .athumb{position:relative;display:block;width:52px;height:52px;flex-shrink:0;overflow:hidden;border-radius:16px;background:#2A1252;box-shadow:0 8px 16px -8px rgba(41,16,82,.6),inset 0 0 0 1px rgba(255,255,255,.12)}
 .athumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.14)}
 .athumb::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
+/* biblioteca — estante (refs.: capas com bloco colorido atrás, continuar estudando, abas com contagem) */
+.lcont{border-radius:26px}.lcthumb{position:relative;flex-shrink:0;width:64px;height:84px;border-radius:14px;overflow:hidden;background:#2A1252;box-shadow:0 10px 20px -10px rgba(41,16,82,.7)}
+.lcthumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.lgo{display:grid;place-items:center;width:40px;height:40px;flex-shrink:0;border-radius:50%;color:#fff;background:var(--g);box-shadow:0 8px 16px -8px rgba(91,33,182,.8)}
+.ltabs{display:flex;gap:8px;overflow-x:auto;margin:0 -20px;padding:2px 20px;scrollbar-width:none}.ltabs::-webkit-scrollbar{display:none}
+.ltab{display:inline-flex;flex-shrink:0;align-items:center;gap:7px;min-height:38px;padding:0 6px 0 14px;border-radius:99px;font-size:13px;font-weight:600;color:var(--mute);border:1px solid var(--gb);background:var(--chip);transition:all .25s}
+.ltab span{display:grid;place-items:center;min-width:24px;height:24px;padding:0 6px;border-radius:99px;font-size:12px;font-weight:700;background:var(--bg);color:var(--ink)}
+.ltab[aria-pressed=true]{color:#fff;background:var(--g);border-color:transparent}.ltab[aria-pressed=true] span{background:#E9B64B;color:#2A1404}
+.lgrid{display:grid;grid-template-columns:1fr 1fr;gap:26px 16px}
+.lcard{position:relative;display:flex;flex-direction:column;min-width:0;padding:0 0 0 0}
+.lback{position:absolute;left:12px;right:-8px;top:14px;aspect-ratio:3/4;border-radius:22px;background:linear-gradient(150deg,var(--b),var(--a));opacity:.38;z-index:0;animation:lbk 7s ease-in-out infinite;animation-delay:calc(var(--d)*-.9s)}
+.dark .lback{opacity:.5}
+@keyframes lbk{50%{transform:translate(3px,4px) rotate(1.2deg)}}
+.lcov{position:relative;z-index:1;display:block;aspect-ratio:3/4;width:calc(100% - 8px);border-radius:20px;overflow:hidden;background:#1B0A3A;box-shadow:0 18px 30px -16px rgba(41,16,82,.65);transition:transform .45s var(--sp),box-shadow .45s}
+.lcov.bgrad{background:radial-gradient(120% 90% at 15% 5%,var(--b),transparent 62%),linear-gradient(160deg,var(--a),#150a24 88%)}
+.lcov img{position:absolute;inset:-4%;width:108%;height:108%;object-fit:cover;animation:lkb 16s ease-in-out infinite alternate;animation-delay:calc(var(--d)*-2.3s)}
+@keyframes lkb{0%{transform:scale(1) translate(0,0)}100%{transform:scale(1.07) translate(-1.5%,-2%)}}
+.lcov::after{content:"";position:absolute;top:0;bottom:0;left:-70%;width:45%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.28),rgba(255,255,255,0));transform:skewX(-18deg);animation:lsh 7s ease-in-out infinite;animation-delay:calc(var(--d)*.85s)}
+@keyframes lsh{0%,78%{left:-70%}96%,100%{left:130%}}
+.lcard:hover .lcov,.lcard:focus-visible .lcov{transform:translateY(-5px) rotate(-1deg);box-shadow:0 26px 38px -18px rgba(41,16,82,.75)}
+.lbadge{position:absolute;right:9px;top:9px;z-index:2;display:grid;place-items:center;min-width:30px;height:30px;padding:0 7px;border-radius:99px;font-size:11.5px;font-weight:800;color:#2A1404;background:#E9B64B;box-shadow:0 4px 10px -3px rgba(0,0,0,.45)}
+.ltit{position:relative;z-index:1;margin-top:12px;font-size:15px;font-weight:800;letter-spacing:.02em;text-transform:uppercase;line-height:1.15}
+.lpl{position:relative;z-index:1;margin-top:2px;overflow:hidden;font-size:13px;font-weight:600;color:var(--lil);white-space:nowrap;text-overflow:ellipsis}
+.lcard>span:last-child{position:relative;z-index:1}
+.lib.in .lcard{animation:lin .6s cubic-bezier(.16,1,.3,1) backwards;animation-delay:calc(120ms + var(--d)*70ms)}
+@keyframes lin{from{opacity:.35;transform:translateY(18px) scale(.96)}}
+.lib.in .lcont{animation:in .5s cubic-bezier(.16,1,.3,1) backwards}
+/* destaque da Lumiri: faixa escura no topo para a mensagem manuscrita */
+.hhero{position:relative;aspect-ratio:1/1.16;max-width:100%;background:#1C0B22}
+.hhero>img{position:absolute;left:0;right:0;bottom:0;width:100%;aspect-ratio:1;object-fit:cover;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 16%);mask-image:linear-gradient(to bottom,transparent 0,#000 16%)}
+.hwel{position:absolute;z-index:2;left:22px;right:22px;top:14px;min-height:64px;margin:0;font-family:Caveat,'Segoe Print','Bradley Hand',cursive;font-size:29px;font-weight:700;line-height:1.08;color:#FBEFFF;text-shadow:0 2px 12px rgba(0,0,0,.55);transition:opacity .4s ease}
+.hwel.out{opacity:0}
+.hwel .w{display:inline-block;white-space:nowrap}
+.hwel .c{display:inline-block;opacity:0}
+.hwel .c.on{opacity:1;animation:hwin .32s cubic-bezier(.2,.8,.3,1)}
+@keyframes hwin{from{opacity:0;filter:blur(3px);transform:translateY(4px) rotate(-6deg) scale(.85)}}
+.hwel .car{display:inline-block;width:2px;height:.85em;margin-left:2px;vertical-align:-.08em;border-radius:2px;background:#F3C6FF;box-shadow:0 0 8px #E9A8FF;animation:hcar .9s steps(1) infinite}
+@keyframes hcar{50%{opacity:0}}
+@media(max-width:359px){.hwel{font-size:25px;left:18px;right:18px}}
+/* biblioteca: fundo de cada capa vira reflexo/sombra difusa da própria arte */
+.lback{left:6px;right:2px;top:18px;opacity:1!important;background:none;overflow:visible;animation:lbk2 7s ease-in-out infinite;animation-delay:calc(var(--d)*-.9s)}
+.lback img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:22px;filter:blur(18px) saturate(1.5);opacity:.55;transform:scale(.96)}
+.dark .lback img{opacity:.7}
+@keyframes lbk2{50%{transform:translateY(5px) scale(1.02)}}
 /* botão Explorar do destaque: brilho suave convidando ao toque */
 .hglow{overflow:hidden;animation:hglow 2.8s ease-in-out infinite}
 @keyframes hglow{0%,100%{box-shadow:0 0 0 0 rgba(196,160,255,.55),0 10px 24px -10px rgba(10,0,30,.6)}50%{box-shadow:0 0 0 9px rgba(196,160,255,0),0 0 26px 4px rgba(196,160,255,.55),0 10px 24px -10px rgba(10,0,30,.6)}}
@@ -406,7 +450,8 @@ textarea::placeholder,input::placeholder{color:var(--mute)}
 @keyframes tsh{50%{transform:translateX(-50%) scale(.84);opacity:.7}}
 .tsc1 .tlu{position:absolute;left:50%;bottom:9%;height:86%;transform:translateX(-50%);filter:drop-shadow(0 14px 18px rgba(41,16,82,.18))}
 .tsc1 .tfloat{animation:tfl1 4.2s ease-in-out infinite}@keyframes tfl1{50%{transform:translate(-50%,-10px)}}
-.dark .tsc1 .tlu{filter:drop-shadow(0 0 16px rgba(217,70,239,.45))}
+.dark .tsc1 .tlu{filter:none}
+.dark .tsc1 .tdisc{box-shadow:0 0 60px 6px rgba(217,70,239,.22),inset 0 0 0 1px rgba(196,181,253,.12)}
 .tchip{position:absolute;display:grid;place-items:center;width:40px;height:40px;border-radius:13px;color:#7028D8;background:rgba(255,255,255,.88);border:1px solid rgba(112,40,216,.1);box-shadow:0 10px 22px -10px rgba(41,16,82,.4);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);animation:tchf 5s ease-in-out infinite}
 .dark .tchip{color:#D8C8FF;background:rgba(48,26,90,.6);border-color:rgba(196,181,253,.2)}
 .tchip.c1{left:9%;top:16%}.tchip.c2{right:10%;top:10%;animation-delay:-1.4s;width:34px;height:34px;border-radius:11px}.tchip.c3{left:13%;bottom:26%;animation-delay:-2.6s;width:34px;height:34px;border-radius:11px}.tchip.c4{right:8%;bottom:32%;animation-delay:-3.6s}
@@ -446,6 +491,69 @@ textarea::placeholder,input::placeholder{color:var(--mute)}
 @media(max-height:620px){.tsc1{height:200px}.tsc2{height:240px}.tbadge{margin-top:8px}.tin2 .tti,.t1h{font-size:22px}#tour.intro .tde{font-size:14px;margin-top:6px}#tour.intro .tf{padding-top:6px}
  .tt-run{width:23%;left:5%}.tt-puz{width:22%}.tt-cards{width:29%;left:3%}.tt-audio{width:22%}.tcen{width:min(36%,140px)}}
 @media(max-height:700px){.tti{font-size:24px}.tbig{font-size:27px}.tstage{height:200px}.tmed img,.tmed video{max-height:42vh}}
+
+/* =========================================================
+   NEUTRALIZAÇÃO: fundos, cartões e bordas neutros; violeta só como destaque.
+   Modo escuro: botões claros para contrastar.
+   ========================================================= */
+:root{--bg:#FAFAFB;--mute:#5F5C68;--glass:linear-gradient(160deg,#FFFFFF,#F7F7F9);--gb:rgba(24,22,32,.09);--sh:0 14px 32px -20px rgba(20,18,30,.28),inset 0 1px 0 rgba(255,255,255,.9);--chip:rgba(24,22,32,.05);--seg:rgba(24,22,32,.1);--out:#ECECEF}
+.dark{--bg:#121115;--mute:rgba(232,230,238,.7);--lil:#C7B7F5;--glass:linear-gradient(155deg,rgba(40,38,46,.82),rgba(30,29,35,.62));--gb:rgba(255,255,255,.09);--sh:0 20px 38px -20px rgba(0,0,0,.85),inset 0 1px 0 rgba(255,255,255,.07);--chip:rgba(255,255,255,.07);--seg:rgba(255,255,255,.12);--out:#08080A}
+html:not(.dark) body{background:radial-gradient(60% 50% at 50% 28%,#F4F4F7,#E4E4E9 80%)}
+.dark body{background:radial-gradient(60% 50% at 50% 40%,#1C1B21,#060608 75%)}
+.blob{filter:blur(70px) saturate(.25)}html:not(.dark) .blob{opacity:.08!important}.dark .blob{opacity:.18!important}
+@media(min-width:520px){#frame{box-shadow:0 50px 80px -40px rgba(10,10,20,.45)}.dark #frame{box-shadow:0 60px 90px -40px #000}}
+#tour{--tb:linear-gradient(180deg,#FFFFFF 0%,#F7F7F9 60%,#F1F0F4 100%);--tm:#5F5C68;--tbd:rgba(24,22,32,.1)}
+#tour.intro{--tb:radial-gradient(80% 42% at 50% 30%,#F3F0FA 0%,#F8F8FA 45%,#FFFFFF 75%) #FFFFFF}
+.dark #tour{--tb:radial-gradient(100% 55% at 50% 0%,#1F1D25 0%,#121115 72%);--tcard:rgba(40,38,46,.8);--tbd:rgba(255,255,255,.12)}
+.dark #tour.intro{--tb:radial-gradient(85% 45% at 50% 30%,#22202A 0%,#17161B 50%,#121115 78%)}
+.lback{opacity:.22}.dark .lback{opacity:.3}
+.pav{box-shadow:0 0 0 3px var(--bg),0 0 0 5px rgba(24,22,32,.12),0 10px 20px -8px rgba(20,18,30,.35)}
+
+/* fundo: degradê roxo suave sobre a base neutra */
+#frame{background:radial-gradient(120% 55% at 50% -5%,#ECE4FB 0%,rgba(236,228,251,0) 70%),radial-gradient(90% 45% at 100% 100%,#F1ECFB 0%,rgba(241,236,251,0) 70%),var(--bg)}
+/* modo escuro: textura de veludo roxo com granulação (capas/fundo-escuro.jpg), fixa atrás da rolagem */
+.dark #frame{background:linear-gradient(rgba(10,6,16,.55),rgba(10,6,16,.55)),url(capas/fundo-escuro.jpg) center/cover no-repeat,#0B0710}
+.dark body{background:radial-gradient(60% 50% at 50% 40%,#1E1328,#050307 75%)}
+.dark .blob{display:none}
+html:not(.dark) body{background:radial-gradient(60% 50% at 50% 28%,#F1EDF9,#E3E1EA 80%)}
+.dark body{background:radial-gradient(60% 50% at 50% 40%,#211C2C,#060608 75%)}
+
+/* ícones mais claros: fundo lilás suave em vez de roxo sólido (fora da ilha e dos selos bloqueados) */
+#frame .hex:not([style*="--chip"]):not(#isl *),#frame .vbtn>span,#frame .tfi,#frame .tpi,#frame .obo.sel .obi,#frame .gico{background:linear-gradient(160deg,#F2EDFD,#E3D8FA)!important;color:#6A48C2!important;box-shadow:inset 0 0 0 1px rgba(106,72,194,.12)}
+.dark #frame .hex:not([style*="--chip"]):not(#isl *),.dark #frame .vbtn>span,.dark #frame .tfi,.dark #frame .tpi,.dark #frame .obo.sel .obi,.dark #frame .gico{background:linear-gradient(160deg,rgba(205,190,255,.34),rgba(205,190,255,.16))!important;color:#EDE6FF!important;box-shadow:inset 0 0 0 1px rgba(221,210,255,.14)}
+
+/* transição de tema (alternativa sem View Transitions) */
+.theming,.theming *,.theming *::before,.theming *::after{transition:background-color .5s ease,color .5s ease,border-color .5s ease,box-shadow .5s ease,fill .5s ease!important}
+::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+::view-transition-new(root){z-index:2}
+
+/* introdução (telas 1, 2) e personalização (tela 7): fundo mais roxo */
+#tour.intro,#tour.pers{--tb:radial-gradient(95% 55% at 50% 28%,#E6D7FF 0%,#F1E8FF 45%,#FAF6FF 80%) #FAF6FF}
+.dark #tour.intro,.dark #tour.pers{--tb:radial-gradient(95% 55% at 50% 30%,#4A2486 0%,#2A1252 45%,#170A30 80%) #170A30}
+.dark #tour.intro .tcity{color:rgba(206,184,255,.1)}
+
+/* ícones flutuantes da introdução: artes da Lumiri */
+.tico{position:absolute;z-index:1;display:block;width:64px;height:64px;border-radius:26%;overflow:hidden;box-shadow:0 14px 26px -12px rgba(41,16,82,.6),0 0 0 2px rgba(255,255,255,.55);animation:tchf 5s ease-in-out infinite}
+.dark .tico{box-shadow:0 0 22px -4px rgba(170,120,255,.55),0 0 0 1.5px rgba(220,200,255,.35)}
+.tico img{width:100%;height:100%;object-fit:cover;transform:scale(1.04)}
+.tico.c1{left:6%;top:8%}.tico.c2{right:6%;top:16%;width:58px;height:58px;animation-delay:-1.7s}.tico.c3{left:9%;bottom:14%;width:58px;height:58px;animation-delay:-3.2s}
+@media(max-width:359px){.tico{width:52px;height:52px}.tico.c2,.tico.c3{width:48px;height:48px}}
+
+/* botões claros no modo escuro */
+.dark .btn,.dark .tcta,.dark #tour.hero .tcta{background:#F5F4F8;color:#17151D;box-shadow:0 10px 24px -12px rgba(0,0,0,.8)}
+.dark .btn:not(:disabled):hover,.dark .tcta:hover{background:#FFFFFF}
+.dark .btn2,.dark .gtool,.dark .vbtn2,.dark .tseg button[aria-selected=true]{background:#E7E5EC;color:#17151D;border-color:transparent}
+.dark .pill[aria-pressed=true],.dark .pill.on,.dark .ltab[aria-pressed=true],.dark .tbadge{background:#F5F4F8;color:#17151D;border-color:transparent}
+.dark #cont .pill,.dark #sp button.pill,.dark [data-a=nextm].pill{background:#E7E5EC;color:#17151D;border-color:transparent}
+.dark .ltab[aria-pressed=true] span{background:#17151D;color:#F5F4F8}
+.dark .ppb{background:#F5F4F8!important;color:#17151D!important}
+.dark .lgo,.dark .vshut{background:#F5F4F8;color:#17151D}.dark .vshut i{background:#17151D}
+.dark .vbtn{background:#F5F4F8;color:#17151D;border-color:transparent}
+.dark #nind{background:#F5F4F8}.dark .nb[aria-current=page]{color:#17151D}
+.dark .sw[aria-checked=true]{background:#F5F4F8}.dark .sw[aria-checked=true]::after{background:#17151D}
+.dark .key,.dark .mtk{color:var(--ink)}
+.dark .stp button[aria-current=step]{background:#F5F4F8;color:#17151D}
+.dark .tplay{background:rgba(245,244,248,.95);color:#17151D}
 </style>
 </head>
 <body>
@@ -519,7 +627,7 @@ textarea::placeholder,input::placeholder{color:var(--mute)}
     <section id="v-exp" class="view" aria-label="Explorar">
       <h1 class="sr-only">Seu mundo digital. Sua próxima evolução começa pelo conhecimento.</h1>
       <div class="cov relative rounded-[34px] p-0" style="--a:#4C1D95;--b:#C4B5FD;box-shadow:0 30px 50px -26px rgba(91,33,245,.7)">
-        <img src="capas/lumiri-miste.jpg" alt="Lumiri segurando um orbe de energia roxa ao lado das capas de Português, Matemática e Geografia" draggable="false" decoding="async" class="block h-[380px] w-full object-cover" style="object-position:50% 40%">
+        <div class="hhero"><img src="capas/lumiri-miste.jpg" alt="Lumiri segurando um orbe de energia roxa ao lado das capas de Português, Matemática e Geografia" draggable="false" decoding="async"><p id="hwel" class="hwel" role="img" aria-label="Prepare-se para a melhor forma de aprender sobre o Enem."></p></div>
         <button data-a="nav" data-k="bib" class="btn hglow absolute bottom-4 left-5" style="background:#fff;color:#2E1065">Explorar</button>
       </div>
       <div class="glass card mt-5 flex items-center gap-4">
@@ -979,7 +1087,14 @@ function model(host,done){const seen=new Set();let cur=null,fired=false;
 
 /* ---------- tema ---------- */
 function paint(){const d=root.classList.contains('dark');$('#theme').setAttribute('aria-label',d?'Ativar fundo branco':'Ativar modo escuro');$('#theme').setAttribute('aria-pressed',!d)}
-$('#theme').onclick=()=>{root.classList.toggle('dark');try{localStorage.setItem('sap-theme',root.classList.contains('dark')?'dark':'light')}catch(e){}paint()};paint();
+/* troca de tema com transição: círculo que se expande a partir do botão (View Transitions); senão, esmaecimento das cores */
+function setTheme(){root.classList.toggle('dark');try{localStorage.setItem('sap-theme',root.classList.contains('dark')?'dark':'light')}catch(e){}paint()}
+$('#theme').onclick=()=>{const calm=root.classList.contains('rm')||matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const src=(!$('#tour').hidden&&$('#tour [data-a=ttheme]'))||$('#theme'),b=src.getBoundingClientRect(),x=b.left+b.width/2,y=b.top+b.height/2;
+ if(calm){setTheme();return}
+ if(document.startViewTransition){const r=Math.hypot(Math.max(x,innerWidth-x),Math.max(y,innerHeight-y)),t=document.startViewTransition(setTheme);
+  t.ready.then(()=>root.animate({clipPath:[`circle(0px at ${x}px ${y}px)`,`circle(${r}px at ${x}px ${y}px)`]},{duration:650,easing:'cubic-bezier(.4,0,.2,1)',pseudoElement:'::view-transition-new(root)'})).catch(()=>{});return}
+ root.classList.add('theming');setTheme();setTimeout(()=>root.classList.remove('theming'),600)};paint();
 
 /* ---------- cápsula ---------- */
 let cur='idle',compact=false,hold;
@@ -1008,7 +1123,17 @@ const CT={bib:()=>'Escolha uma rota para explorar',com:()=>`Comunidade · você 
 function mark(k){$('#nav').style.setProperty('--i',NI[k]);$$('.nb').forEach(b=>b.setAttribute('aria-current',b.dataset.k==k?'page':'false'))}
 function bars(){requestAnimationFrame(()=>requestAnimationFrame(()=>$$('[data-w]').forEach(e=>e.style.width=e.dataset.w+'%')))}
 function show(k){visStop();view=k;V.forEach(v=>{const e=$('#v-'+v);e.hidden=v!=k;if(v==k){e.style.animation='none';void e.offsetWidth;e.style.animation=''}});if(NI[k]!==undefined){prevV=k;mark(k)}sc.scrollTop=0;bars()}
-function go(k){BK=null;RV[k]();show(k)}
+function go(k){BK=null;RV[k]();show(k);if(k=='exp')setTimeout(hwRun,200)}
+/* destaque: boas-vindas manuscritas (5 s) e depois a mensagem motivacional, letra por letra */
+let HW=0;
+function hwRun(){const el=$('#hwel');if(!el)return;const id=++HW,W1='Bem-vindo(a) à SApólis!',W2='Prepare-se para a melhor forma de aprender sobre o Enem.',alive=()=>id===HW&&document.body.contains(el);
+ const build=t=>{el.innerHTML=t.split(' ').map(w=>`<span class="w" aria-hidden="true">${[...w].map(ch=>`<span class="c">${ch}</span>`).join('')}</span>`).join(' ')};
+ const wait=ms=>new Promise(r=>setTimeout(r,ms));
+ const write=async(t,spd)=>{build(t);const cs=$$('.c',el),car=document.createElement('span');car.className='car';car.setAttribute('aria-hidden','true');el.appendChild(car);
+  for(const c of cs){if(!alive())return false;c.classList.add('on');c.after(car);await wait(spd+Math.random()*spd*.8+(/[,.!]/.test(c.textContent)?160:0))}return true};
+ if(FX.calm()){build(W2);$$('.c',el).forEach(c=>c.classList.add('on'));return}
+ (async()=>{el.classList.remove('out');const t0=Date.now();if(!await write(W1,55))return;await wait(Math.max(0,5000-(Date.now()-t0)));if(!alive())return;
+  el.classList.add('out');await wait(420);if(!alive())return;el.classList.remove('out');if(!await write(W2,38))return;await wait(1800);const car=$('.car',el);if(car&&alive())car.remove()})()}
 function screen(html,from,back,after){BK=back||(()=>go(from));$('#v-in').innerHTML=html;show('in');mark(from);if(after)after()}
 function ctx(k){const c=$('#ctx');c.textContent=CT[k]();c.classList.add('on');clearTimeout(tc);tc=setTimeout(()=>c.classList.remove('on'),2200)}
 sc.addEventListener('scroll',()=>{const c=sc.scrollTop>40;if(c!==compact){compact=c;$('#nav').classList.toggle('sm',c);apply()}},{passive:true});
@@ -1079,10 +1204,19 @@ const place=r=>r.pl.split(' e ')[0].split(',')[0].replace(' · experiência orig
 /* capas ilustradas da Biblioteca: [arquivo, object-position]. Disciplina sem arte própria mantém o degradê. */
 const COVER={hist:['capas/historia.jpg','42% 50%'],mat:['capas/matematica.jpg','56% 50%'],red:['capas/redacao.jpg','44% 50%'],bio:['capas/biologia.jpg','20% 50%'],fis:['capas/fisica.jpg','60% 50%'],qui:['capas/quimica.jpg','46% 50%'],geo:['capas/geografia.jpg','52% 50%'],por:['capas/portugues.jpg','50% 50%']};
 const card=r=>{const c=COVER[r.id];return `<button data-a="route" data-r="${r.id}" class="bcard press text-left" aria-label="${r.n}: ${prog(r)}% concluído"><div class="bcov ${c?'':'bgrad'}" style="--a:${r.a};--b:${r.b}">${c?`<img src="${c[0]}" alt="" loading="lazy" decoding="async" style="object-position:${c[1]}">`:''}<span class="bshade" aria-hidden="true"></span><p class="btit">${r.n}</p></div><p class="bpl mut mt-2 text-[13px]">${place(r)}</p><div class="mt-1.5 flex items-center gap-2">${bar(prog(r),'flex-1')}<span class="tn mut w-9 text-right text-[12px] font-bold">${prog(r)}%</span></div><p class="bpl cta mt-1.5">${cta(r)} ›</p></button>`};
-function rBib(){const H=HC;
- $('#v-bib').innerHTML=`<div class="cov rounded-[32px] p-6" style="--a:#4C1D95;--b:#C4B5FD;box-shadow:0 30px 50px -26px rgba(91,33,245,.7)"><h2 class="text-[24px] font-semibold leading-[1.15]">São Paulo é sua sala de aula. O ENEM é sua próxima conquista.</h2></div>
- <h2 class="h2 mt-9">São Paulo em 7 Rotas</h2><p class="sub mt-2">Cada lugar guarda uma história. Cada história revela um conteúdo do ENEM.</p>
- <div class="mt-5 grid grid-cols-2 gap-x-3 gap-y-5">${[...ORDER.map(k=>RM[k]),H].map(card).join('')}</div>
+/* Biblioteca: estante de capas (bloco colorido atrás, título abaixo) + continuar + abas */
+let BF='all';
+const lcard=(r,i)=>{const c=COVER[r.id],p=prog(r);return `<button data-a="route" data-r="${r.id}" class="lcard press text-left" style="--d:${i};--a:${r.a};--b:${r.b}" aria-label="${r.n}: ${p}% concluído"><span class="lback" aria-hidden="true">${c?`<img src="${c[0]}" alt="" decoding="sync" style="object-position:${c[1]}">`:''}</span><span class="lcov ${c?'':'bgrad'}">${c?`<img src="${c[0]}" alt="" decoding="sync" style="object-position:${c[1]}">`:''}${p>=100?`<span class="lbadge">${ic('check','h-3.5 w-3.5')}</span>`:p?`<span class="lbadge tn">${p}%</span>`:''}</span><b class="ltit">${r.n}</b><small class="lpl">${place(r)}</small><span class="mt-2 flex items-center gap-2">${bar(p,'flex-1')}<span class="tn mut w-9 text-right text-[12px] font-bold">${p}%</span></span></button>`};
+function rBib(){const H=HC,all=[...ORDER.map(k=>RM[k]),H],enter=view!=='bib';
+ const doing=all.filter(r=>prog(r)>0&&prog(r)<100),done=all.filter(r=>prog(r)>=100);
+ const cur=doing.sort((a,b)=>prog(b)-prog(a))[0]||S.ob.subj.map(k=>k=='hist'?H:RM[k]).find(r=>r&&prog(r)<100)||RM.mat,cp=prog(cur),cc=COVER[cur.id];
+ const list=BF=='doing'?doing:BF=='done'?done:all;
+ const tab=(k,l,n)=>`<button class="ltab" data-a="bf" data-f="${k}" aria-pressed="${BF==k}">${l}<span class="tn">${n}</span></button>`;
+ $('#v-bib').innerHTML=`<div class="lib ${enter?'in':''}"><h2 class="h2">Biblioteca</h2><p class="sub mt-1.5">São Paulo é sua sala de aula. O ENEM é sua próxima conquista.</p>
+ <button data-a="route" data-r="${cur.id}" class="lcont glass press mt-5 flex w-full items-center gap-4 rounded-[26px] p-3.5 text-left"><span class="lcthumb">${cc?`<img src="${cc[0]}" alt="" decoding="sync" style="object-position:${cc[1]}">`:''}</span><span class="min-w-0 flex-1"><small class="lil block text-[12px] font-bold uppercase tracking-wide">Continue estudando</small><b class="mt-0.5 block text-[18px] font-bold leading-tight">${cur.n}</b><span class="mut block truncate text-[13px]">${place(cur)}</span><span class="mt-2.5 flex items-center gap-2">${bar(cp,'flex-1')}<span class="tn text-[12px] font-bold">${cp}%</span></span></span><span class="lgo" aria-hidden="true">${ic('arrow','h-4 w-4')}</span></button>
+ <h2 class="h2 mt-8 text-[24px]">São Paulo em 7 Rotas</h2>
+ <div class="ltabs mt-3" role="group" aria-label="Filtrar rotas">${tab('all','Todas',all.length)}${tab('doing','Em andamento',doing.length)}${tab('done','Concluídas',done.length)}</div>
+ ${list.length?`<div class="lgrid mt-5">${list.map(lcard).join('')}</div>`:`<p class="sub mt-5">${BF=='done'?'Nenhuma rota concluída ainda. Termine uma lição para vê-la aqui.':'Nenhuma rota em andamento. Comece uma lição para vê-la aqui.'}</p>`}</div>
  <button data-a="lab" class="glass press mt-8 flex w-full items-center gap-4 rounded-[26px] p-4 text-left"><span class="hex grid h-14 w-14 shrink-0 place-items-center text-white" style="background:linear-gradient(160deg,#5B21B6,#8B5CF6)">${ic('pen','h-6 w-6')}</span><div><p class="text-[17px] font-semibold leading-tight">Laboratório de Redação</p><p class="mut mt-0.5 text-[13px]">Planeje, escreva e receba feedback de prática.</p><p class="cta mt-1.5">Treinar Redação ›</p></div></button>
  <h2 class="h2 mt-9 text-[24px]">Conexões Invisíveis</h2><p class="sub mt-1.5">Os assuntos do ENEM não existem isolados. Siga um percurso entre disciplinas.</p>
  <div class="mt-4 grid gap-3">${Object.entries(PATHS).map(([k,p])=>`<button data-a="path" data-p="${k}" class="glass press flex items-center gap-4 rounded-[26px] p-4 text-left"><span class="hex grid h-14 w-14 shrink-0 place-items-center text-white" style="background:linear-gradient(160deg,#4338CA,#38BDF8)">${ic('link','h-6 w-6')}</span><div class="min-w-0 flex-1"><p class="text-[17px] font-semibold leading-tight">${p.n}</p><p class="mut text-[13px]">${p.sub}</p>${bar(p.nodes.filter(nodeOk).length/4*100,'mt-2')}<p class="cta mt-1.5">Seguir percurso ›</p></div></button>`).join('')}</div>
@@ -1310,7 +1444,7 @@ function tSlide(i){
  if(i==0)return `<div class="tbrand"><span class="tbl"><img src="logo-sapolis.png.jpg" alt="" width="1000" height="1000"></span>SApólis</div>
   <div class="tsc1"><svg class="tcity" viewBox="0 0 400 160" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><g fill="currentColor"><rect x="20" y="70" width="22" height="90"/><rect x="46" y="44" width="18" height="116"/><rect x="266" y="56" width="24" height="104"/><rect x="294" y="30" width="18" height="130"/><rect x="316" y="66" width="26" height="94"/><rect x="346" y="40" width="20" height="120"/><rect x="370" y="74" width="24" height="86"/></g><g fill="none" stroke="currentColor" stroke-width="3"><path d="M86 160L104 20M122 160L104 20"/><path d="M104 34L60 150M104 34L148 150M104 48L76 150M104 48L132 150" stroke-width="1.2"/><path d="M0 150Q200 136 400 150" stroke-width="2.5"/></g></svg>
    <span class="tdisc"></span><span class="tground"></span>
-   <span class="tchip c1" aria-hidden="true">${ic('book','h-[18px] w-[18px]')}</span><span class="tchip c2" aria-hidden="true">${ic('sigma','h-4 w-4')}</span><span class="tchip c3" aria-hidden="true">${ic('leaf','h-4 w-4')}</span><span class="tchip c4" aria-hidden="true">${ic('bolt','h-[18px] w-[18px]')}</span>
+   <span class="tico c1" aria-hidden="true"><img src="capas/icones/portugues.png" alt=""></span><span class="tico c2" aria-hidden="true"><img src="capas/icones/matematica.png" alt=""></span><span class="tico c3" aria-hidden="true"><img src="capas/icones/geografia.png" alt=""></span>
    <span class="tspk s1" aria-hidden="true">${ic('spark','h-4 w-4')}</span><span class="tspk s2" aria-hidden="true">${ic('spark','h-3 w-3')}</span>
    ${tLumi('tfloat')}</div>
   <h2 class="tti t1h" id="t-h">Seu conhecimento te leva mais longe.</h2><p class="tde">Aprenda para o ENEM de um jeito diferente, interativo e dinâmico.</p>`;
@@ -1332,7 +1466,7 @@ function tVidBind(){const w=$('#tour .tvid');if(!w)return;const v=$('video',w),b
  const fail=()=>{w.classList.remove('tvid','on');w.innerHTML=`<div class="tfb"><span>${ic(w.dataset.k||'play','h-7 w-7')}</span><b>Vídeo não encontrado</b><small>Arquivo ausente: ${v.getAttribute('src')}</small></div>`;console.warn('SApólis: vídeo não encontrado → '+v.getAttribute('src'))};
  ['play','pause','ended'].forEach(ev=>v.addEventListener(ev,upd));v.addEventListener('click',tog);b.addEventListener('click',tog);
  if(v.error)fail();else v.addEventListener('error',fail,{once:true})}
-function tourRender(anim=true){const o=$('#tour'),i=TOUR.i;$$('#tour video').forEach(v=>v.pause());clearTimeout(TOUR.pt);o.classList.toggle('intro',i<=1);
+function tourRender(anim=true){const o=$('#tour'),i=TOUR.i;$$('#tour video').forEach(v=>v.pause());clearTimeout(TOUR.pt);o.classList.toggle('intro',i<=1);o.classList.toggle('pers',i==6);
  o.innerHTML=`<div class="tt"></div><div class="tst"><section class="ts ${anim&&TOUR.dir?(TOUR.dir>0?'in-r':'in-l'):''}" role="group" aria-roledescription="tela" aria-label="${i+1} de 7">${tSlide(i)}</section></div><div class="tf"><button class="tcta" data-a="tnext">${TCTA[i]}${ic('arrow','h-5 w-5')}</button></div>`;
  tTop();tVidBind();if(anim){const h=$('#t-h',o);if(h){h.tabIndex=-1;h.style.outline='none';h.focus({preventScroll:true})}}}
 function tourOpen(i=0,review){TOUR={i,dir:1,review:!!review,cv:0};$('#tour').hidden=false;tourRender();['quebra-cabeca.png.jpeg','cartas-fotossintese.png.jpeg','trilha-sonora.png.jpeg'].forEach(s=>{const im=new Image();im.src=s})}
@@ -1345,6 +1479,7 @@ Object.assign(A,{
  ttheme(){$('#theme').click();tTop();const b=$('#tour [data-a=ttheme]');b&&b.focus()},
  tcv(b){TOUR.cv=+b.dataset.v;tourRender(false);const t=$(`#tour [data-a=tcv][data-v="${TOUR.cv}"]`);t&&t.focus()},
  tour(){tourOpen(0,true)},
+ bf(b){BF=b.dataset.f;rBib();const t=$(`[data-a=bf][data-f="${BF}"]`);t&&t.focus({preventScroll:true})},
  hgo(b){const x=histItems()[+b.dataset.i];island('idle');if(x)HOPEN[x.k](x.v)},
  hmus(){island('music')},hclose(){island('idle');$(compact?'#b-mini':'#b-idle').focus()},
  tprev(b){const n=+b.dataset.k,p=$('#tpv');if(!p)return;const same=!p.hidden&&p.dataset.k==n;clearTimeout(TOUR.pt);
@@ -1762,7 +1897,7 @@ Object.assign(A,{
  obskip(){if(OB.dq){OB.dq=false;OB.i=6}else OB.i++;obRender()},obdiag(){OB.dq=true;obRender()},obnodiag(){OB.i=6;obRender()},obfinish(){obFinish()},obedit(){obOpen(true)},
  pref(b){const k=b.dataset.k;S.set[k]=!S.set[k];save();b.setAttribute('aria-checked',String(S.set[k]));if(k=='reduce')applyMotion();if(k=='sound'&&S.set.sound)FX.play('ok');if(k=='haptic'&&S.set.haptic)FX.play('tap',[30]);toast((k=='sound'?'Sons ':k=='haptic'?'Vibração ':'Animações reduzidas ')+(S.set[k]?(k=='reduce'?'ligadas':'ativados'):(k=='reduce'?'desligadas':'desativados')))},
  nextm(){const ks=GM.map(g=>g[0]);gameScreen(ks[(ks.indexOf(CURM)+1)%ks.length])}});
-ach();refresh();bars();applyMotion();['pointerdown','keydown'].forEach(ev=>document.addEventListener(ev,()=>FX.init(),{passive:true}));if(!S.ob.done){if(tourDone())obOpen(false);else tourOpen(0)}
+ach();refresh();bars();applyMotion();setTimeout(hwRun,400);['pointerdown','keydown'].forEach(ev=>document.addEventListener(ev,()=>FX.init(),{passive:true}));if(!S.ob.done){if(tourDone())obOpen(false);else tourOpen(0)}
 setTimeout(()=>{if(cur=='idle')notify('Bruno ganhou 40 XP e passou à sua frente no ranking semanal')},16000);
 
 </script>
