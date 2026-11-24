@@ -1356,7 +1356,7 @@ function rPer(){const L=lvl(),b0=L*500,n=streak(),d=new Date(),dow=(d.getDay()+6
  <h3 class="mt-9 text-[22px]">Conquistas</h3><div class="mt-4 grid grid-cols-3 gap-2.5">${ACH.map(a=>{const u=S.ach[a[0]];return `<div class="flex flex-col items-center gap-2 text-center"><span class="hex grid h-[64px] w-[64px] place-items-center" style="${u?'background:linear-gradient(160deg,#7C3AED,#C4B5FD);color:#fff':'background:var(--chip);color:var(--mute)'}">${ic(u?a[3]:'lock','h-6 w-6')}</span><span class="text-[12px] font-bold leading-tight ${u?'':'mut'}">${a[1]}</span><span class="mut text-[12px] leading-tight">${u?'Conquistada':a[2]}</span></div>`}).join('')}</div>
  <h3 class="mt-9 text-[22px]">Progresso por disciplina</h3><p class="sub mt-1.5">${nd} de ${R.length} lições concluídas.</p><div class="mt-4 grid gap-3.5">${R.map(r=>`<button data-a="route" data-r="${r.id}" class="press flex items-center gap-3 text-left"><span class="w-24 shrink-0 text-[13px] font-semibold">${r.n}</span>${bar(prog(r),'flex-1')}<span class="tn w-10 text-right text-[12px] font-bold">${prog(r)}%</span></button>`).join('')}</div>
  <h3 class="mt-9 text-[22px]">Revisão espaçada</h3><div class="mt-4 grid gap-2.5">${S.rev.length?S.rev.map(r=>`<button data-a="route" data-r="${r.r||'hist'}" class="chip press flex min-h-[52px] items-center justify-between gap-3 rounded-[20px] px-4 py-3 text-left text-[14px] font-semibold"><span>${r.t}</span><span class="pill ${r.d=='hoje'?'on':''}">${r.d}</span></button>`).join(''):'<p class="sub">Nada para revisar agora.</p>'}</div><h3 class="mt-9 text-[22px]">Histórico de missões</h3><div class="mt-4 grid gap-2.5">${S.log.length?S.log.map(l=>`<div class="chip flex items-center justify-between gap-3 rounded-[20px] px-4 py-3.5 text-[14px]"><span class="font-semibold">${l.t}</span><span class="tn lil shrink-0 font-bold">+${l.xp} XP</span></div>`).join(''):'<p class="sub">Suas missões concluídas aparecem aqui.</p>'}</div>
- <h3 class="mt-9 text-[22px]">Minha jornada</h3>${obSummary()}<h3 class="mt-9 text-[22px]">Preferências</h3><div class="glass card mt-4 grid gap-4 !p-4">${themeRow()}${prefRow('sound','Sons','Efeitos curtos ao acertar e concluir.')}${prefRow('reduce','Reduzir animações','')}${prefRow('haptic','Vibração',vibOk()?'Toque leve ao responder.':'Indisponível neste dispositivo.',!vibOk())}</div><button data-a="reset" class="mut mt-8 min-h-[44px] text-[13px] font-semibold underline">Reiniciar progresso salvo neste navegador</button>`;bars()}
+ <h3 class="mt-9 text-[22px]">Minha jornada</h3>${obSummary()}<h3 class="mt-9 text-[22px]">Preferências</h3><div class="glass card mt-4 grid gap-4 !p-4">${themeRow()}${prefRow('sound','Sons','Efeitos curtos ao acertar e concluir.')}${prefRow('reduce','Reduzir animações','')}${prefRow('haptic','Vibração',vibOk()?'Toque leve ao responder.':'Indisponível neste dispositivo.',!vibOk())}</div><button data-a="resetob" class="mut mt-8 block min-h-[44px] text-[13px] font-semibold underline">Reiniciar só o onboarding (teste)</button><button data-a="reset" class="mut block min-h-[44px] text-[13px] font-semibold underline">Reiniciar progresso salvo neste navegador</button>`;bars()}
 
 /* ---------- ABA ENEM ---------- */
 const CTAV={mat:'Explorar Matemática',red:'Treinar Redação',bio:'Iniciar descoberta',fis:'Resolver desafio',qui:'Explorar Química',geo:'Explorar território',por:'Explorar linguagem',hist:'Continuar lição'};
@@ -1523,7 +1523,7 @@ const A={
  tl(b){tl(ti+ +b.dataset.d)},tlg(b){tl(+b.dataset.i)},cp(b){cp(+b.dataset.i)},
  pp(){playing?stopA():(startA(),island('music',3800))},next(){const k=Object.keys(TR);setCat(k[(k.indexOf(cat)+1)%k.length])},cat(b){setCat(b.dataset.k)},close(){island('idle')},
  visit(b){award('sp:'+b.dataset.i,40,'Visita registrada: '+SP[+b.dataset.i][0])},
- reset(){if(confirm('Apagar todo o progresso salvo neste navegador?')){S=fresh();save();HQST=0;applyMotion();go('per');toast('Progresso reiniciado');try{localStorage.removeItem(TOUR_KEY);localStorage.removeItem(GUIDE_KEY)}catch(e){}tourOpen(0)}}};
+ reset(){if(confirm('Apagar todo o progresso salvo neste navegador?')){S=fresh();save();HQST=0;applyMotion();go('per');toast('Progresso reiniciado');clearFlowKeys();flowGo('presentation')}}};
 document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(b&&A[b.dataset.a])A[b.dataset.a](b,e);if(e.target===$('#modal'))closeModal()});
 document.addEventListener('keydown',e=>{if(e.key=='Escape')closeModal()});
 document.addEventListener('input',e=>{const t=e.target;if(t.id=='ed'){S.draft[LAB]=t.value;save();updCnt();const s=$('#sv');if(s)s.textContent='salvo automaticamente'}else if(t.dataset&&t.dataset.p){S.plan[LAB]=Object.assign(S.plan[LAB]||{},{[t.dataset.p]:t.value});save()}});
@@ -1568,9 +1568,9 @@ const lume=(m='happy',c='h-[104px] w-[84px]',deco)=>{const al=deco?'':'Lumiri, a
 const obLabel=(arr,id)=>(arr.find(a=>a[0]==id)||[0,id])[1];
 function obReco(){const ob=S.ob,p=ob.subj.find(k=>k=='hist'||RM[k]);if(p)return p;const w=ob.diag&&ob.diag.weak&&ob.diag.weak.find(k=>RM[k]);if(w)return w;return ob.goals.includes('red')?'red':'mat'}
 const obMission=id=>id=='hist'?'Desafio final: Revolução Francesa':RM[id].g[0].t;
-function obOpen(edit){OB={i:1,edit:!!edit,dq:false,last:null};$('#ob').hidden=false;obRender()}
+function obOpen(edit,start){OB={i:edit?1:Math.min(6,Math.max(1,start||1)),edit:!!edit,dq:false,last:null};$('#ob').hidden=false;obRender()}
 function obClose(){$('#ob').hidden=true}
-function obRender(){const o=$('#ob'),i=OB.i,ob=S.ob;let body='',foot='';
+function obRender(){const o=$('#ob'),i=OB.i,ob=S.ob;let body='',foot='';if(!OB.edit)lsSet('sapPrefStep',String(i));
  const bub=(t,sub)=>`<div class="flex items-end gap-3.5">${lume()}<div class="obb" role="status">${t}</div></div>${sub?`<p class="mut mt-3 text-[14px]">${sub}</p>`:''}`;
  const list=(arr,sel,multi,grid)=>`<div class="${grid?'grid grid-cols-2':'grid'} mt-5 gap-2.5" role="${multi?'group':'radiogroup'}">${arr.map(a=>{const on=multi?sel.includes(a[0]):String(sel)===a[0];return `<button class="obo ${grid?'v':''} ${on?'sel':''} ${OB.last===a[0]?'pop':''}" data-a="obsel" data-v="${a[0]}" role="${multi?'checkbox':'radio'}" aria-checked="${on}"><span class="obi">${ic(a[2],'h-6 w-6')}</span><span class="min-w-0 flex-1"><b class="block text-[15px] font-semibold leading-snug">${a[1]}</b>${a[3]?`<small class="mut block text-[13px]">${a[3]}</small>`:''}</span>${on?`<span class="obk">${ic('check','h-4 w-4')}</span>`:''}</button>`}).join('')}</div>`;
  const next=(label,dis)=>`<button class="btn w-full" data-a="obnext" ${dis?'disabled':''}>${label||'Continuar'}</button>`;
@@ -1587,17 +1587,65 @@ function obRender(){const o=$('#ob'),i=OB.i,ob=S.ob;let body='',foot='';
    <div class="glass card !p-4"><p class="mut text-[13px]">Tempo de estudo preferido</p><p class="text-[15px] font-semibold">${ob.time?ob.time+' minutos por dia · flexível':'Sem meta definida'}</p></div>
    ${d?`<div class="glass card !p-4"><p class="mut text-[13px]">Diagnóstico rápido</p><p class="text-[15px] font-semibold">${d.ok} de ${d.n} questões${d.weak.length?' · vale reforçar '+d.weak.map(k=>obLabel(OBS,k)).join(', '):' · sem pontos fracos'}</p></div>`:''}
    <div class="cov rounded-[26px] p-4" style="--a:${rr.a};--b:${rr.b}"><p class="text-[13px] text-white/85">Primeira rota recomendada</p><p class="mt-1 text-[22px] font-bold leading-tight">${rr.n}</p><p class="mt-1 text-[13px] text-white/90">Primeira missão: ${obMission(id)}</p></div></div>`;
-  foot=`<button class="btn w-full" data-a="obfinish">${OB.edit?'Salvar preferências':'Iniciar minha jornada'}</button>`}
+  foot=`<button class="btn w-full" data-a="obfinish">${OB.edit?'Salvar preferências':'Conhecer minha plataforma'}</button>`}
  const skip=(i>=1&&i<=4)||(i==5&&OB.dq);
  o.innerHTML=`<div class="obt"><button class="obs ${(OB.edit?i>1:i>=1)?'':'invisible'}" data-a="obback" aria-label="Voltar" style="min-width:44px">${ic('back','h-5 w-5')}</button><div class="obp" role="progressbar" aria-label="Progresso das boas-vindas" aria-valuemin="0" aria-valuemax="7" aria-valuenow="${i+1}"><i style="width:${(i+1)/7*100}%"></i></div><button class="obs ${skip?'':'invisible'}" data-a="obskip">Pular</button></div><div class="obc">${body}</div>${foot?`<div class="obf">${foot}</div>`:''}`;
  if(i==5&&OB.dq)mc($('#obq'),OBQ,{t:'Diagnóstico'},x=>{const wk=[...new Set(x.wr.map(t=>OBQ.find(q=>q[6]==t)[7]))];S.ob.diag={ok:x.ok,n:x.n,weak:wk};save();OB.dq=false;OB.i=6;obRender()});
  const f=$('.obc button,.obf button',o);if(f&&i!=5)f.focus&&f.focus({preventScroll:true})}
-function obFinish(){S.ob.done=true;save();obClose();const edit=OB.edit,id=obReco(),g=!guideDone();go(edit&&!g?'per':'exp');if(g){setTimeout(guideOpen,FX.calm()?50:450)}else if(edit)toast('Preferências atualizadas');else{id=='hist'?openLes(0):routeScreen(id)}refresh()}
+function obFinish(){const first=FLOW.state=='preferences';S.ob.done=true;save();
+ if(first)flowAdvance('prefs');                      /* primeiro acesso: segue para o tutorial */
+ else{obClose();go('per');toast('Preferências atualizadas')}   /* edição pelo Perfil: volta ao Perfil */
+ refresh()}
 function obSummary(){const ob=S.ob;return `<div class="glass card mt-4 !p-4 grid gap-3"><div><p class="mut text-[13px]">Objetivo</p><p class="text-[15px] font-semibold leading-snug">${ob.goals.length?ob.goals.map(g=>obLabel(OBG,g)).join(' · '):'Ainda não definido'}</p></div><div><p class="mut text-[13px]">Disciplinas prioritárias</p><p class="text-[15px] font-semibold">${ob.subj.length?ob.subj.map(k=>obLabel(OBS,k)).join(', '):'Todas por igual'}</p></div><div><p class="mut text-[13px]">Estudo por dia</p><p class="text-[15px] font-semibold">${ob.time?ob.time+' minutos · flexível':'Sem meta definida'}</p></div><button class="btn2 w-full" data-a="obedit">Editar preferências</button><button class="btn2 w-full" data-a="tour">Rever apresentação</button><button class="btn2 w-full" data-a="gtour">Rever tutorial</button></div>`}
 
 /* ---------- Apresentação: 7 telas antes do questionário ---------- */
 const TOUR_KEY='sap-tour';
-const tourDone=()=>{try{return localStorage.getItem(TOUR_KEY)==='done'}catch(e){return false}};
+/* Estado do primeiro acesso: três chaves independentes. 'sap-tour' e 'sap-guide' são as chaves antigas (só lidas, para migrar). */
+const lsGet=k=>{try{return localStorage.getItem(k)}catch(e){return null}};
+const lsSet=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}};
+const lsDel=k=>{try{localStorage.removeItem(k)}catch(e){}};
+const FLOWK={intro:'sapIntroCompleted',prefs:'sapPreferencesCompleted',tut:'sapTutorialCompleted'};
+const FLOWM={intro:false,prefs:false,tut:false};     /* espelho em memória: o fluxo funciona mesmo sem localStorage */
+const flowDone=k=>FLOWM[k]||lsGet(FLOWK[k])==='true';
+const flowSet=k=>{FLOWM[k]=true;lsSet(FLOWK[k],'true')};
+const FLOWSTEPS=['sapIntroStep','sapPrefStep','sapTutorialStep'];
+const FLOW={state:null};
+const stepGet=(k,max,min=0)=>{const n=parseInt(lsGet(k),10);return Number.isFinite(n)?Math.min(max,Math.max(min,n)):min};
+function flowMigrate(){
+ if(lsGet(TOUR_KEY)==='done')flowSet('intro');
+ if(lsGet('sap-guide')==='done')flowSet('tut');
+ if(S.ob&&S.ob.done)flowSet('prefs');            /* quem já usou o app mantém tudo */
+ if(flowDone('prefs')){flowSet('intro');if(S.ob&&!S.ob.done){S.ob.done=true;save()}}  /* preferências prontas implicam apresentação vista */
+}
+const tourDone=()=>flowDone('intro');
+
+/* ---------- Máquina de estados: presentation → preferences → tutorial → app ----------
+   Só uma camada (apresentação, questionário ou tutorial) existe por vez. As telas apenas avisam que concluíram;
+   quem decide o que abrir em seguida é getInitialFlow(), lendo os dados persistidos. */
+function getInitialFlow(){
+ if(!flowDone('intro'))return 'presentation';
+ if(!flowDone('prefs'))return 'preferences';
+ if(!flowDone('tut'))return 'tutorial';
+ return 'app'}
+/* só conclui uma etapa se a anterior já estiver concluída (nunca marca por ter apenas aberto a tela) */
+const FLOWPRE={intro:null,prefs:'intro',tut:'prefs'};
+function flowComplete(k){if(FLOWPRE[k]&&!flowDone(FLOWPRE[k]))return false;flowSet(k);return true}
+function closeLayers(){tourClose();obClose();guideHide();closeModal()}
+function flowGo(state){closeLayers();FLOW.state=state;document.documentElement.dataset.flow=state;
+ if(state=='presentation')tourOpen(stepGet('sapIntroStep',6));
+ else if(state=='preferences')obOpen(false,stepGet('sapPrefStep',6,1));
+ else if(state=='tutorial'){if(view!=='exp')go('exp');setTimeout(()=>{if(FLOW.state=='tutorial'&&!GT)guideOpen(stepGet('sapTutorialStep',GSTEPS.length-1))},FX.calm()?30:260)}
+ else{if(view!=='exp')go('exp');else setTimeout(hwRun,250)}
+ syncInert()}
+/* conclusão de uma etapa do primeiro acesso: grava e abre a próxima conforme os dados */
+function flowAdvance(k){flowComplete(k);FLOWSTEPS.forEach((s,i)=>{if(['intro','prefs','tut'][i]==k)lsDel(s)});flowGo(getInitialFlow())}
+/* enquanto houver uma camada aberta, o app por trás não recebe foco nem toque */
+function syncInert(){const on=!$('#tour').hidden||!$('#ob').hidden||!!GT;['#sc','#nav','#top'].forEach(s=>{const e=$(s);if(e)e.inert=on})}
+new MutationObserver(syncInert).observe($('#tour'),{attributes:true,attributeFilter:['hidden']});
+new MutationObserver(syncInert).observe($('#ob'),{attributes:true,attributeFilter:['hidden']});
+/* limpar só o onboarding: não apaga XP, disciplinas, conquistas nem tema */
+function clearFlowKeys(){[...Object.values(FLOWK),...FLOWSTEPS,TOUR_KEY,GUIDE_KEY].forEach(lsDel);FLOWM.intro=FLOWM.prefs=FLOWM.tut=false}
+function resetOnboarding(){clearFlowKeys();S.ob={done:false,goals:[],subj:[],level:'',time:10,diag:null};save()}
 let TOUR={i:0,dir:0,review:false,cv:0};
 const TF=[['run','Lumiri Running','Percorra cenários de São Paulo e resolva desafios.'],['puz','Quebra-cabeça ENEM','Conecte conceitos de diferentes disciplinas.'],['cards','Cartas do Conhecimento','Aprenda com explicações ilustradas.'],['head','Trilhas Sonoras','Revise conteúdos ouvindo explicações.']];
 const T2=[['run','Running',''],['puz','Quebra-cabeça',''],['cards','Cartas','<i></i><i></i><i></i>'],['audio','Trilhas','<span class="teq"><b></b><b></b><b></b><b></b></span>']];
@@ -1633,19 +1681,19 @@ function tVidBind(){const w=$('#tour .tvid');if(!w)return;const v=$('video',w),b
  const srcs=[...v.querySelectorAll('source')].map(s=>s.getAttribute('src'));const fail=()=>{w.classList.remove('tvid','on');w.innerHTML=`<div class="tfb"><span>${ic(w.dataset.k||'play','h-7 w-7')}</span><b>Não foi possível reproduzir o vídeo</b><small>Este navegador não abriu ${srcs.join(' nem ')}.</small></div>`;console.warn('SApólis: vídeo indisponível → '+srcs.join(', '))};
  ['play','pause','ended'].forEach(ev=>v.addEventListener(ev,upd));v.addEventListener('click',tog);b.addEventListener('click',tog);
  const last=v.querySelector('source:last-of-type');if(v.error)fail();else{v.addEventListener('error',fail,{once:true});if(last)last.addEventListener('error',fail,{once:true})}}
-function tourRender(anim=true){const o=$('#tour'),i=TOUR.i;$$('#tour video').forEach(v=>v.pause());clearTimeout(TOUR.pt);o.classList.toggle('intro',i<=1);o.classList.toggle('pers',i==6);
- o.innerHTML=`<div class="tt"></div><div class="tst"><section class="ts ${anim&&TOUR.dir?(TOUR.dir>0?'in-r':'in-l'):''}" role="group" aria-roledescription="tela" aria-label="${i+1} de 7">${tSlide(i)}</section></div><div class="tf"><button class="tcta" data-a="tnext">${TCTA[i]}${ic('arrow','h-5 w-5')}</button></div>`;
+function tourRender(anim=true){const o=$('#tour'),i=TOUR.i;if(!TOUR.review)lsSet('sapIntroStep',String(i));$$('#tour video').forEach(v=>v.pause());clearTimeout(TOUR.pt);o.classList.toggle('intro',i<=1);o.classList.toggle('pers',i==6);
+ o.innerHTML=`<div class="tt"></div><div class="tst"><section class="ts ${anim&&TOUR.dir?(TOUR.dir>0?'in-r':'in-l'):''}" role="group" aria-roledescription="tela" aria-label="${i+1} de 7">${tSlide(i)}</section></div><div class="tf"><button class="tcta" data-a="tnext">${i==6&&TOUR.review?'Concluir':TCTA[i]}${ic('arrow','h-5 w-5')}</button></div>`;
  tTop();tVidBind();if(anim){const h=$('#t-h',o);if(h){h.tabIndex=-1;h.style.outline='none';h.focus({preventScroll:true})}}}
 function tourOpen(i=0,review){TOUR={i,dir:1,review:!!review,cv:0};$('#tour').hidden=false;tourRender();['quebra-cabeca.png.jpeg','cartas-fotossintese.png.jpeg','trilha-sonora.png.jpeg'].forEach(s=>{const im=new Image();im.src=s})}
 function tourClose(){const o=$('#tour');$$('video',o).forEach(v=>v.pause());o.hidden=true;o.innerHTML=''}
-function tourFinish(){try{localStorage.setItem(TOUR_KEY,'done')}catch(e){}tourClose();obOpen(!!S.ob.done)}
+function tourFinish(){const rev=TOUR.review;tourClose();if(rev)return;flowAdvance('intro')}
 Object.assign(A,{
  tnext(){if(TOUR.i<6){TOUR.i++;TOUR.dir=1;TOUR.cv=0;FX.tap();tourRender()}else tourFinish()},
  tback(){if(TOUR.i>0){TOUR.i--;TOUR.dir=-1;TOUR.cv=0;tourRender()}},
  tclose(){tourClose()},
  ttheme(){$('#theme').click();tTop();const b=$('#tour [data-a=ttheme]');b&&b.focus()},
  tcv(b){TOUR.cv=+b.dataset.v;tourRender(false);const t=$(`#tour [data-a=tcv][data-v="${TOUR.cv}"]`);t&&t.focus()},
- tour(){tourOpen(0,true)},
+ tour(){if(FLOW.state!=='app')return;tourOpen(0,true)},
  lplay(b){LS.i=5;lessonStep();A.lgame({dataset:{g:b.dataset.g}});setTimeout(()=>{const e=$('#gl');if(e)e.scrollIntoView({behavior:FX.calm()?'auto':'smooth',block:'start'})},60)},
  thm(b){themeTo(b.dataset.t,b);FX.tap()},
  bf(b){const K=['all','doing','done'],o=K.indexOf(BF);BF=b.dataset.f;rBib();const s=$('.lseg');if(s){s.style.setProperty('--ix',o);requestAnimationFrame(()=>requestAnimationFrame(()=>s.style.setProperty('--ix',K.indexOf(BF))))}const t=$(`[data-a=bf][data-f="${BF}"]`);t&&t.focus({preventScroll:true})},
@@ -2066,7 +2114,7 @@ document.addEventListener('keydown',e=>{if(e.key=='Enter'&&e.target.id=='fin'){e
    Estado próprio em localStorage ('sap-guide'), separado da apresentação e das preferências.
    ========================================================= */
 const GUIDE_KEY='sap-guide';
-const guideDone=()=>{try{return localStorage.getItem(GUIDE_KEY)==='done'}catch(e){return false}};
+const guideDone=()=>flowDone('tut');
 const GSTEPS=[
  {go:'exp',el:()=>$('#v-exp > .cov'),m:'happy',t:'Conheça sua página inicial',d:'Este é seu espaço! Aqui você encontra suas atividades e continua de onde parou.'},
  {go:'exp',el:()=>$('#v-exp > .glass.card'),m:'cheer',t:'Seu progresso e XP',d:'Cada atividade concluída ajuda você a evoluir. Acompanhe suas conquistas por aqui!'},
@@ -2076,10 +2124,13 @@ const GSTEPS=[
  {go:'exp',el:()=>{const c=$('#cats');return c&&c.closest('.glass')},m:'happy',t:'Trilhas para focar',d:'Prefere estudar com som? Escolha uma trilha de foco e toque quando quiser.'},
  {el:()=>$('#nav [data-k=per]'),m:'cheer',t:'Perfil e preferências',d:'Confira seu progresso, ajuste suas preferências e volte a este tutorial quando quiser.',cta:'Concluir tutorial'}];
 let GT=null;
-function guideOpen(){if(!$('#gt')){const o=document.createElement('div');o.id='gt';o.setAttribute('role','dialog');o.setAttribute('aria-modal','true');o.setAttribute('aria-labelledby','gt-h');o.innerHTML='<div class="gt-hole" aria-hidden="true"></div><div class="gt-pop"></div>';$('#frame').appendChild(o)}
- const o=$('#gt');GT={i:0,dir:1,prevFocus:document.activeElement};o.hidden=false;island('idle');guideStep()}
-function guideClose(done){const o=$('#gt');if(!o||!GT)return;if(done)try{localStorage.setItem(GUIDE_KEY,'done')}catch(e){}o.classList.remove('on');setTimeout(()=>{o.hidden=true},FX.calm()?0:220);GT=null;const nb=$('#nav .nb[aria-current=page]');if(nb)nb.focus({preventScroll:true})}
-function guideStep(){if(!GT)return;const s=GSTEPS[GT.i];if(s.go&&view!==s.go)go(s.go);
+function guideOpen(start,review){if(!$('#gt')){const o=document.createElement('div');o.id='gt';o.setAttribute('role','dialog');o.setAttribute('aria-modal','true');o.setAttribute('aria-labelledby','gt-h');o.innerHTML='<div class="gt-hole" aria-hidden="true"></div><div class="gt-pop"></div>';$('#frame').appendChild(o)}
+ const o=$('#gt');GT={i:Math.min(GSTEPS.length-1,Math.max(0,start||0)),dir:1,review:!!review,back:view,prevFocus:document.activeElement};syncInert();o.hidden=false;island('idle');guideStep()}
+function guideHide(){const o=$('#gt');if(o){o.classList.remove('on');o.hidden=true}GT=null;syncInert()}
+function guideClose(done){const o=$('#gt');if(!o||!GT)return;const review=GT.review,back=review?GT.back:null;
+ if(!review){guideHide();flowAdvance('tut');const nb=$('#nav .nb[aria-current=page]');if(nb)nb.focus({preventScroll:true});return}   /* concluir OU pular encerra a etapa */
+ o.classList.remove('on');setTimeout(()=>{o.hidden=true},FX.calm()?0:220);GT=null;syncInert();if(back&&NI[back]!==undefined&&view!==back)go(back);const nb=$('#nav .nb[aria-current=page]');if(nb)nb.focus({preventScroll:true})}
+function guideStep(){if(!GT)return;const s=GSTEPS[GT.i];if(!GT.review)lsSet('sapTutorialStep',String(GT.i));if(s.go&&view!==s.go)go(s.go);
  const el=s.el();if(!el||!el.getBoundingClientRect().width){const n=GT.i+GT.dir;if(n>=0&&n<GSTEPS.length){GT.i=n;return guideStep()}return guideClose(true)}
  if(sc.contains(el)){const fr=$('#frame').getBoundingClientRect(),er=el.getBoundingClientRect(),room=fr.height-180;sc.style.scrollBehavior='auto';sc.scrollTop+=er.height<room?(er.top-fr.top-86):(er.top-fr.top-70);sc.style.scrollBehavior=''}
  setTimeout(()=>guidePlace(el,s),40)}
@@ -2098,7 +2149,9 @@ Object.assign(A,{
  gnext(){if(!GT)return;if(GT.i<GSTEPS.length-1){GT.i++;GT.dir=1;FX.tap();guideStep()}else{guideClose(true);toast('Tutorial concluído. Bons estudos!')}},
  gprev(){if(!GT||!GT.i)return;GT.i--;GT.dir=-1;guideStep()},
  gskip(){guideClose(true)},
- gtour(){guideOpen()}});
+ gtour(){if(FLOW.state!=='app')return;guideOpen(0,true)},
+ resetob(b){if(b.dataset.arm!=='1'){b.dataset.arm='1';b.textContent='Toque de novo para confirmar';setTimeout(()=>{if(b.isConnected){b.dataset.arm='';b.textContent='Reiniciar só o onboarding (teste)'}},4000);return}
+  resetOnboarding();flowGo('presentation')}});
 document.addEventListener('keydown',e=>{if(!GT)return;const pop=$('#gt .gt-pop');
  if(e.key=='Escape'){e.preventDefault();guideClose(true);return}
  if(e.key=='ArrowRight'){e.preventDefault();A.gnext();return}if(e.key=='ArrowLeft'){e.preventDefault();A.gprev();return}
@@ -2106,12 +2159,15 @@ document.addEventListener('keydown',e=>{if(!GT)return;const pop=$('#gt .gt-pop')
 window.addEventListener('resize',()=>{if(GT)guideStep()});
 Object.assign(A,{
  obsel(b){const v=b.dataset.v,ob=S.ob,i=OB.i;if(i==1||i==2){const k=i==1?'goals':'subj',a=ob[k];ob[k]=a.includes(v)?a.filter(x=>x!=v):[...a,v]}if(i==3)ob.level=v;if(i==4)ob.time=+v;OB.last=v;save();FX.tap();obRender()},
- obnext(){if(OB.i<6){OB.i++;obRender()}},obback(){if(OB.dq)OB.dq=false;else if(OB.i>1)OB.i--;else if(!OB.edit){obClose();tourOpen(6);return}obRender()},
- obskip(){if(OB.dq){OB.dq=false;OB.i=6}else OB.i++;obRender()},obdiag(){OB.dq=true;obRender()},obnodiag(){OB.i=6;obRender()},obfinish(){obFinish()},obedit(){obOpen(true)},
+ obnext(){if(OB.i<6){OB.i++;obRender()}},obback(){if(OB.dq)OB.dq=false;else if(OB.i>1)OB.i--;else if(!OB.edit){closeLayers();FLOW.state='presentation';tourOpen(6);return}obRender()},
+ obskip(){if(OB.dq){OB.dq=false;OB.i=6}else OB.i++;obRender()},obdiag(){OB.dq=true;obRender()},obnodiag(){OB.i=6;obRender()},obfinish(){obFinish()},obedit(){if(FLOW.state!=='app')return;obOpen(true)},
  pref(b){const k=b.dataset.k;S.set[k]=!S.set[k];save();b.setAttribute('aria-checked',String(S.set[k]));if(k=='reduce')applyMotion();if(k=='sound'&&S.set.sound)FX.play('ok');if(k=='haptic'&&S.set.haptic)FX.play('tap',[30]);toast((k=='sound'?'Sons ':k=='haptic'?'Vibração ':'Animações reduzidas ')+(S.set[k]?(k=='reduce'?'ligadas':'ativados'):(k=='reduce'?'desligadas':'desativados')))},
  nextm(){const ks=GM.map(g=>g[0]);gameScreen(ks[(ks.indexOf(CURM)+1)%ks.length])}});
-ach();refresh();bars();applyMotion();setTimeout(hwRun,400);['pointerdown','keydown'].forEach(ev=>document.addEventListener(ev,()=>FX.init(),{passive:true}));if(!S.ob.done){if(tourDone())obOpen(false);else tourOpen(0)}else if(!guideDone())setTimeout(()=>{if($('#tour').hidden&&$('#ob').hidden&&!GT){go('exp');guideOpen()}},600)
-setTimeout(()=>{if(cur=='idle')notify('Bruno ganhou 40 XP e passou à sua frente no ranking semanal')},16000);
+ach();refresh();bars();applyMotion();setTimeout(hwRun,400);['pointerdown','keydown'].forEach(ev=>document.addEventListener(ev,()=>FX.init(),{passive:true}));/* modo de teste: abrir com ?onboarding=reset refaz o primeiro acesso sem apagar XP, progresso, conquistas ou tema */
+if(/[?&]onboarding=reset\b/.test(location.search)){resetOnboarding();try{history.replaceState(null,'',location.pathname+location.hash)}catch(e){}}
+flowMigrate();       /* usuários antigos: converte as chaves anteriores sem perder nada */
+flowGo(getInitialFlow());
+setTimeout(()=>{if(cur=='idle'&&FLOW.state=='app')notify('Bruno ganhou 40 XP e passou à sua frente no ranking semanal')},16000);
 
 </script>
 </body>
