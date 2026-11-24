@@ -79,7 +79,7 @@ html:not(.dark) .blob{opacity:.17!important}html:not(.dark) body{background:radi
 .eq i{display:block;width:3px;height:100%;border-radius:2px;background:#C4B5FD;transform-origin:bottom;animation:eq .9s ease-in-out infinite alternate}
 .eq i:nth-child(2){animation-delay:-.3s}.eq i:nth-child(3){animation-delay:-.6s}.eq i:nth-child(4){animation-delay:-.15s}@keyframes eq{from{transform:scaleY(.25)}to{transform:scaleY(1)}}
 .ring{stroke-dasharray:151;stroke-dashoffset:151}.pop .ring{animation:draw 1s .15s cubic-bezier(.16,1,.3,1) forwards}@keyframes draw{to{stroke-dashoffset:0}}
-.pop .xpn{animation:pp .7s var(--sp)}@keyframes pp{from{transform:scale(.4);opacity:0}}
+.pop .xpn{animation:pp .7s var(--sp)}@keyframes pp{from{transform:scale(.9);opacity:0}}
 /* navegação */
 #nav{--p:6px;position:absolute;left:50%;bottom:14px;transform:translateX(-50%);z-index:20;width:min(372px,calc(100% - 28px));padding:var(--p);border-radius:30px;display:grid;grid-template-columns:repeat(5,1fr);transition:width .5s var(--sp),padding .5s var(--sp)}
 #nav.sm{--p:4px;width:min(290px,calc(100% - 28px))}
@@ -118,8 +118,8 @@ textarea::placeholder,input::placeholder{color:var(--mute)}
 @keyframes fxp{from{transform:translate(0,0) scale(1);opacity:1}to{transform:translate(var(--x),var(--y)) scale(.3);opacity:0}}
 .okpop{animation:okp .5s var(--sp)}@keyframes okp{40%{transform:scale(1.04)}}
 .nudge{animation:shake .4s}
-.xpgain{animation:xg .7s var(--sp)}@keyframes xg{from{transform:translateY(8px) scale(.7);opacity:0}}
-.trophy{animation:troph .8s var(--sp)}@keyframes troph{from{transform:scale(.3) rotate(-20deg);opacity:0}}
+.xpgain{animation:xg .7s var(--sp)}@keyframes xg{from{transform:translateY(6px) scale(.95);opacity:0}}
+.trophy{animation:troph .8s var(--sp)}@keyframes troph{from{transform:scale(.9) rotate(-6deg);opacity:0}}
 .fxstar{animation:troph .6s var(--sp)}
 .rm *,.rm *::before,.rm *::after{animation:none!important;transition:none!important}
 /* boas-vindas */
@@ -239,7 +239,7 @@ textarea::placeholder,input::placeholder{color:var(--mute)}
 .pblk b{font-size:26px;font-weight:800;line-height:1}.p1 .pblk b{font-size:32px}
 .pod.in .pblk{animation:pgrow .65s cubic-bezier(.2,.9,.25,1.12) backwards;animation-delay:calc(var(--d)*.3s)}@keyframes pgrow{from{transform:scaleY(0)}}
 .pod.in .pav,.pod.in .pnm,.pod.in .pxp{animation:pdrop .5s var(--sp) backwards;animation-delay:calc(var(--d)*.3s + .3s)}@keyframes pdrop{from{opacity:0;transform:translateY(-14px) scale(.85)}}
-.pod.in .pcrown{animation:pcrw .6s var(--sp) backwards 1.3s}@keyframes pcrw{from{opacity:0;transform:translateY(-12px) rotate(-25deg) scale(.4)}}
+.pod.in .pcrown{animation:pcrw .6s var(--sp) backwards 1.3s}@keyframes pcrw{from{opacity:0;transform:translateY(-8px) rotate(-10deg) scale(.9)}}
 .crows{display:grid;gap:8px;margin-top:12px;padding:0;list-style:none}
 .crow{display:flex;align-items:center;gap:12px;min-height:54px;padding:8px 14px;border-radius:18px;background:var(--chip);border:1.5px solid transparent}
 .crow.me{background:var(--glass);border-color:var(--v)}
@@ -278,7 +278,7 @@ textarea::placeholder,input::placeholder{color:var(--mute)}
 .qin .opt{animation:in .4s cubic-bezier(.16,1,.3,1) backwards;animation-delay:calc(80ms + var(--i) * 55ms)}
 .fbin{animation:in .38s cubic-bezier(.16,1,.3,1)}
 .tb.urg{background:linear-gradient(90deg,#F59E0B,#F43F5E)!important;animation:urg .6s ease-in-out infinite}@keyframes urg{50%{opacity:.55}}
-.combo{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:99px;font-size:12px;font-weight:700;color:#fff;background:linear-gradient(135deg,#7C3AED,#EC4899);animation:cpop .45s var(--sp)}@keyframes cpop{from{transform:scale(.4);opacity:0}}
+.combo{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:99px;font-size:12px;font-weight:700;color:#fff;background:linear-gradient(135deg,#7C3AED,#EC4899);animation:cpop .45s var(--sp)}@keyframes cpop{from{transform:scale(.9);opacity:0}}
 .cbar{transform-box:fill-box;transform-origin:50% 100%;animation:cgrow .7s cubic-bezier(.2,.9,.25,1.1) backwards}@keyframes cgrow{from{transform:scaleY(0)}}
 .cline{stroke-dasharray:1;stroke-dashoffset:1;animation:cnd 1s ease forwards}.cdot,.clab{animation:in .4s ease backwards}
 .tls{display:block}.tls[hidden]{display:none}
@@ -531,6 +531,86 @@ html:not(.dark) body{background:radial-gradient(60% 50% at 50% 28%,#F1EDF9,#E3E1
 .dark .crow.me,.dark .lcont{border-color:rgba(167,123,255,.55)}
 .dark #frame .vbtn>span{background:#2A1252!important;color:#EDE6FF!important}
 
+/* =========================================================
+   REFINAMENTO (Impeccable · Emil Kowalski): formas, ícones e movimento
+   ========================================================= */
+:root{--ease-out:cubic-bezier(.23,1,.32,1);--ease-io:cubic-bezier(.77,0,.175,1)}
+/* forma: hexágono genérico -> quadrado de cantos suaves (mesmo tamanho, sem recorte) */
+.hex{clip-path:none!important;border-radius:30%}
+.pav{border-radius:50%}
+/* setas de ação em SVG no lugar do caractere › */
+.cta,.cta-wrap{display:inline-flex;align-items:center;gap:4px}
+.cta-ar{width:14px;height:14px;flex-shrink:0;stroke-width:2.2;transition:transform 200ms var(--ease-out)}
+@media(hover:hover) and (pointer:fine){.press:hover .cta-ar,button:hover>.cta-ar,button:hover .cta-ar{transform:translateX(3px)}}
+.pill svg,.lgo svg{flex-shrink:0}
+.hcard>span:last-child{display:inline-flex;align-items:center;gap:4px}
+/* pressão: resposta curta e precisa */
+.btn,.btn2,.press,.pill,.opt,.obo,.tcta,.ltab,.gtool,.vbtn,.vbtn2,.tib,.nb{transition-property:transform,background-color,border-color,color,box-shadow,opacity;transition-duration:160ms;transition-timing-function:var(--ease-out)}
+.btn:active,.btn2:active,.press:active,.pill:active,.tcta:active,.ltab:active,.gtool:active,.vbtn:active,.vbtn2:active{transform:scale(.97)}
+/* transições explícitas no lugar de "transition: all" */
+.stp button,.tseg button,.ltab{transition:background-color 200ms var(--ease-out),color 200ms var(--ease-out),border-color 200ms var(--ease-out)}
+#ctx,#toast{transition:opacity 250ms var(--ease-out),transform 250ms var(--ease-out)}
+.tplay{transition:transform 250ms var(--ease-out),opacity 200ms var(--ease-out),width 250ms var(--ease-out),height 250ms var(--ease-out)}
+/* entradas de tela mais curtas */
+.view{animation-duration:.32s;animation-timing-function:var(--ease-out)}
+@keyframes in{from{opacity:0;transform:translateY(8px)}}
+.ts.in-r,.ts.in-l{animation-duration:.28s;animation-timing-function:var(--ease-out)}
+/* hover só em dispositivos com mouse (toque não dispara hover falso) */
+@media not all and (hover:hover){.lcard:hover .lcov,.bcard:hover .bcov img,.gcard:hover>img{transform:none}}
+/* biblioteca: reflexo de luz passa uma vez na entrada, não em loop */
+.lcov::after{animation:lsh 1.1s var(--ease-out) 1 backwards;animation-delay:calc(.4s + var(--d)*.07s)}
+@keyframes lsh{from{left:-70%}to{left:130%}}
+/* seleção de texto e barra de rolagem no tom do app */
+::selection{background:rgba(124,58,237,.28);color:inherit}
+
+/* =========================================================
+   BIBLIOTECA — referência: Apple Books (estante de livros, segmentado iOS)
+   ========================================================= */
+.lhead{font-size:34px;font-weight:800;letter-spacing:-.03em;line-height:1.05}
+/* destaque "continuar": capa desfocada como ambiente, livro em primeiro plano */
+.lhero{position:relative;display:block;width:100%;margin-top:18px;overflow:hidden;border-radius:24px;color:#fff;background:#24123F;box-shadow:0 22px 40px -24px rgba(30,10,60,.7);transition:transform 160ms var(--ease-out)}
+.lhero:active{transform:scale(.98)}
+.lhero-bg{position:absolute;inset:-20%;width:140%;height:140%;object-fit:cover;filter:blur(28px) saturate(1.3) brightness(.62)}
+.lhero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,8,32,.05),rgba(18,8,32,.55))}
+.lhero-in{position:relative;z-index:1;display:flex;align-items:center;gap:16px;padding:18px 18px 12px}
+.lhero-t{display:block;font-size:21px;font-weight:700;letter-spacing:-.02em;line-height:1.15}
+.lhero-p{display:block;margin-top:2px;font-size:13px;color:rgba(255,255,255,.75);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lhero-cta{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:6px;margin:4px 18px 18px;height:42px;border-radius:99px;font-size:14px;font-weight:700;color:#1E0B3A;background:#fff}
+.lhero .lprog{color:rgba(255,255,255,.85)}.lhero .lbar{background:rgba(255,255,255,.22)}.lhero .lbar i{background:#fff}
+/* livro: cantos pequenos, lombada iluminada à esquerda, sombra física com deslocamento */
+.lbook{position:relative;display:block;aspect-ratio:2/3;width:100%;overflow:hidden;border-radius:4px 10px 10px 4px;background:#1B0A3A;box-shadow:0 1px 1px rgba(0,0,0,.12),0 6px 10px -4px rgba(20,10,40,.35),0 18px 28px -14px rgba(20,10,40,.5);transition:transform 220ms var(--ease-out),box-shadow 220ms var(--ease-out)}
+.lbook.bgrad{background:radial-gradient(120% 90% at 15% 5%,var(--b),transparent 62%),linear-gradient(160deg,var(--a),#150a24 88%)}
+.lbook img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:none!important}
+.lbook::before{content:"";position:absolute;z-index:1;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(0,0,0,.28) 0,rgba(255,255,255,.22) 2.5%,rgba(255,255,255,0) 7%,rgba(0,0,0,.06) 9%,rgba(0,0,0,0) 14%)}
+.lbook::after{content:"";position:absolute;z-index:1;inset:0;pointer-events:none;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.lbook-sm{width:68px;flex-shrink:0;box-shadow:0 10px 20px -8px rgba(0,0,0,.6)}
+.lbadge{position:absolute;z-index:2;right:8px;top:8px;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;color:#fff;background:#16A34A;box-shadow:0 4px 10px -3px rgba(0,0,0,.4)}
+/* seção e segmentado iOS com indicador deslizante */
+.lsec{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-top:30px}
+.lsec h3{font-size:22px;font-weight:700;letter-spacing:-.02em}.lsec span{font-size:13px}
+.lseg{position:relative;display:grid;grid-template-columns:repeat(3,1fr);margin-top:12px;padding:3px;border-radius:12px;background:var(--chip)}
+.lseg-th{position:absolute;top:3px;bottom:3px;left:3px;width:calc((100% - 6px)/3);border-radius:9px;background:var(--bg);box-shadow:0 1px 2px rgba(0,0,0,.08),0 3px 8px -2px rgba(20,10,40,.18);transform:translateX(calc(var(--ix)*100%));transition:transform 260ms var(--ease-out)}
+.dark .lseg-th{background:rgba(255,255,255,.16);box-shadow:none}
+.lseg-b{position:relative;z-index:1;height:34px;font-size:13px;font-weight:600;color:var(--mute);transition:color 200ms var(--ease-out)}
+.lseg-b[aria-selected=true]{color:var(--ink)}.lseg-b span{font-weight:500;opacity:.7}
+.lseg-b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 4px}
+@media(max-width:380px){.lseg-b{font-size:12px}.lseg-b span{display:none}}
+/* grade */
+.lgrid{display:grid;grid-template-columns:1fr 1fr;gap:28px 18px;margin-top:20px}
+.lcard{display:flex;flex-direction:column;min-width:0}
+.ltit{margin-top:12px;font-size:15px;font-weight:650;letter-spacing:-.01em;text-transform:none;line-height:1.2}
+.lpl{margin-top:2px;font-size:12.5px;font-weight:500;color:var(--mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lstat{margin-top:8px;font-size:12px;font-weight:600;color:var(--mute)}
+.lprog{display:flex;align-items:center;gap:8px;margin-top:8px;font-size:12px;font-weight:600;color:var(--mute)}.lprog-w{margin-top:10px}
+.lbar{position:relative;flex:1;height:4px;border-radius:9px;overflow:hidden;background:var(--seg)}.lbar i{position:absolute;inset:0 auto 0 0;border-radius:9px;background:var(--lil)}
+.lempty{margin-top:20px;padding:28px 16px;border-radius:16px;text-align:center;font-size:14px;color:var(--mute);background:var(--chip)}
+@media(hover:hover) and (pointer:fine){.lcard:hover .lbook{transform:translateY(-4px);box-shadow:0 1px 1px rgba(0,0,0,.12),0 10px 16px -6px rgba(20,10,40,.4),0 26px 36px -16px rgba(20,10,40,.55)}}
+.lcard:active .lbook{transform:scale(.97)}
+/* entrada: uma vez, em cascata curta, a partir de um estado já visível */
+.lib.in .lcard{animation:lin2 .42s var(--ease-out) backwards;animation-delay:calc(60ms + var(--d)*45ms)}
+@keyframes lin2{from{opacity:.4;transform:translateY(10px)}}
+.lib.in .lhero{animation:lin2 .42s var(--ease-out) backwards}
+
 /* seletor de aparência (Perfil › Preferências) */
 .thsel{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .thsel button{display:flex;flex-direction:column;align-items:center;gap:7px;min-height:44px;padding:10px 4px;border-radius:16px;font-size:12px;font-weight:600;text-align:center;line-height:1.2;border:1.5px solid var(--gb);background:var(--chip);color:var(--ink);transition:border-color .2s,background .2s}
@@ -679,16 +759,16 @@ html:not(.dark) body{background:radial-gradient(60% 50% at 50% 28%,#F1EDF9,#E3E1
       <section id="vis-entry" aria-labelledby="vis-h"></section>
       <h2 class="h2 mt-10 text-[24px]">São Paulo em 7 Rotas</h2>
       <div id="catrow" class="-mx-5 mt-4 flex snap-x gap-3 overflow-x-auto px-5 pb-2" style="scrollbar-width:none"></div>
-      <h2 class="h2 mt-10 text-[24px]">Para você</h2><p class="sub mt-1.5">Recomendações a partir dos seus erros e do seu domínio.</p>
+      <h2 class="h2 mt-10 text-[24px]">Para você</h2>
       <div id="recs" class="mt-4 grid gap-3"></div>
       <h2 class="h2 mt-10 text-[24px]">Missões e desafios</h2>
-      <div class="mt-4 grid grid-cols-2 gap-3"><button data-a="game" data-g="rel" class="gcard hcard press flex min-h-[132px] flex-col justify-between rounded-[24px] p-4 text-left"><img src="capas/jogo-rel.jpg" alt="" decoding="sync" style="object-position:88% 50%"><span class="gshade" aria-hidden="true"></span><span class="relative"><span class="block text-[17px] font-semibold leading-tight">Desafio relâmpago</span><span class="mt-1 block text-[13px] text-white/85">3 questões rápidas</span></span><span class="relative text-[13px] font-semibold">Jogar agora ›</span></button><button data-a="nav" data-k="des" class="gcard hcard press flex min-h-[132px] flex-col justify-between rounded-[24px] p-4 text-left"><img src="capas/jogo-puz.jpg" alt="" decoding="sync" style="object-position:78% 50%"><span class="gshade" aria-hidden="true"></span><span class="relative"><span class="block text-[17px] font-semibold leading-tight">Missões pela Cidade</span><span class="mt-1 block text-[13px] text-white/85">5 jogos para resolver</span></span><span class="relative text-[13px] font-semibold">Ver missões ›</span></button></div>
-      <h2 class="h2 mt-10 text-[24px]">São Paulo em Movimento</h2><p class="sub mt-1.5">Explore a cidade e transforme cada visita em conhecimento.</p>
+      <div class="mt-4 grid grid-cols-2 gap-3"><button data-a="game" data-g="rel" class="gcard hcard press flex min-h-[132px] flex-col justify-between rounded-[24px] p-4 text-left"><img src="capas/jogo-rel.jpg" alt="" decoding="sync" style="object-position:88% 50%"><span class="gshade" aria-hidden="true"></span><span class="relative"><span class="block text-[17px] font-semibold leading-tight">Desafio relâmpago</span><span class="mt-1 block text-[13px] text-white/85">3 questões rápidas</span></span><span class="relative text-[13px] font-semibold">Jogar agora<svg class="ic cta-ar" aria-hidden="true"><use href="#i-arrow"/></svg></span></button><button data-a="nav" data-k="des" class="gcard hcard press flex min-h-[132px] flex-col justify-between rounded-[24px] p-4 text-left"><img src="capas/jogo-puz.jpg" alt="" decoding="sync" style="object-position:78% 50%"><span class="gshade" aria-hidden="true"></span><span class="relative"><span class="block text-[17px] font-semibold leading-tight">Missões pela Cidade</span><span class="mt-1 block text-[13px] text-white/85">5 jogos para resolver</span></span><span class="relative text-[13px] font-semibold">Ver missões<svg class="ic cta-ar" aria-hidden="true"><use href="#i-arrow"/></svg></span></button></div>
+      <h2 class="h2 mt-10 text-[24px]">São Paulo em Movimento</h2>
       <div id="sp" class="mt-4 grid gap-3"></div>
       <h2 class="h2 mt-10 text-[24px]">Trilhas para focar</h2>
       <div class="glass card mt-4">
         <div id="cats" class="flex flex-wrap gap-2"></div>
-        <div class="mt-5 flex items-center gap-3"><div class="min-w-0 flex-1"><p id="pl-t" class="truncate text-[16px] font-bold"></p><p class="mut text-[13px]">Gerada no seu aparelho · sem anúncios</p></div>
+        <div class="mt-5 flex items-center gap-3"><div class="min-w-0 flex-1"><p id="pl-t" class="truncate text-[16px] font-bold"></p><p class="mut text-[13px]">Som gerado no aparelho</p></div>
           <button data-a="next" class="chip grid h-11 w-11 place-items-center rounded-full" aria-label="Próxima trilha"><svg class="ic h-5 w-5"><use href="#i-next"/></svg></button>
           <button data-a="pp" class="ppb grid h-12 w-12 place-items-center rounded-full text-white press" style="background:linear-gradient(140deg,#5B21B6,#7C3AED)" aria-label="Tocar"><svg class="ic h-6 w-6"><use class="ppi" href="#i-play"/></svg></button></div>
         <label class="mt-4 flex items-center gap-3 text-[12px] font-semibold mut">Volume<input id="vol" type="range" min="0" max="1" step=".05" value=".6" aria-label="Volume"></label>
@@ -696,7 +776,7 @@ html:not(.dark) body{background:radial-gradient(60% 50% at 50% 28%,#F1EDF9,#E3E1
       <div class="glass card mt-8 overflow-hidden" style="border-style:dashed;padding:24px">
         <span class="hex grid h-14 w-14 place-items-center bg-[#6D28D9] text-white"><svg class="ic h-6 w-6"><use href="#i-lock"/></svg></span>
         <h3 class="mt-5 text-[22px] leading-[1.1]">ENEM Premium – Acesso Completo</h3>
-        <p class="sub mt-2.5">Rotas avançadas, simulados completos, trilhas personalizadas e análises pedagógicas adicionais.</p>
+        <p class="sub mt-2">Simulados completos e trilhas personalizadas.</p>
         <button data-a="prem" class="btn mt-5">Ver benefícios</button>
       </div>
     </section>
@@ -725,7 +805,7 @@ html:not(.dark) body{background:radial-gradient(60% 50% at 50% 28%,#F1EDF9,#E3E1
         <h1 class="mt-5 text-[36px] leading-[1.05]">Revolução Francesa</h1>
         <p class="sub mt-2.5">Como a queda de uma fortaleza-prisão mudou para sempre a ideia de quem manda e de quem tem direitos.</p>
         <div class="mt-4 flex flex-wrap gap-2"><span class="pill">1789–1799</span><span class="pill">18 min</span><span class="pill lil">+120 XP</span></div>
-        <div class="glass card mt-6 !p-4"><p class="lil text-[12px] font-bold uppercase tracking-wide">Em resumo</p><ul class="mt-2 grid gap-2 text-[14px] leading-snug">
+        <div class="glass card mt-6 !p-4"><ul class="grid gap-2 text-[14px] leading-snug">
           <li><b>Quando:</b> 1789 a 1799, na França.</li>
           <li><b>O quê:</b> o povo derrubou o poder absoluto do rei.</li>
           <li><b>Por que importa:</b> base dos direitos humanos modernos.</li></ul></div>
@@ -1234,15 +1314,15 @@ function rPer(){const L=lvl(),b0=L*500,n=streak(),d=new Date(),dow=(d.getDay()+6
  const wk=['Seg','Ter','Qua','Qui','Sex','Sáb','Dom'].map((x,i)=>{const ok=S.days.includes(D0(i-dow)),t=i==dow;return `<div class="flex flex-col items-center gap-2"><span class="text-[12px] font-semibold ${t?'':'mut'}">${x}</span><span class="grid h-9 w-9 place-items-center rounded-full" style="${ok?'background:var(--g);color:#fff':t?'border:1.6px solid var(--v)':'border:1.6px dashed var(--seg)'}">${ok?ic('check','h-4 w-4'):''}</span></div>`}).join('');
  const nd=R.filter(r=>S.done['les:'+r.id]).length;
  $('#v-per').innerHTML=`<div class="flex items-start justify-between gap-3"><div class="min-w-0"><h1 class="text-[38px] leading-[1.06]">Bom dia, Mariana.</h1><p class="sub mt-2.5">${cap1(d.toLocaleDateString('pt-BR',{weekday:'long',day:'numeric',month:'long'}))} · ${today?'ofensiva garantida hoje':'conclua uma atividade quando quiser'}</p></div>${lume('happy','h-[84px] w-[68px]',1)}</div>
- <div class="glass card mt-6"><div class="flex items-center gap-3.5"><span class="hex grid h-12 w-12 place-items-center text-white" style="background:linear-gradient(160deg,#FB7185,#7C3AED)">${ic('flame','h-6 w-6')}</span><div><h2 class="text-[20px]">Ofensiva Diária</h2><p class="mut tn text-[13px]">${n} ${n==1?'dia':'dias'} seguidos · conta os dias com atividade concluída</p></div></div><div class="mt-5 grid grid-cols-7 gap-1.5">${wk}</div></div>
+ <div class="glass card mt-6"><div class="flex items-center gap-3.5"><span class="hex grid h-12 w-12 place-items-center text-white" style="background:linear-gradient(160deg,#FB7185,#7C3AED)">${ic('flame','h-6 w-6')}</span><div><h2 class="text-[20px]">Ofensiva Diária</h2><p class="mut tn text-[13px]">${n} ${n==1?'dia':'dias'} seguidos</p></div></div><div class="mt-5 grid grid-cols-7 gap-1.5">${wk}</div></div>
  <div class="relative mt-5 overflow-hidden rounded-[32px] p-6 text-white" style="background:radial-gradient(90% 80% at 100% 0%,rgba(196,181,253,.7),transparent 60%),linear-gradient(135deg,#4C1D95,#6D28D9 85%);box-shadow:0 30px 50px -24px rgba(91,33,245,.7),inset 0 1px 0 rgba(255,255,255,.3)">
   <div class="flex items-center gap-5"><span class="hex grid h-[84px] w-[84px] shrink-0 place-items-center" style="background:linear-gradient(160deg,rgba(255,255,255,.4),rgba(26,16,37,.55))"><span class="ser text-[36px] leading-none">${L}</span></span><div><p class="text-[15px] font-semibold text-white/85">Level ${L} •</p><p class="ser tn mt-0.5 text-[40px] leading-none">${S.xp} <span class="font-sans text-[18px] font-bold tracking-normal text-white/80">XP</span></p></div></div>
   <div class="mt-6 h-4 overflow-hidden rounded-full" style="background:rgba(26,16,37,.5);box-shadow:inset 0 2px 4px rgba(0,0,0,.35)" role="progressbar" aria-label="Progresso para o próximo level" aria-valuemin="0" aria-valuemax="500" aria-valuenow="${S.xp-b0}"><div class="h-full rounded-full" style="width:0;background:linear-gradient(90deg,#fff,#E9D5FF);box-shadow:0 0 18px rgba(255,255,255,.6);transition:width 1.2s cubic-bezier(.16,1,.3,1)" data-w="${(S.xp-b0)/5}"></div></div>
   <div class="tn mt-2.5 flex justify-between text-[12px] font-semibold text-white/85"><span>Level ${L} · ${b0}</span><span>Level ${L+1} · ${b0+500}</span></div><p class="mt-4 text-[14px] font-semibold">Faltam ${b0+500-S.xp} XP para o Level ${L+1}</p></div>
  <h3 class="mt-9 text-[22px]">Conquistas</h3><div class="mt-4 grid grid-cols-3 gap-2.5">${ACH.map(a=>{const u=S.ach[a[0]];return `<div class="flex flex-col items-center gap-2 text-center"><span class="hex grid h-[64px] w-[64px] place-items-center" style="${u?'background:linear-gradient(160deg,#7C3AED,#C4B5FD);color:#fff':'background:var(--chip);color:var(--mute)'}">${ic(u?a[3]:'lock','h-6 w-6')}</span><span class="text-[12px] font-bold leading-tight ${u?'':'mut'}">${a[1]}</span><span class="mut text-[12px] leading-tight">${u?'Conquistada':a[2]}</span></div>`}).join('')}</div>
  <h3 class="mt-9 text-[22px]">Progresso por disciplina</h3><p class="sub mt-1.5">${nd} de ${R.length} lições concluídas.</p><div class="mt-4 grid gap-3.5">${R.map(r=>`<button data-a="route" data-r="${r.id}" class="press flex items-center gap-3 text-left"><span class="w-24 shrink-0 text-[13px] font-semibold">${r.n}</span>${bar(prog(r),'flex-1')}<span class="tn w-10 text-right text-[12px] font-bold">${prog(r)}%</span></button>`).join('')}</div>
- <h3 class="mt-9 text-[22px]">Revisão espaçada</h3><p class="sub mt-1.5">Os assuntos que você errou voltam em 1, 3 e 7 dias.</p><div class="mt-4 grid gap-2.5">${S.rev.length?S.rev.map(r=>`<button data-a="route" data-r="${r.r||'hist'}" class="chip press flex min-h-[52px] items-center justify-between gap-3 rounded-[20px] px-4 py-3 text-left text-[14px] font-semibold"><span>${r.t}</span><span class="pill ${r.d=='hoje'?'on':''}">${r.d}</span></button>`).join(''):'<p class="sub">Nada para revisar agora.</p>'}</div><h3 class="mt-9 text-[22px]">Histórico de missões</h3><div class="mt-4 grid gap-2.5">${S.log.length?S.log.map(l=>`<div class="chip flex items-center justify-between gap-3 rounded-[20px] px-4 py-3.5 text-[14px]"><span class="font-semibold">${l.t}</span><span class="tn lil shrink-0 font-bold">+${l.xp} XP</span></div>`).join(''):'<p class="sub">Suas missões concluídas aparecem aqui. Cada atividade rende XP uma única vez.</p>'}</div>
- <h3 class="mt-9 text-[22px]">Minha jornada</h3>${obSummary()}<h3 class="mt-9 text-[22px]">Preferências</h3><div class="glass card mt-4 grid gap-4 !p-4">${themeRow()}${prefRow('sound','Sons','Efeitos curtos ao acertar e concluir.')}${prefRow('reduce','Reduzir animações','Também respeita a configuração do aparelho.')}${prefRow('haptic','Vibração',vibOk()?'Toque leve ao responder.':'Indisponível neste dispositivo.',!vibOk())}</div><button data-a="reset" class="mut mt-8 min-h-[44px] text-[13px] font-semibold underline">Reiniciar progresso salvo neste navegador</button>`;bars()}
+ <h3 class="mt-9 text-[22px]">Revisão espaçada</h3><div class="mt-4 grid gap-2.5">${S.rev.length?S.rev.map(r=>`<button data-a="route" data-r="${r.r||'hist'}" class="chip press flex min-h-[52px] items-center justify-between gap-3 rounded-[20px] px-4 py-3 text-left text-[14px] font-semibold"><span>${r.t}</span><span class="pill ${r.d=='hoje'?'on':''}">${r.d}</span></button>`).join(''):'<p class="sub">Nada para revisar agora.</p>'}</div><h3 class="mt-9 text-[22px]">Histórico de missões</h3><div class="mt-4 grid gap-2.5">${S.log.length?S.log.map(l=>`<div class="chip flex items-center justify-between gap-3 rounded-[20px] px-4 py-3.5 text-[14px]"><span class="font-semibold">${l.t}</span><span class="tn lil shrink-0 font-bold">+${l.xp} XP</span></div>`).join(''):'<p class="sub">Suas missões concluídas aparecem aqui.</p>'}</div>
+ <h3 class="mt-9 text-[22px]">Minha jornada</h3>${obSummary()}<h3 class="mt-9 text-[22px]">Preferências</h3><div class="glass card mt-4 grid gap-4 !p-4">${themeRow()}${prefRow('sound','Sons','Efeitos curtos ao acertar e concluir.')}${prefRow('reduce','Reduzir animações','')}${prefRow('haptic','Vibração',vibOk()?'Toque leve ao responder.':'Indisponível neste dispositivo.',!vibOk())}</div><button data-a="reset" class="mut mt-8 min-h-[44px] text-[13px] font-semibold underline">Reiniciar progresso salvo neste navegador</button>`;bars()}
 
 /* ---------- ABA ENEM ---------- */
 const CTAV={mat:'Explorar Matemática',red:'Treinar Redação',bio:'Iniciar descoberta',fis:'Resolver desafio',qui:'Explorar Química',geo:'Explorar território',por:'Explorar linguagem',hist:'Continuar lição'};
@@ -1250,34 +1330,34 @@ const cta=r=>{const p=prog(r);return r.id=='hist'?(p>=100?'Rever lição':'Conti
 const place=r=>r.pl.split(' e ')[0].split(',')[0].replace(' · experiência original','');
 /* capas ilustradas da Biblioteca: [arquivo, object-position]. Disciplina sem arte própria mantém o degradê. */
 const COVER={hist:['capas/historia.jpg','42% 50%'],mat:['capas/matematica.jpg','56% 50%'],red:['capas/redacao.jpg','44% 50%'],bio:['capas/biologia.jpg','20% 50%'],fis:['capas/fisica.jpg','60% 50%'],qui:['capas/quimica.jpg','46% 50%'],geo:['capas/geografia.jpg','52% 50%'],por:['capas/portugues.jpg','50% 50%']};
-const card=r=>{const c=COVER[r.id];return `<button data-a="route" data-r="${r.id}" class="bcard press text-left" aria-label="${r.n}: ${prog(r)}% concluído"><div class="bcov ${c?'':'bgrad'}" style="--a:${r.a};--b:${r.b}">${c?`<img src="${c[0]}" alt="" loading="lazy" decoding="async" style="object-position:${c[1]}">`:''}<span class="bshade" aria-hidden="true"></span><p class="btit">${r.n}</p></div><p class="bpl mut mt-2 text-[13px]">${place(r)}</p><div class="mt-1.5 flex items-center gap-2">${bar(prog(r),'flex-1')}<span class="tn mut w-9 text-right text-[12px] font-bold">${prog(r)}%</span></div><p class="bpl cta mt-1.5">${cta(r)} ›</p></button>`};
+const card=r=>{const c=COVER[r.id];return `<button data-a="route" data-r="${r.id}" class="bcard press text-left" aria-label="${r.n}: ${prog(r)}% concluído"><div class="bcov ${c?'':'bgrad'}" style="--a:${r.a};--b:${r.b}">${c?`<img src="${c[0]}" alt="" loading="lazy" decoding="async" style="object-position:${c[1]}">`:''}<span class="bshade" aria-hidden="true"></span><p class="btit">${r.n}</p></div><p class="bpl mut mt-2 text-[13px]">${place(r)}</p><div class="mt-1.5 flex items-center gap-2">${bar(prog(r),'flex-1')}<span class="tn mut w-9 text-right text-[12px] font-bold">${prog(r)}%</span></div><p class="bpl cta mt-1.5">${cta(r)}<svg class="ic cta-ar" aria-hidden="true"><use href="#i-arrow"/></svg></p></button>`};
 /* Biblioteca: estante de capas (bloco colorido atrás, título abaixo) + continuar + abas */
 let BF='all';
-const lcard=(r,i)=>{const c=COVER[r.id],p=prog(r);return `<button data-a="route" data-r="${r.id}" class="lcard press text-left" style="--d:${i};--a:${r.a};--b:${r.b}" aria-label="${r.n}: ${p}% concluído"><span class="lback" aria-hidden="true">${c?`<img src="${c[0]}" alt="" decoding="sync" style="object-position:${c[1]}">`:''}</span><span class="lcov ${c?'':'bgrad'}">${c?`<img src="${c[0]}" alt="" decoding="sync" style="object-position:${c[1]}">`:''}${p>=100?`<span class="lbadge">${ic('check','h-3.5 w-3.5')}</span>`:p?`<span class="lbadge tn">${p}%</span>`:''}</span><b class="ltit">${r.n}</b><small class="lpl">${place(r)}</small><span class="mt-2 flex items-center gap-2">${bar(p,'flex-1')}<span class="tn mut w-9 text-right text-[12px] font-bold">${p}%</span></span></button>`};
+const lcard=(r,i)=>{const c=COVER[r.id],p=prog(r);return `<button data-a="route" data-r="${r.id}" class="lcard text-left" style="--d:${i};--a:${r.a};--b:${r.b}" aria-label="${r.n}: ${p}% concluído"><span class="lbook ${c?'':'bgrad'}">${c?`<img src="${c[0]}" alt="" decoding="sync" style="object-position:${c[1]}">`:''}${p>=100?`<span class="lbadge" aria-hidden="true">${ic('check','h-3.5 w-3.5')}</span>`:''}</span><b class="ltit">${r.n}</b><small class="lpl">${place(r)}</small>${p>0&&p<100?`<span class="lprog"><span class="lbar"><i style="width:${p}%"></i></span><span class="tn">${p}%</span></span>`:`<span class="lstat">${p>=100?'Concluída':'Não iniciada'}</span>`}</button>`};
 function rBib(){const H=HC,all=[...ORDER.map(k=>RM[k]),H],enter=view!=='bib';
  const doing=all.filter(r=>prog(r)>0&&prog(r)<100),done=all.filter(r=>prog(r)>=100);
- const cur=doing.sort((a,b)=>prog(b)-prog(a))[0]||S.ob.subj.map(k=>k=='hist'?H:RM[k]).find(r=>r&&prog(r)<100)||RM.mat,cp=prog(cur),cc=COVER[cur.id];
- const list=BF=='doing'?doing:BF=='done'?done:all;
- const tab=(k,l,n)=>`<button class="ltab" data-a="bf" data-f="${k}" aria-pressed="${BF==k}">${l}<span class="tn">${n}</span></button>`;
- $('#v-bib').innerHTML=`<div class="lib ${enter?'in':''}"><h2 class="h2">Biblioteca</h2><p class="sub mt-1.5">São Paulo é sua sala de aula. O ENEM é sua próxima conquista.</p>
- <button data-a="route" data-r="${cur.id}" class="lcont glass press mt-5 flex w-full items-center gap-4 rounded-[26px] p-3.5 text-left"><span class="lcthumb">${cc?`<img src="${cc[0]}" alt="" decoding="sync" style="object-position:${cc[1]}">`:''}</span><span class="min-w-0 flex-1"><small class="lil block text-[12px] font-bold uppercase tracking-wide">Continue estudando</small><b class="mt-0.5 block text-[18px] font-bold leading-tight">${cur.n}</b><span class="mut block truncate text-[13px]">${place(cur)}</span><span class="mt-2.5 flex items-center gap-2">${bar(cp,'flex-1')}<span class="tn text-[12px] font-bold">${cp}%</span></span></span><span class="lgo" aria-hidden="true">${ic('arrow','h-4 w-4')}</span></button>
- <h2 class="h2 mt-8 text-[24px]">São Paulo em 7 Rotas</h2>
- <div class="ltabs mt-3" role="group" aria-label="Filtrar rotas">${tab('all','Todas',all.length)}${tab('doing','Em andamento',doing.length)}${tab('done','Concluídas',done.length)}</div>
- ${list.length?`<div class="lgrid mt-5">${list.map(lcard).join('')}</div>`:`<p class="sub mt-5">${BF=='done'?'Nenhuma rota concluída ainda. Termine uma lição para vê-la aqui.':'Nenhuma rota em andamento. Comece uma lição para vê-la aqui.'}</p>`}</div>
- <button data-a="lab" class="glass press mt-8 flex w-full items-center gap-4 rounded-[26px] p-4 text-left"><span class="hex grid h-14 w-14 shrink-0 place-items-center text-white" style="background:linear-gradient(160deg,#5B21B6,#8B5CF6)">${ic('pen','h-6 w-6')}</span><div><p class="text-[17px] font-semibold leading-tight">Laboratório de Redação</p><p class="mut mt-0.5 text-[13px]">Planeje, escreva e receba feedback de prática.</p><p class="cta mt-1.5">Treinar Redação ›</p></div></button>
- <h2 class="h2 mt-9 text-[24px]">Conexões Invisíveis</h2><p class="sub mt-1.5">Os assuntos do ENEM não existem isolados. Siga um percurso entre disciplinas.</p>
- <div class="mt-4 grid gap-3">${Object.entries(PATHS).map(([k,p])=>`<button data-a="path" data-p="${k}" class="glass press flex items-center gap-4 rounded-[26px] p-4 text-left"><span class="hex grid h-14 w-14 shrink-0 place-items-center text-white" style="background:linear-gradient(160deg,#4338CA,#38BDF8)">${ic('link','h-6 w-6')}</span><div class="min-w-0 flex-1"><p class="text-[17px] font-semibold leading-tight">${p.n}</p><p class="mut text-[13px]">${p.sub}</p>${bar(p.nodes.filter(nodeOk).length/4*100,'mt-2')}<p class="cta mt-1.5">Seguir percurso ›</p></div></button>`).join('')}</div>
+ const cur=[...doing].sort((a,b)=>prog(b)-prog(a))[0]||S.ob.subj.map(k=>k=='hist'?H:RM[k]).find(r=>r&&prog(r)<100)||RM.mat,cp=prog(cur),cc=COVER[cur.id];
+ const list=BF=='doing'?doing:BF=='done'?done:all,ix=['all','doing','done'].indexOf(BF);
+ const tab=(k,l,n)=>`<button class="lseg-b" data-a="bf" data-f="${k}" role="tab" aria-selected="${BF==k}">${l}${n?` <span class="tn">${n}</span>`:''}</button>`;
+ $('#v-bib').innerHTML=`<div class="lib ${enter?'in':''}"><h2 class="lhead">Biblioteca</h2>
+ <button data-a="route" data-r="${cur.id}" class="lhero text-left" aria-label="Continuar ${cur.n}">${cc?`<img class="lhero-bg" src="${cc[0]}" alt="" decoding="sync">`:''}<span class="lhero-in"><span class="lbook lbook-sm">${cc?`<img src="${cc[0]}" alt="" decoding="sync" style="object-position:${cc[1]}">`:''}</span><span class="min-w-0 flex-1"><b class="lhero-t">${cur.n}</b><span class="lhero-p">${place(cur)}</span><span class="lprog lprog-w"><span class="lbar"><i style="width:${cp}%"></i></span><span class="tn">${cp}%</span></span></span></span><span class="lhero-cta">${cp?'Continuar':'Começar'}${ic('arrow','h-4 w-4')}</span></button>
+ <div class="lsec"><h3>Rotas do ENEM</h3><span class="mut tn">${done.length} de ${all.length} concluídas</span></div>
+ <div class="lseg" role="tablist" aria-label="Filtrar rotas" style="--ix:${ix}"><span class="lseg-th" aria-hidden="true"></span>${tab('all','Todas',0)}${tab('doing','Em andamento',doing.length)}${tab('done','Concluídas',done.length)}</div>
+ ${list.length?`<div class="lgrid">${list.map(lcard).join('')}</div>`:`<p class="lempty">${BF=='done'?'Nenhuma rota concluída ainda. Termine uma lição para vê-la aqui.':'Nenhuma rota em andamento. Comece uma lição para vê-la aqui.'}</p>`}</div>
+ <button data-a="lab" class="glass press mt-8 flex w-full items-center gap-4 rounded-[26px] p-4 text-left"><span class="hex grid h-14 w-14 shrink-0 place-items-center text-white" style="background:linear-gradient(160deg,#5B21B6,#8B5CF6)">${ic('pen','h-6 w-6')}</span><div><p class="text-[17px] font-semibold leading-tight">Laboratório de Redação</p><p class="mut mt-0.5 text-[13px]">Planeje, escreva e revise.</p><p class="cta mt-1.5">Treinar Redação ›</p></div></button>
+ <h2 class="h2 mt-9 text-[24px]">Conexões Invisíveis</h2>
+ <div class="mt-4 grid gap-3">${Object.entries(PATHS).map(([k,p])=>`<button data-a="path" data-p="${k}" class="glass press flex items-center gap-4 rounded-[26px] p-4 text-left"><span class="hex grid h-14 w-14 shrink-0 place-items-center text-white" style="background:linear-gradient(160deg,#4338CA,#38BDF8)">${ic('link','h-6 w-6')}</span><div class="min-w-0 flex-1"><p class="text-[17px] font-semibold leading-tight">${p.n}</p><p class="mut text-[13px]">${p.sub}</p>${bar(p.nodes.filter(nodeOk).length/4*100,'mt-2')}<p class="cta mt-1.5">Seguir percurso<svg class="ic cta-ar" aria-hidden="true"><use href="#i-arrow"/></svg></p></div></button>`).join('')}</div>
  `;bars()}
 
 /* ---------- MINI JOGOS ---------- */
-function rDes(){$('#v-des').innerHTML=`<h2 class="h2">Missões pela Cidade</h2><p class="sub mt-2">Descubra conexões. Resolva desafios. Conquiste conhecimento.</p>
- <div class="mt-5 flex items-center justify-between gap-4"><div><p class="text-[15px] font-bold">Temporizador</p><p class="mut text-[13px]">Opcional, no Desafio Relâmpago. Sem tempo, você joga no seu ritmo.</p></div><button data-a="timer" role="switch" aria-checked="${S.timer}" aria-label="Temporizador" class="sw"></button></div>
+function rDes(){$('#v-des').innerHTML=`<h2 class="h2">Missões pela Cidade</h2>
+ <div class="mt-5 flex items-center justify-between gap-4"><div><p class="text-[15px] font-bold">Temporizador</p><p class="mut text-[13px]">15 s por questão no Desafio Relâmpago</p></div><button data-a="timer" role="switch" aria-checked="${S.timer}" aria-label="Temporizador" class="sw"></button></div>
  <div class="mt-5 grid gap-4">${GM.map(g=>{const dn=S.done['g:'+g[0]]||(g[0]=='puz'&&[0,1,2].some(n=>S.done['g:puz'+n]));return `<button data-a="game" data-g="${g[0]}" class="gcard press flex min-h-[148px] flex-col justify-between rounded-[26px] p-4 text-left"><img src="capas/jogo-${g[0]}.jpg" alt="" decoding="sync" style="object-position:${GPOS[g[0]]}"><span class="gshade" aria-hidden="true"></span><span class="relative block max-w-[62%]"><span class="block text-[19px] font-semibold leading-tight">${g[1]}</span><span class="mt-1 block text-[13px] leading-snug text-white/85">${g[2]}</span></span><span class="relative mt-3 flex items-center justify-between gap-2"><span class="inline-flex min-h-[36px] items-center gap-1.5 rounded-full bg-white/20 px-3.5 text-[13px] font-semibold backdrop-blur-sm">${GCTA[g[0]]}${ic('play','h-3.5 w-3.5')}</span>${gStat(g[0],dn)}</span></button>`}).join('')}</div>`}
 const GI={puz:'puz',con:'link',tim:'clock',inv:'trend',rel:'bolt'};
 /* enquadramento das capas dos minijogos (arte à direita, texto à esquerda) */
 const GPOS={puz:'80% 50%',con:'74% 50%',tim:'80% 50%',inv:'86% 50%',rel:'86% 50%'};
 function gStat(k,dn){const n=k=='puz'?[0,1,2].filter(i=>S.done['g:puz'+i]).length:k=='rel'?REL.filter((_,i)=>S.done['g:rel'+i]).length:-1,t=k=='puz'?3:REL.length;
- const s=n<0?(dn?'✓ concluído':''):(n>=t?'✓ ':'')+n+'/'+t+(k=='puz'?' lugares':' rodadas');return s?`<span class="text-[12px] font-semibold text-white/90">${s}</span>`:''}
+ const s=n<0?(dn?'Concluído':''):n+'/'+t+(k=='puz'?' lugares':' rodadas'),ok=n<0?dn:n>=t;return s?`<span class="inline-flex items-center gap-1 text-[12px] font-semibold text-white/90">${ok?ic('check','h-3.5 w-3.5'):''}${s}</span>`:''}
 
 
 /* ---------- finalização de jogos ---------- */
@@ -1315,8 +1395,8 @@ function lessonStep(){const {r,i}=LS;let body='',after=null;
 
 /* ---------- MINIJOGOS DA CIDADE ---------- */
 let CURM='puz';function gameScreen(k){CURM=k;const g=GM.find(x=>x[0]==k);visit('game',k,g[1],'Missão pela cidade',GI[k],g[3],g[4]);
- let top='';if(k=='puz')top=`<div class="mt-4 flex flex-wrap gap-2">${PZ.map((p,i)=>`<button data-a="pzn" data-n="${i}" class="pill ${PZN==i?'on':''}">${p[0]}${S.done['g:puz'+i]?' ✓':''}</button>`).join('')}</div>`;
- if(k=='rel')top=`<div class="mt-4 flex flex-wrap gap-2">${REL.map((p,i)=>`<button data-a="rln" data-n="${i}" class="pill ${RLN==i?'on':''}">${p.t}${S.done['g:rel'+i]?' ✓':''}</button>`).join('')}</div><p class="mut mt-3 text-[13px]">${S.timer?'Temporizador ligado: 15 s por questão.':'Sem temporizador: responda no seu ritmo.'}</p>`;
+ let top='';if(k=='puz')top=`<div class="mt-4 flex flex-wrap gap-2">${PZ.map((p,i)=>`<button data-a="pzn" data-n="${i}" class="pill ${PZN==i?'on':''}">${p[0]}${S.done['g:puz'+i]?ic('check','h-3.5 w-3.5'):''}</button>`).join('')}</div>`;
+ if(k=='rel')top=`<div class="mt-4 flex flex-wrap gap-2">${REL.map((p,i)=>`<button data-a="rln" data-n="${i}" class="pill ${RLN==i?'on':''}">${p.t}${S.done['g:rel'+i]?ic('check','h-3.5 w-3.5'):''}</button>`).join('')}</div><p class="mut mt-3 text-[13px]">${S.timer?'Temporizador ligado: 15 s por questão.':'Sem temporizador: responda no seu ritmo.'}</p>`;
  screen(`${bk('Missões')}<h2 class="h2">${g[1]}</h2><p class="sub mt-2">${g[2]}</p>${top}<div id="eng" class="mt-5"></div><div id="res"></div>`,'des',()=>go('des'),()=>startMission(k))}
 function startMission(k){const eng=$('#eng'),res=$('#res');
  if(k=='puz'){const p=PZ[PZN];puzzle(eng,PZN,x=>gameDone(res,{id:'g:puz'+PZN,xp:30,label:'Quebra-cabeça: '+p[0],msg:p[0],extra:`<p class="sub mt-1.5">${p[2]}</p><p class="mut mt-1 text-[13px]">Concluído em ${x.moves} jogadas.</p>`,act:'nextm',btn:'Próxima missão',sec:['back','Voltar às missões']}))}
@@ -1364,7 +1444,7 @@ function refresh(){const L=lvl(),b0=L*500;$$('.lvv').forEach(e=>e.textContent=L)
 /* capas de área do conhecimento (pacote capas_areas_conhecimento, WebP 256) */
 const AREA={mat:'matematica',red:'redacao',bio:'biologia',fis:'fisica',qui:'quimica',geo:'geografia',por:'portugues',hist:'historia'};
 const areaImg=id=>AREA[id]?`capas/areas/${AREA[id]}.webp`:null;
-const miniCard=r=>{const a=areaImg(r.id);return `<button data-a="route" data-r="${r.id}" class="press shrink-0 text-left" style="width:152px" aria-label="${r.n}: ${prog(r)}% concluído"><div class="bcov acov ${a?'':'bgrad'}" style="--a:${r.a};--b:${r.b};aspect-ratio:1;border-radius:22px">${a?`<img src="${a}" alt="" decoding="sync">`:''}<span class="bshade" aria-hidden="true"></span><p class="btit" style="font-size:17px">${r.n}</p></div><div class="mt-2 flex items-center gap-2">${bar(prog(r),'flex-1')}<span class="tn text-[12px] font-bold">${prog(r)}%</span></div><p class="bpl cta mt-1.5">${cta(r)} ›</p></button>`};
+const miniCard=r=>{const a=areaImg(r.id);return `<button data-a="route" data-r="${r.id}" class="press shrink-0 text-left" style="width:152px" aria-label="${r.n}: ${prog(r)}% concluído"><div class="bcov acov ${a?'':'bgrad'}" style="--a:${r.a};--b:${r.b};aspect-ratio:1;border-radius:22px">${a?`<img src="${a}" alt="" decoding="sync">`:''}<span class="bshade" aria-hidden="true"></span><p class="btit" style="font-size:17px">${r.n}</p></div><div class="mt-2 flex items-center gap-2">${bar(prog(r),'flex-1')}<span class="tn text-[12px] font-bold">${prog(r)}%</span></div><p class="bpl cta mt-1.5">${cta(r)}<svg class="ic cta-ar" aria-hidden="true"><use href="#i-arrow"/></svg></p></button>`};
 const contCard=(at,r,title,sub,p,label,prim)=>`<button ${at} class="glass press flex items-center gap-3.5 rounded-[26px] p-4 text-left">${areaImg(r.id)?`<span class="athumb" aria-hidden="true"><img src="${areaImg(r.id)}" alt="" decoding="sync"></span>`:`<span class="cov hex grid h-12 w-12 shrink-0 place-items-center" style="--a:${r.a};--b:${r.b}">${ic(r.ic,'h-5 w-5')}</span>`}<div class="min-w-0 flex-1"><p class="truncate text-[17px] font-semibold">${title}</p><p class="mut text-[13px]">${sub}</p><div class="seg mt-2"><i style="width:${p}%"></i></div></div><span class="${prim?'btn !min-h-[38px] !px-3.5 !text-[13px]':'pill'} shrink-0">${label}</span></button>`;
 function rExp(){
  const hd=S.done['les:hist'],nx=ORDER.map(k=>RM[k]).filter(r=>prog(r)>0&&prog(r)<100).sort((a,b)=>prog(b)-prog(a))[0]||S.ob.subj.map(k=>RM[k]).find(r=>r&&prog(r)<100)||RM.mat;
@@ -1372,7 +1452,7 @@ function rExp(){
  $('#catrow').innerHTML=[...ORDER.map(k=>RM[k]),HC].map(miniCard).join('');
  const low=[...ORDER.map(k=>RM[k])].filter(r=>prog(r)<100).sort((a,b)=>prog(a)-prog(b))[0],rc=S.rev.slice(0,2).map(r=>{const [d,...t]=r.t.split(': ');return ['Rever '+t.join(': ').replace(/^./,c=>c.toLowerCase()),d+' · revisão '+r.d,r.r||'hist']});const pr=S.ob.subj.map(k=>k=='hist'?HC:RM[k]).filter(r=>r&&prog(r)<100).slice(0,2).map(r=>['Explorar '+r.n,'Você priorizou '+r.n+' · '+place(r),r.id]);if(S.ob.goals.includes('red'))pr.push(['Treinar Redação','Seu objetivo: melhorar a redação','lab']);if(S.ob.level=='dif')pr.push(['Jogar relâmpago','Para praticar questões mais difíceis','rel']);if(low&&!pr.length)pr.push(['Explorar '+low.n,place(low)+' · '+prog(low)+'% concluído',low.id]);rc.splice(1,0,...pr);
  $('#recs').innerHTML=rc.slice(0,3).map(r=>`<button ${r[2]=='lab'?'data-a="lab"':r[2]=='rel'?'data-a="game" data-g="rel"':`data-a="route" data-r="${r[2]}"`} class="glass press flex items-center gap-3.5 rounded-[24px] p-4 text-left"><span class="hex grid h-11 w-11 shrink-0 place-items-center bg-[#6D28D9] text-white">${ic('bolt')}</span><div class="min-w-0 flex-1"><p class="text-[16px] font-semibold">${r[0]}</p><p class="mut text-[13px]">${r[1]}</p></div><span class="lil text-[20px]">›</span></button>`).join('');
- $('#sp').innerHTML=SP.map((p,i)=>{const v=S.done['sp:'+i];return `<div class="glass flex items-center gap-4 rounded-[26px] p-4"><span class="cov hex grid h-14 w-14 shrink-0 place-items-center" style="--a:#4338CA;--b:#C4B5FD">${ic('pin','h-6 w-6')}</span><div class="min-w-0 flex-1"><p class="ser text-[19px] leading-tight">${p[0]}</p><p class="lil text-[13px] font-semibold">${p[1]} · +40 XP</p><p class="mut mt-1 text-[13px] leading-snug">${p[2]}</p></div><button data-a="visit" data-i="${i}" class="pill shrink-0" aria-pressed="${!!v}">${v?'✓ Visitado':'Registrar'}</button></div>`}).join('')}
+ $('#sp').innerHTML=SP.map((p,i)=>{const v=S.done['sp:'+i];return `<div class="glass flex items-center gap-4 rounded-[26px] p-4"><span class="cov hex grid h-14 w-14 shrink-0 place-items-center" style="--a:#4338CA;--b:#C4B5FD">${ic('pin','h-6 w-6')}</span><div class="min-w-0 flex-1"><p class="ser text-[19px] leading-tight">${p[0]}</p><p class="lil text-[13px] font-semibold">${p[1]} · +40 XP</p><p class="mut mt-1 text-[13px] leading-snug">${p[2]}</p></div><button data-a="visit" data-i="${i}" class="pill shrink-0" aria-pressed="${!!v}">${v?ic('check','h-3.5 w-3.5')+'Visitado':'Registrar'}</button></div>`}).join('')}
 function rCom(){const rk=[...FR,['Mariana',S.wk]].sort((a,b)=>b[1]-a[1]),me=rk.findIndex(r=>r[0]=='Mariana'),enter=view!=='com',ahead=me>0?rk[me-1]:null,an=enter?'in':'';
  const nm=r=>r[0]=='Mariana'?'Você':r[0],isMe=r=>r[0]=='Mariana';
  const col=(r,p)=>`<li class="pcol p${p}" style="--d:${3-p}" aria-label="${p}º lugar: ${nm(r)}, ${r[1]} XP">${p==1?`<span class="pcrown" aria-hidden="true">${ic('crown','h-6 w-6')}</span>`:''}<span class="pav ${isMe(r)?'me':''}" aria-hidden="true">${r[0][0]}</span><p class="pnm" aria-hidden="true">${nm(r)}</p><p class="pxp tn" aria-hidden="true">${r[1]} XP</p><div class="pblk" aria-hidden="true"><b>${p}</b></div></li>`;
@@ -1428,7 +1508,7 @@ const FX=(()=>{let ctx=null,last=-1;
   res(right,el){if(right){play('ok',[18]);burst(el);pulse(el,'okpop')}else{play('bad',[10,40,10]);pulse(el,'nudge')}},
   snap(){play('snap',[8])},link(){play('link',[12])},tap(){play('tap')},done(el){play('done',[20,50,20]);burst(el,22)}}})();
 const vibOk=()=>typeof navigator!=='undefined'&&typeof navigator.vibrate==='function';
-const prefRow=(k,t,d,dis)=>`<div class="flex items-center justify-between gap-4"><div class="min-w-0"><p class="text-[15px] font-semibold">${t}</p><p class="mut text-[13px] leading-snug">${d}</p></div><button data-a="pref" data-k="${k}" role="switch" aria-checked="${!!S.set[k]}" aria-label="${t}" class="sw" ${dis?'disabled style="opacity:.4"':''}></button></div>`;
+const prefRow=(k,t,d,dis)=>`<div class="flex items-center justify-between gap-4"><div class="min-w-0"><p class="text-[15px] font-semibold">${t}</p>${d?`<p class="mut text-[13px] leading-snug">${d}</p>`:''}</div><button data-a="pref" data-k="${k}" role="switch" aria-checked="${!!S.set[k]}" aria-label="${t}" class="sw" ${dis?'disabled style="opacity:.4"':''}></button></div>`;
 const applyMotion=()=>root.classList.toggle('rm',!!S.set.reduce);
 
 /* =========================================================
@@ -1527,7 +1607,7 @@ Object.assign(A,{
  tcv(b){TOUR.cv=+b.dataset.v;tourRender(false);const t=$(`#tour [data-a=tcv][data-v="${TOUR.cv}"]`);t&&t.focus()},
  tour(){tourOpen(0,true)},
  thm(b){themeTo(b.dataset.t,b);FX.tap()},
- bf(b){BF=b.dataset.f;rBib();const t=$(`[data-a=bf][data-f="${BF}"]`);t&&t.focus({preventScroll:true})},
+ bf(b){const K=['all','doing','done'],o=K.indexOf(BF);BF=b.dataset.f;rBib();const s=$('.lseg');if(s){s.style.setProperty('--ix',o);requestAnimationFrame(()=>requestAnimationFrame(()=>s.style.setProperty('--ix',K.indexOf(BF))))}const t=$(`[data-a=bf][data-f="${BF}"]`);t&&t.focus({preventScroll:true})},
  hgo(b){const x=histItems()[+b.dataset.i];island('idle');if(x)HOPEN[x.k](x.v)},
  hmus(){island('music')},hclose(){island('idle');$(compact?'#b-mini':'#b-idle').focus()},
  tprev(b){const n=+b.dataset.k,p=$('#tpv');if(!p)return;const same=!p.hidden&&p.dataset.k==n;clearTimeout(TOUR.pt);
@@ -1750,10 +1830,10 @@ function visSelect(id,fly){const p=PM[id];if(!p)return;VS.sel=id;
 function visDiscover(id,origin,conf){const p=PM[id];if(!p)return;visit('place',id,p.n,'SApólis Vision · '+visSubj(p),visIc(p),visC(p).a,visC(p).b);const from=VS.src,r=p.r||p.alt,R=RM[r],dn=p.r&&S.done['les:'+p.r];
  const og={demo:'Exemplo demonstrativo',manual:'Lugar escolhido por você',map:'Selecionado no mapa',ai:'Identificado pelo serviço de reconhecimento'+(conf!=null?` · confiança informada: ${Math.round(conf*100)}%`:'')}[origin];
  const msg=p.m||`${p.n.split(' ·')[0]} guarda ótimas oportunidades para aprender ${visSubj(p)}!`;
- screen(`${bk(from=='cam'?'Câmera':'Mapa')}<p class="lil text-[13px] font-bold uppercase tracking-wide">Você descobriu um lugar!</p><div class="mt-2 flex flex-wrap gap-2"><span class="pill">${og}</span></div>
+ screen(`${bk(from=='cam'?'Câmera':'Mapa')}<div class="mt-2 flex flex-wrap gap-2"><span class="pill">${og}</span></div>
  <figure class="vart mt-4" style="${visCol(p)}">${visArt(id)}<figcaption>Ilustração</figcaption></figure>
  <h1 class="h2 mt-5">${p.n}</h1><p class="mut mt-1.5 flex items-center gap-1.5 text-[14px]">${ic('pin','h-4 w-4 shrink-0')}${p.loc}</p>
- <div class="mt-3 flex flex-wrap gap-2"><span class="pill on">${visSubj(p)}</span><span class="pill">${p.k}</span>${dn?'<span class="pill">✓ Lição concluída</span>':''}</div>
+ <div class="mt-3 flex flex-wrap gap-2"><span class="pill on">${visSubj(p)}</span><span class="pill">${p.k}</span>${dn?'<span class="pill">'+ic('check','h-3.5 w-3.5')+'Lição concluída</span>':''}</div>
  <div class="mt-5 flex items-end gap-3">${lume('cheer','h-[80px] w-[66px]',true)}<div class="obb" role="status">${msg}</div></div>
  <h2 class="mt-6 text-[22px] leading-tight">${p.t}</h2><p class="sub mt-2 text-[15px]">${p.d}</p>
  ${p.r?'':`<p class="chip mt-4 rounded-2xl p-4 text-[13.5px] leading-relaxed">A lição de ${p.subj} sobre este lugar está em preparação. Enquanto isso, a rota de ${R.n} também passa pelo ${p.n}.</p>`}
@@ -1896,7 +1976,7 @@ const FB=[
 let FH=null,FS=null;
 const fscene=F=>`<svg viewBox="0 100 300 200" class="w-full rounded-2xl" role="img" aria-label="Ilustração simplificada: ${F.curto}"><use href="#ill${F.ill}"/>${F.id=='vm'?'<g><rect x="14" y="254" width="272" height="26" rx="10" fill="#C4B5FD"/><g fill="#1B0B3F"><rect x="30" y="259" width="26" height="12" rx="3"/><rect x="66" y="259" width="26" height="12" rx="3"/><rect x="102" y="259" width="26" height="12" rx="3"/><rect x="138" y="259" width="26" height="12" rx="3"/><rect x="174" y="259" width="26" height="12" rx="3"/><rect x="210" y="259" width="26" height="12" rx="3"/></g><circle cx="48" cy="284" r="5" fill="#4C1D95"/><circle cx="250" cy="284" r="5" fill="#4C1D95"/></g>':''}</svg>`;
 function formulaHub(host,res,act){FH={host,res,act};FS=null;host.onclick=null;res.innerHTML='';
- host.innerHTML=`<div class="glass card"><h3 class="text-[22px] leading-tight">Monte a Fórmula</h3><p class="sub mt-1.5">Organize os símbolos. Entenda a lógica. Resolva o desafio.</p><div class="mt-4 grid gap-2.5">${FB.map((f,i)=>`<button data-a="fopen" data-i="${i}" class="opt"><span><b class="block text-[15px]">${f.nome}</b><small class="mut block text-[13px] font-medium">${f.curto}</small></span>${S.done['f:'+f.id]?ic('check','h-5 w-5 lil'):`<span class="lil text-[13px] font-semibold">Montar ›</span>`}</button>`).join('')}</div></div>`}
+ host.innerHTML=`<div class="glass card"><h3 class="text-[22px] leading-tight">Monte a Fórmula</h3><p class="sub mt-1.5">Organize os símbolos. Entenda a lógica. Resolva o desafio.</p><div class="mt-4 grid gap-2.5">${FB.map((f,i)=>`<button data-a="fopen" data-i="${i}" class="opt"><span><b class="block text-[15px]">${f.nome}</b><small class="mut block text-[13px] font-medium">${f.curto}</small></span>${S.done['f:'+f.id]?ic('check','h-5 w-5 lil'):`<span class="lil text-[13px] font-semibold">Montar<svg class="ic cta-ar" aria-hidden="true"><use href="#i-arrow"/></svg></span>`}</button>`).join('')}</div></div>`}
 function fopen(i){const F=FB[i];FS={i,f:F,st:0,ans:[],pool:shuffle(F.tk.map((_,k)=>k)),fill:F.sub.p.filter(x=>x[0]=='@').map(()=>null),sb:shuffle(F.sub.b.map((_,k)=>k)),tries:0,hint:0,ok1:false,ok2:false,ok3:false,val:''};
  let g=0;while(FS.pool.every((p,k)=>p==k)&&g++<9)FS.pool=shuffle(FS.pool);fRender()}
 function fRender(){const F=FS.f,st=FS.st,h=FH.host,head=`<div class="glass card"><div class="flex items-center justify-between"><p class="mut text-[13px] font-semibold">${F.nome} · etapa ${st+1} de 6</p><button data-a="fhub" class="lil px-1 py-2 text-[13px] font-bold">Fórmulas</button></div>${stq(st,6)}`;
