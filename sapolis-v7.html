@@ -628,6 +628,23 @@ html:not(.dark) body{background:radial-gradient(60% 50% at 50% 28%,#F1EDF9,#E3E1
 .rgame-ok{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;color:#fff;background:#16A34A}
 .rcity{min-height:112px;border-radius:20px;align-items:flex-start;text-align:left}.rcity>.relative{max-width:62%}
 
+/* tutorial guiado (spotlight) */
+#gt{position:absolute;inset:0;z-index:65;opacity:0;transition:opacity 220ms var(--ease-out)}#gt[hidden]{display:none}#gt.on{opacity:1}
+.gt-hole{position:absolute;border-radius:20px;box-shadow:0 0 0 2px rgba(196,160,255,.9),0 0 0 7px rgba(167,123,255,.22),0 0 0 9999px rgba(12,6,24,.58);transition:left 280ms var(--ease-out),top 280ms var(--ease-out),width 280ms var(--ease-out),height 280ms var(--ease-out),border-radius 280ms var(--ease-out);animation:gtp 2.4s ease-in-out infinite;pointer-events:none}
+@keyframes gtp{50%{box-shadow:0 0 0 2px rgba(196,160,255,1),0 0 0 11px rgba(167,123,255,.12),0 0 0 9999px rgba(12,6,24,.58)}}
+.gt-pop{position:absolute;padding:16px 16px 12px;border-radius:22px;background:#FFFFFF;color:#1A1426;border:1px solid rgba(24,22,32,.08);box-shadow:0 24px 48px -18px rgba(20,8,44,.55)}
+.dark .gt-pop{background:#2A1450;color:#fff;border-color:rgba(196,181,253,.2);box-shadow:0 24px 48px -18px rgba(0,0,0,.7),0 0 30px -10px rgba(137,54,240,.6)}
+.gt-pop.gt-in{animation:gtin 240ms var(--ease-out)}@keyframes gtin{from{opacity:0;transform:translateY(6px) scale(.98)}}
+.gt-pop[data-side=t].gt-in{animation-name:gtint}@keyframes gtint{from{opacity:0;transform:translateY(-6px) scale(.98)}}
+.gt-row{display:flex;align-items:center;gap:12px}
+.gt-lu{width:46px;height:56px}
+.gt-k{font-size:12px;font-weight:700;color:#7C3AED}.dark .gt-k{color:#C9B6FF}
+.gt-t{font-size:18px;font-weight:700;letter-spacing:-.01em;line-height:1.2}
+.gt-d{margin-top:8px;font-size:14px;line-height:1.45;color:#4A4458}.dark .gt-d{color:rgba(235,228,255,.82)}
+.gt-act{display:flex;align-items:center;justify-content:flex-end;gap:8px;margin-top:14px}.gt-act .btn:not(.btn2){flex:1;white-space:nowrap}.gt-row{align-items:flex-start}.gt-skip{align-self:flex-start;white-space:nowrap}
+.gt-b{height:40px;padding:0 16px;font-size:14px}.btn2.gt-b{width:40px;padding:0}
+.gt-skip{min-height:40px;padding:0 4px;font-size:13px;font-weight:600;color:#6B6478}.dark .gt-skip{color:rgba(235,228,255,.7)}
+.rm .gt-hole{animation:none}
 /* seletor de aparência (Perfil › Preferências) */
 .thsel{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .thsel button{display:flex;flex-direction:column;align-items:center;gap:7px;min-height:44px;padding:10px 4px;border-radius:16px;font-size:12px;font-weight:600;text-align:center;line-height:1.2;border:1.5px solid var(--gb);background:var(--chip);color:var(--ink);transition:border-color .2s,background .2s}
@@ -1506,7 +1523,7 @@ const A={
  tl(b){tl(ti+ +b.dataset.d)},tlg(b){tl(+b.dataset.i)},cp(b){cp(+b.dataset.i)},
  pp(){playing?stopA():(startA(),island('music',3800))},next(){const k=Object.keys(TR);setCat(k[(k.indexOf(cat)+1)%k.length])},cat(b){setCat(b.dataset.k)},close(){island('idle')},
  visit(b){award('sp:'+b.dataset.i,40,'Visita registrada: '+SP[+b.dataset.i][0])},
- reset(){if(confirm('Apagar todo o progresso salvo neste navegador?')){S=fresh();save();HQST=0;applyMotion();go('per');toast('Progresso reiniciado');try{localStorage.removeItem(TOUR_KEY)}catch(e){}tourOpen(0)}}};
+ reset(){if(confirm('Apagar todo o progresso salvo neste navegador?')){S=fresh();save();HQST=0;applyMotion();go('per');toast('Progresso reiniciado');try{localStorage.removeItem(TOUR_KEY);localStorage.removeItem(GUIDE_KEY)}catch(e){}tourOpen(0)}}};
 document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(b&&A[b.dataset.a])A[b.dataset.a](b,e);if(e.target===$('#modal'))closeModal()});
 document.addEventListener('keydown',e=>{if(e.key=='Escape')closeModal()});
 document.addEventListener('input',e=>{const t=e.target;if(t.id=='ed'){S.draft[LAB]=t.value;save();updCnt();const s=$('#sv');if(s)s.textContent='salvo automaticamente'}else if(t.dataset&&t.dataset.p){S.plan[LAB]=Object.assign(S.plan[LAB]||{},{[t.dataset.p]:t.value});save()}});
@@ -1575,8 +1592,8 @@ function obRender(){const o=$('#ob'),i=OB.i,ob=S.ob;let body='',foot='';
  o.innerHTML=`<div class="obt"><button class="obs ${(OB.edit?i>1:i>=1)?'':'invisible'}" data-a="obback" aria-label="Voltar" style="min-width:44px">${ic('back','h-5 w-5')}</button><div class="obp" role="progressbar" aria-label="Progresso das boas-vindas" aria-valuemin="0" aria-valuemax="7" aria-valuenow="${i+1}"><i style="width:${(i+1)/7*100}%"></i></div><button class="obs ${skip?'':'invisible'}" data-a="obskip">Pular</button></div><div class="obc">${body}</div>${foot?`<div class="obf">${foot}</div>`:''}`;
  if(i==5&&OB.dq)mc($('#obq'),OBQ,{t:'Diagnóstico'},x=>{const wk=[...new Set(x.wr.map(t=>OBQ.find(q=>q[6]==t)[7]))];S.ob.diag={ok:x.ok,n:x.n,weak:wk};save();OB.dq=false;OB.i=6;obRender()});
  const f=$('.obc button,.obf button',o);if(f&&i!=5)f.focus&&f.focus({preventScroll:true})}
-function obFinish(){S.ob.done=true;save();obClose();const edit=OB.edit,id=obReco();go(edit?'per':'exp');if(edit)toast('Preferências atualizadas');else{id=='hist'?openLes(0):routeScreen(id)}refresh()}
-function obSummary(){const ob=S.ob;return `<div class="glass card mt-4 !p-4 grid gap-3"><div><p class="mut text-[13px]">Objetivo</p><p class="text-[15px] font-semibold leading-snug">${ob.goals.length?ob.goals.map(g=>obLabel(OBG,g)).join(' · '):'Ainda não definido'}</p></div><div><p class="mut text-[13px]">Disciplinas prioritárias</p><p class="text-[15px] font-semibold">${ob.subj.length?ob.subj.map(k=>obLabel(OBS,k)).join(', '):'Todas por igual'}</p></div><div><p class="mut text-[13px]">Estudo por dia</p><p class="text-[15px] font-semibold">${ob.time?ob.time+' minutos · flexível':'Sem meta definida'}</p></div><button class="btn2 w-full" data-a="obedit">Editar preferências</button><button class="btn2 w-full" data-a="tour">Rever apresentação</button></div>`}
+function obFinish(){S.ob.done=true;save();obClose();const edit=OB.edit,id=obReco(),g=!guideDone();go(edit&&!g?'per':'exp');if(g){setTimeout(guideOpen,FX.calm()?50:450)}else if(edit)toast('Preferências atualizadas');else{id=='hist'?openLes(0):routeScreen(id)}refresh()}
+function obSummary(){const ob=S.ob;return `<div class="glass card mt-4 !p-4 grid gap-3"><div><p class="mut text-[13px]">Objetivo</p><p class="text-[15px] font-semibold leading-snug">${ob.goals.length?ob.goals.map(g=>obLabel(OBG,g)).join(' · '):'Ainda não definido'}</p></div><div><p class="mut text-[13px]">Disciplinas prioritárias</p><p class="text-[15px] font-semibold">${ob.subj.length?ob.subj.map(k=>obLabel(OBS,k)).join(', '):'Todas por igual'}</p></div><div><p class="mut text-[13px]">Estudo por dia</p><p class="text-[15px] font-semibold">${ob.time?ob.time+' minutos · flexível':'Sem meta definida'}</p></div><button class="btn2 w-full" data-a="obedit">Editar preferências</button><button class="btn2 w-full" data-a="tour">Rever apresentação</button><button class="btn2 w-full" data-a="gtour">Rever tutorial</button></div>`}
 
 /* ---------- Apresentação: 7 telas antes do questionário ---------- */
 const TOUR_KEY='sap-tour';
@@ -2043,13 +2060,57 @@ Object.assign(A,{
 document.addEventListener('input',e=>{if(e.target.id=='fin')FS.val=e.target.value});
 document.addEventListener('keydown',e=>{if(e.key=='Enter'&&e.target.id=='fin'){e.preventDefault();A.fans()}});
 
+
+/* =========================================================
+   TUTORIAL GUIADO (spotlight) — depois do questionário de preferências
+   Estado próprio em localStorage ('sap-guide'), separado da apresentação e das preferências.
+   ========================================================= */
+const GUIDE_KEY='sap-guide';
+const guideDone=()=>{try{return localStorage.getItem(GUIDE_KEY)==='done'}catch(e){return false}};
+const GSTEPS=[
+ {go:'exp',el:()=>$('#v-exp > .cov'),m:'happy',t:'Conheça sua página inicial',d:'Este é seu espaço! Aqui você encontra suas atividades e continua de onde parou.'},
+ {go:'exp',el:()=>$('#v-exp > .glass.card'),m:'cheer',t:'Seu progresso e XP',d:'Cada atividade concluída ajuda você a evoluir. Acompanhe suas conquistas por aqui!'},
+ {go:'bib',el:()=>$('#v-bib .lcard'),m:'think',t:'Biblioteca ENEM',d:'Escolha uma matéria e descubra conteúdos do ENEM conectados a lugares de São Paulo.',cta:'Explorar próxima função'},
+ {go:'exp',el:()=>$('#vis-entry .vcard .grid'),m:'happy',t:'SApólis Vision',d:'Fotografe um lugar ou explore o mapa para descobrir o que São Paulo pode ensinar!'},
+ {el:()=>$('#nav [data-k=des]'),m:'cheer',t:'Aprenda jogando',d:'Aqui você aprende jogando! Experimente quebra-cabeças, conexões e desafios relâmpago.'},
+ {go:'exp',el:()=>{const c=$('#cats');return c&&c.closest('.glass')},m:'happy',t:'Trilhas para focar',d:'Prefere estudar com som? Escolha uma trilha de foco e toque quando quiser.'},
+ {el:()=>$('#nav [data-k=per]'),m:'cheer',t:'Perfil e preferências',d:'Confira seu progresso, ajuste suas preferências e volte a este tutorial quando quiser.',cta:'Concluir tutorial'}];
+let GT=null;
+function guideOpen(){if(!$('#gt')){const o=document.createElement('div');o.id='gt';o.setAttribute('role','dialog');o.setAttribute('aria-modal','true');o.setAttribute('aria-labelledby','gt-h');o.innerHTML='<div class="gt-hole" aria-hidden="true"></div><div class="gt-pop"></div>';$('#frame').appendChild(o)}
+ const o=$('#gt');GT={i:0,dir:1,prevFocus:document.activeElement};o.hidden=false;island('idle');guideStep()}
+function guideClose(done){const o=$('#gt');if(!o||!GT)return;if(done)try{localStorage.setItem(GUIDE_KEY,'done')}catch(e){}o.classList.remove('on');setTimeout(()=>{o.hidden=true},FX.calm()?0:220);GT=null;const nb=$('#nav .nb[aria-current=page]');if(nb)nb.focus({preventScroll:true})}
+function guideStep(){if(!GT)return;const s=GSTEPS[GT.i];if(s.go&&view!==s.go)go(s.go);
+ const el=s.el();if(!el||!el.getBoundingClientRect().width){const n=GT.i+GT.dir;if(n>=0&&n<GSTEPS.length){GT.i=n;return guideStep()}return guideClose(true)}
+ if(sc.contains(el)){const fr=$('#frame').getBoundingClientRect(),er=el.getBoundingClientRect(),room=fr.height-180;sc.style.scrollBehavior='auto';sc.scrollTop+=er.height<room?(er.top-fr.top-86):(er.top-fr.top-70);sc.style.scrollBehavior=''}
+ setTimeout(()=>guidePlace(el,s),40)}
+function guidePlace(el,s){if(!GT)return;const o=$('#gt'),fr=$('#frame').getBoundingClientRect(),r=el.getBoundingClientRect(),pad=6,cs=getComputedStyle(el);
+ const x=r.left-fr.left-pad,y=Math.max(8,r.top-fr.top-pad),w=r.width+pad*2,h=Math.min(r.height+pad*2,fr.height-y-8),i=GT.i,n=GSTEPS.length;
+ const hole=$('.gt-hole',o);Object.assign(hole.style,{left:x+'px',top:y+'px',width:w+'px',height:h+'px',borderRadius:`calc(${cs.borderRadius||'16px'} + ${pad}px)`});
+ const pop=$('.gt-pop',o);pop.innerHTML=`<div class="gt-row">${lume(s.m,'gt-lu',1)}<div class="min-w-0 flex-1"><p class="gt-k tn">${i+1} de ${n}</p><h3 id="gt-h" class="gt-t">${s.t}</h3></div><button class="gt-skip" data-a="gskip">Pular</button></div><p class="gt-d" id="gt-d">${s.d}</p><div class="gt-act">${i?`<button class="btn2 gt-b" data-a="gprev" aria-label="Voltar">${ic('back','h-4 w-4')}</button>`:''}<button class="btn gt-b" data-a="gnext">${s.cta||'Próximo'}${i<n-1?ic('arrow','h-4 w-4'):ic('check','h-4 w-4')}</button></div>`;
+ pop.setAttribute('aria-describedby','gt-d');
+ const pw=Math.min(340,fr.width-24),left=Math.max(12,Math.min(x+w/2-pw/2,fr.width-pw-12));pop.style.width=pw+'px';pop.style.left=left+'px';pop.style.top='0px';pop.style.visibility='hidden';
+ const ph=pop.offsetHeight,navTop=fr.height-96,below=y+h+12,above=y-12-ph;let top,side;
+ if(below+ph<=navTop){top=below;side='b'}else if(above>=12){top=above;side='t'}else{top=Math.max(12,Math.min(navTop-ph,y+h-ph-12));side='in'}
+ pop.style.top=top+'px';pop.dataset.side=side;pop.style.visibility='';
+ o.classList.add('on');pop.classList.remove('gt-in');void pop.offsetWidth;pop.classList.add('gt-in');
+ const f=$('[data-a=gnext]',pop);f&&f.focus({preventScroll:true});$('#live').textContent=`${s.t}. ${s.d}`}
+Object.assign(A,{
+ gnext(){if(!GT)return;if(GT.i<GSTEPS.length-1){GT.i++;GT.dir=1;FX.tap();guideStep()}else{guideClose(true);toast('Tutorial concluído. Bons estudos!')}},
+ gprev(){if(!GT||!GT.i)return;GT.i--;GT.dir=-1;guideStep()},
+ gskip(){guideClose(true)},
+ gtour(){guideOpen()}});
+document.addEventListener('keydown',e=>{if(!GT)return;const pop=$('#gt .gt-pop');
+ if(e.key=='Escape'){e.preventDefault();guideClose(true);return}
+ if(e.key=='ArrowRight'){e.preventDefault();A.gnext();return}if(e.key=='ArrowLeft'){e.preventDefault();A.gprev();return}
+ if(e.key=='Tab'&&pop){const b=$$('button',pop);if(!b.length)return;const f=b[0],l=b[b.length-1];if(e.shiftKey&&document.activeElement===f){e.preventDefault();l.focus()}else if(!e.shiftKey&&document.activeElement===l){e.preventDefault();f.focus()}else if(!pop.contains(document.activeElement)){e.preventDefault();f.focus()}}},true);
+window.addEventListener('resize',()=>{if(GT)guideStep()});
 Object.assign(A,{
  obsel(b){const v=b.dataset.v,ob=S.ob,i=OB.i;if(i==1||i==2){const k=i==1?'goals':'subj',a=ob[k];ob[k]=a.includes(v)?a.filter(x=>x!=v):[...a,v]}if(i==3)ob.level=v;if(i==4)ob.time=+v;OB.last=v;save();FX.tap();obRender()},
  obnext(){if(OB.i<6){OB.i++;obRender()}},obback(){if(OB.dq)OB.dq=false;else if(OB.i>1)OB.i--;else if(!OB.edit){obClose();tourOpen(6);return}obRender()},
  obskip(){if(OB.dq){OB.dq=false;OB.i=6}else OB.i++;obRender()},obdiag(){OB.dq=true;obRender()},obnodiag(){OB.i=6;obRender()},obfinish(){obFinish()},obedit(){obOpen(true)},
  pref(b){const k=b.dataset.k;S.set[k]=!S.set[k];save();b.setAttribute('aria-checked',String(S.set[k]));if(k=='reduce')applyMotion();if(k=='sound'&&S.set.sound)FX.play('ok');if(k=='haptic'&&S.set.haptic)FX.play('tap',[30]);toast((k=='sound'?'Sons ':k=='haptic'?'Vibração ':'Animações reduzidas ')+(S.set[k]?(k=='reduce'?'ligadas':'ativados'):(k=='reduce'?'desligadas':'desativados')))},
  nextm(){const ks=GM.map(g=>g[0]);gameScreen(ks[(ks.indexOf(CURM)+1)%ks.length])}});
-ach();refresh();bars();applyMotion();setTimeout(hwRun,400);['pointerdown','keydown'].forEach(ev=>document.addEventListener(ev,()=>FX.init(),{passive:true}));if(!S.ob.done){if(tourDone())obOpen(false);else tourOpen(0)}
+ach();refresh();bars();applyMotion();setTimeout(hwRun,400);['pointerdown','keydown'].forEach(ev=>document.addEventListener(ev,()=>FX.init(),{passive:true}));if(!S.ob.done){if(tourDone())obOpen(false);else tourOpen(0)}else if(!guideDone())setTimeout(()=>{if($('#tour').hidden&&$('#ob').hidden&&!GT){go('exp');guideOpen()}},600)
 setTimeout(()=>{if(cur=='idle')notify('Bruno ganhou 40 XP e passou à sua frente no ranking semanal')},16000);
 
 </script>
